@@ -84,7 +84,6 @@ void main() async {
         ChangeNotifierProvider<ProfileProvider>(
           create: (_) => ProfileProvider(),
         ),
-       
       ],
       child: MyApp(),
     ),
@@ -103,6 +102,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       supportedLocales: const [
+        Locale('ar'),
         Locale('en'),
         Locale('hi'),
         Locale('es'),
