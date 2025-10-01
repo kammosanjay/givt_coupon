@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "303180080421",
+    "project_id": "banda-uni-app",
+    "storage_bucket": "banda-uni-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303180080421:android:9acf7a03beae2d0752a6cc",
+        "android_client_info": {
+          "package_name": "com.baanda.mobapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303180080421-g8b5sgm7qv5atpmq817aun64ulpul6if.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.baanda.mobapp",
+            "certificate_hash": "e0c2b81401de7ba0186644310f278e2a19e4eabb"
+          }
+        },
+        {
+          "client_id": "303180080421-nguj5oofh1k73pj7uktjb0iaakk6jmoe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIDuRkGDt3ubSX1VNw2QVT1ow1coZ8AnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303180080421-nguj5oofh1k73pj7uktjb0iaakk6jmoe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "303180080421-d1drh64sc9vkgntr5h3n5d62gn7d3ckr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.multiLocalizationApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

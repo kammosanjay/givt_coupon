@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Central Library",
+    "type": "Library",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 2,
+    "name": "Administrative Block",
+    "type": "Office",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 3,
+    "name": "Boys Hostel",
+    "type": "Hostel",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 4,
+    "name": "Girls Hostel",
+    "type": "Hostel",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 5,
+    "name": "Department of Agriculture",
+    "type": "Department",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 6,
+    "name": "Department of Horticulture",
+    "type": "Department",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 7,
+    "name": "Department of Forestry",
+    "type": "Department",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 8,
+    "name": "Cafeteria",
+    "type": "Canteen",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 9,
+    "name": "Sports Complex",
+    "type": "Sports",
+    "campus": "Main Campus"
+  },
+  {
+    "id": 10,
+    "name": "Auditorium",
+    "type": "Hall",
+    "campus": "Main Campus"
+  }
+]
