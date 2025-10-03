@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:baanda_mobile_app/Views/home/home.dart';
-import 'package:baanda_mobile_app/Views/splash/splash_screen.dart';
-import 'package:baanda_mobile_app/Views/themeColor.dart';
+import 'package:givt_mobile_app/Views/home/home.dart';
+import 'package:givt_mobile_app/Views/splash/splash_screen.dart';
+import 'package:givt_mobile_app/Views/themeColor.dart';
 
 class MypageRoutes {
   static const String myPage = '/myPage';

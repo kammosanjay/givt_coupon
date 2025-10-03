@@ -1,5 +1,5 @@
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

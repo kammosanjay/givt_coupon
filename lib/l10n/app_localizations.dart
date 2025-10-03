@@ -9,13 +9,6 @@ import 'app_localizations_ar.dart';
 import 'app_localizations_as.dart';
 import 'app_localizations_bn.dart';
 import 'app_localizations_en.dart';
-import 'app_localizations_es.dart';
-import 'app_localizations_hi.dart';
-import 'app_localizations_kn.dart';
-import 'app_localizations_mr.dart';
-import 'app_localizations_ta.dart';
-import 'app_localizations_te.dart';
-import 'app_localizations_ur.dart';
 
 // ignore_for_file: type=lint
 
@@ -103,14 +96,7 @@ abstract class AppLocalizations {
     Locale('ar'),
     Locale('as'),
     Locale('bn'),
-    Locale('en'),
-    Locale('es'),
-    Locale('hi'),
-    Locale('kn'),
-    Locale('mr'),
-    Locale('ta'),
-    Locale('te'),
-    Locale('ur')
+    Locale('en')
   ];
 
   /// No description provided for @hello.
@@ -285,7 +271,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'as', 'bn', 'en', 'es', 'hi', 'kn', 'mr', 'ta', 'te', 'ur'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'as', 'bn', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -300,13 +286,6 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
     case 'as': return AppLocalizationsAs();
     case 'bn': return AppLocalizationsBn();
     case 'en': return AppLocalizationsEn();
-    case 'es': return AppLocalizationsEs();
-    case 'hi': return AppLocalizationsHi();
-    case 'kn': return AppLocalizationsKn();
-    case 'mr': return AppLocalizationsMr();
-    case 'ta': return AppLocalizationsTa();
-    case 'te': return AppLocalizationsTe();
-    case 'ur': return AppLocalizationsUr();
   }
 
   throw FlutterError(

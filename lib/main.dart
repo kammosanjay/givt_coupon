@@ -1,66 +1,66 @@
-import 'package:baanda_mobile_app/Views/AcademicSubSections/departmentListDetailscreen.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/facultyListDetailscreen.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/institueListDetailScreen.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/institute.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/acadColla.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/department.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/academicPro.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/faculty.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/internalQA.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/library.dart';
-import 'package:baanda_mobile_app/Views/AcademicSubSections/listOfUgc.dart';
-import 'package:baanda_mobile_app/Views/Changepassword/change_passSCreen.dart';
-import 'package:baanda_mobile_app/Views/OTP/forgot_pass_reset.dart';
-import 'package:baanda_mobile_app/Views/OTP/otp_page.dart';
-import 'package:baanda_mobile_app/Views/ProfilePage/profile_provider.dart';
-import 'package:baanda_mobile_app/Views/ProfilePage/profilepage.dart';
-import 'package:baanda_mobile_app/Views/ReportsPage/report_page.dart';
-import 'package:baanda_mobile_app/Views/home/banda_home_page.dart';
-import 'package:baanda_mobile_app/Views/home/firebase_messaging.dart';
-import 'package:baanda_mobile_app/Views/loginpage/login_provider.dart';
-import 'package:baanda_mobile_app/Views/newsRoom/allnews.dart';
-import 'package:baanda_mobile_app/Views/screenListView/aboutHEI.dart';
-import 'package:baanda_mobile_app/Views/screenListView/academic.dart';
-import 'package:baanda_mobile_app/Views/screenListView/administration.dart';
-import 'package:baanda_mobile_app/Views/screenListView/admissionFee.dart';
-import 'package:baanda_mobile_app/Views/screenListView/alumni.dart';
-import 'package:baanda_mobile_app/Views/screenListView/announement.dart';
-import 'package:baanda_mobile_app/Views/screenListView/emergency.dart';
-import 'package:baanda_mobile_app/Views/screenListView/emergency_contact_scree.dart';
-import 'package:baanda_mobile_app/Views/screenListView/gallery.dart';
-import 'package:baanda_mobile_app/Views/screenListView/grievence.dart';
-import 'package:baanda_mobile_app/Views/screenListView/idcard.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/departmentListDetailscreen.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/facultyListDetailscreen.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/institueListDetailScreen.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/institute.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/acadColla.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/department.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/academicPro.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/faculty.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/internalQA.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/library.dart';
+import 'package:givt_mobile_app/Views/AcademicSubSections/listOfUgc.dart';
+import 'package:givt_mobile_app/Views/Changepassword/change_passSCreen.dart';
+import 'package:givt_mobile_app/Views/OTP/forgot_pass_reset.dart';
+import 'package:givt_mobile_app/Views/OTP/otp_page.dart';
+import 'package:givt_mobile_app/Views/ProfilePage/profile_provider.dart';
+import 'package:givt_mobile_app/Views/ProfilePage/profilepage.dart';
+import 'package:givt_mobile_app/Views/ReportsPage/report_page.dart';
+import 'package:givt_mobile_app/Views/home/banda_home_page.dart';
+import 'package:givt_mobile_app/Views/home/firebase_messaging.dart';
+import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
+import 'package:givt_mobile_app/Views/newsRoom/allnews.dart';
+import 'package:givt_mobile_app/Views/screenListView/aboutHEI.dart';
+import 'package:givt_mobile_app/Views/screenListView/academic.dart';
+import 'package:givt_mobile_app/Views/screenListView/administration.dart';
+import 'package:givt_mobile_app/Views/screenListView/admissionFee.dart';
+import 'package:givt_mobile_app/Views/screenListView/alumni.dart';
+import 'package:givt_mobile_app/Views/screenListView/announement.dart';
+import 'package:givt_mobile_app/Views/screenListView/emergency.dart';
+import 'package:givt_mobile_app/Views/screenListView/emergency_contact_scree.dart';
+import 'package:givt_mobile_app/Views/screenListView/gallery.dart';
+import 'package:givt_mobile_app/Views/screenListView/grievence.dart';
+import 'package:givt_mobile_app/Views/screenListView/idcard.dart';
 
-import 'package:baanda_mobile_app/Views/screenListView/information.dart';
-import 'package:baanda_mobile_app/Views/screenListView/research.dart';
-import 'package:baanda_mobile_app/Views/screenListView/studentCareer.dart';
-import 'package:baanda_mobile_app/Views/screenListView/updatephone.dart';
+import 'package:givt_mobile_app/Views/screenListView/information.dart';
+import 'package:givt_mobile_app/Views/screenListView/research.dart';
+import 'package:givt_mobile_app/Views/screenListView/studentCareer.dart';
+import 'package:givt_mobile_app/Views/screenListView/updatephone.dart';
 
-import 'package:baanda_mobile_app/firebase_options.dart';
+import 'package:givt_mobile_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:get_storage/get_storage.dart';
 
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/Views/Forgot/forgot_page.dart';
-import 'package:baanda_mobile_app/Views/ReportsPage/report_provider.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/Forgot/forgot_page.dart';
+import 'package:givt_mobile_app/Views/ReportsPage/report_provider.dart';
 // Ensure that 'myPage_routes.dart' defines a class named 'MyPageRoutes' with a static 'routes' property.
-import 'package:baanda_mobile_app/Views/home/home_providers.dart';
-import 'package:baanda_mobile_app/Views/home/home.dart';
-import 'package:baanda_mobile_app/Views/home/task_page.dart';
-import 'package:baanda_mobile_app/Views/home/tasklist_page.dart';
-import 'package:baanda_mobile_app/Views/loginpage/login_page.dart';
-import 'package:baanda_mobile_app/Views/signUpPage/signup_page.dart';
-import 'package:baanda_mobile_app/Views/splash/splash_provider.dart';
-import 'package:baanda_mobile_app/Views/splash/splash_screen.dart';
-import 'package:baanda_mobile_app/Views/todolist/todo_provider.dart';
+import 'package:givt_mobile_app/Views/home/home_providers.dart';
+import 'package:givt_mobile_app/Views/home/home.dart';
+import 'package:givt_mobile_app/Views/home/task_page.dart';
+import 'package:givt_mobile_app/Views/home/tasklist_page.dart';
+import 'package:givt_mobile_app/Views/loginpage/login_page.dart';
+import 'package:givt_mobile_app/Views/signUpPage/signup_page.dart';
+import 'package:givt_mobile_app/Views/splash/splash_provider.dart';
+import 'package:givt_mobile_app/Views/splash/splash_screen.dart';
+import 'package:givt_mobile_app/Views/todolist/todo_provider.dart';
 
-import 'package:baanda_mobile_app/l10n/app_localizations.dart';
-import 'package:baanda_mobile_app/Views/language/language.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
+import 'package:givt_mobile_app/Views/language/language.dart';
 
-import 'package:baanda_mobile_app/Views/theme/theme_provider.dart';
+import 'package:givt_mobile_app/Views/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -101,19 +101,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      supportedLocales: const [
-        Locale('ar'),
-        Locale('en'),
-        Locale('hi'),
-        Locale('es'),
-        Locale('bn'),
-        Locale('ta'),
-        Locale('te'),
-        Locale('mr'),
-        Locale('kn'),
-        Locale('as'),
-        Locale('ur'),
-      ],
+      supportedLocales: const [Locale('ar'), Locale('en')],
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

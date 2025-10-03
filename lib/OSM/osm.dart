@@ -127,7 +127,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                     children: [
                       TileLayer(
                         urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                        userAgentPackageName: 'com.baanda.mobapp',
+                        userAgentPackageName: 'com.saudi_mobile_app',
                       ),
                       if (_routePoints.isNotEmpty)
                         PolylineLayer(

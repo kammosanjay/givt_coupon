@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:baanda_mobile_app/Views/theme/theme_provider.dart';
+import 'package:givt_mobile_app/Views/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class ThemePage extends StatelessWidget {

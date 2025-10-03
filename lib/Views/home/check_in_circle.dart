@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/Views/theme/theme_provider.dart';
-import 'package:baanda_mobile_app/l10n/app_localizations.dart';
-import 'package:baanda_mobile_app/utils/custom_widgets.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/theme/theme_provider.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
+import 'package:givt_mobile_app/utils/custom_widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../constant/appColor.dart';

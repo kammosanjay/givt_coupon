@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:baanda_mobile_app/database/newDatabase.dart';
+import 'package:givt_mobile_app/database/newDatabase.dart';
 
 class ReportProvider with ChangeNotifier {
   //

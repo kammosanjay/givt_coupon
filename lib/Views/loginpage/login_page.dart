@@ -1,16 +1,16 @@
-import 'package:baanda_mobile_app/Views/loginpage/login_provider.dart';
-import 'package:baanda_mobile_app/Views/loginpage/loginmodal.dart';
+import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
+import 'package:givt_mobile_app/Views/loginpage/loginmodal.dart';
 
-import 'package:baanda_mobile_app/l10n/app_localizations.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_toastr/flutter_toastr.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/Views/Forgot/forgot_page.dart';
-import 'package:baanda_mobile_app/Views/signUpPage/signup_page.dart';
-import 'package:baanda_mobile_app/constant/appColor.dart';
-import 'package:baanda_mobile_app/constant/constant_widget.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/Forgot/forgot_page.dart';
+import 'package:givt_mobile_app/Views/signUpPage/signup_page.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/constant/constant_widget.dart';
 
 import 'package:provider/provider.dart';
 
@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   bool isShown = true;
   TextEditingController passController = TextEditingController();
   TextEditingController phoneEmaiController = TextEditingController();
- 
+
   @override
   Widget build(BuildContext context) {
     final appLoc = AppLocalizations.of(context)!;
@@ -41,71 +41,40 @@ class _LoginPageState extends State<LoginPage> {
       // backgroundColor: Colors.grey.shade100,
       // backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: SingleChildScrollView(
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 100),
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    'assets/images/bandabg.png',
-                    height: 150,
-                    fit: BoxFit.contain,
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 100),
+            Center(
+              child: Image.asset(
+                'assets/images/Group 12.png',
+                height: 70,
+                width: 154,
+                fit: BoxFit.contain,
+              ),
+            ),
+            SizedBox(height: 34),
+            Container(padding: EdgeInsets.symmetric(horizontal: 12),
+              height: MediaQuery.of(context).size.height * 0.76,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
               ),
-              Text(
-                'Welcome Back',
-                style: GoogleFonts.poppins(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w600,
-                  color: AppColor.textColor(context),
-                ),
-              ),
-              // Text(
-              //   'to',
-              //   style: GoogleFonts.poppins(
-              //     fontSize: 14,
-              //     fontWeight: FontWeight.w600,
-              //     color: AppColor.textColor(context),
-              //   ),
-              // ),
 
-              // SizedBox(height: 40
-              Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // Row(
-                  //   children: [
-                  //     Icon(
-                  //       Icons.track_changes,
-                  //       color: AppColor.headingColor(context),
-                  //     ),
-                  //     SizedBox(width: 8),
-                  //     Text(
-                  //       'EATA',
-                  //       style: GoogleFonts.poppins(
-                  //         fontSize: 12,
-                  //         // color: AppColor.textColor(context),
-                  //         textStyle: Theme.of(context).textTheme.titleSmall,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  SizedBox(height: 10),
-                  FittedBox(
-                    child: Text(
-                      appLoc.welcome,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColor.headingColor(context),
-                      ),
+                  Text(
+                    'Welcome Back',
+                    style: GoogleFonts.poppins(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w600,
+                      color: AppColor.textColor(context),
                     ),
                   ),
 
@@ -309,7 +278,6 @@ class _LoginPageState extends State<LoginPage> {
                           } else {
                             // Returning login → validate
                             if (loginProvider.validateLogin(email, password)) {
-                            
                               FlutterToastr.show(
                                 "Login Successful",
                                 context,
@@ -389,17 +357,15 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
-    
-  }
-   @override
-  void dispose() {
-    
-    super.dispose();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }

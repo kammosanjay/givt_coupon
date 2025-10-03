@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:baanda_mobile_app/Views/splash/splash_provider.dart';
+import 'package:givt_mobile_app/Views/splash/splash_provider.dart';
 
 import 'package:provider/provider.dart';
 

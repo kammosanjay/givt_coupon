@@ -1,9 +1,9 @@
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/Views/loginpage/login_provider.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:baanda_mobile_app/Views/home/home.dart';
-import 'package:baanda_mobile_app/Views/loginpage/login_page.dart';
+import 'package:givt_mobile_app/Views/home/home.dart';
+import 'package:givt_mobile_app/Views/loginpage/login_page.dart';
 import 'package:provider/provider.dart';
 
 class SplashProvider with ChangeNotifier {

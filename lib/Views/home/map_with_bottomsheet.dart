@@ -7,15 +7,15 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart' as lotti;
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/Views/home/check_in_circle.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/home/check_in_circle.dart';
 
-import 'package:baanda_mobile_app/Views/home/login_circle.dart';
-import 'package:baanda_mobile_app/Views/home/task_page.dart';
-import 'package:baanda_mobile_app/constant/appColor.dart';
-import 'package:baanda_mobile_app/constant/constant_widget.dart';
-import 'package:baanda_mobile_app/l10n/app_localizations.dart';
-import 'package:baanda_mobile_app/utils/custom_widgets.dart';
+
+import 'package:givt_mobile_app/Views/home/task_page.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/constant/constant_widget.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
+import 'package:givt_mobile_app/utils/custom_widgets.dart';
 import 'package:provider/provider.dart';
 
 class MyMapLocation extends StatefulWidget {
@@ -337,28 +337,28 @@ class _MyMapLocationState extends State<MyMapLocation>
   }
 
   login() {
-    if (isLogin) {
-      return Positioned(
-        left: 0,
-        right: 0,
-        bottom: 70,
-        child: NeumorphicCircleButton(
-          isLogin: isLogin,
-          onTap: _determinePosition,
-          isTaskCreated: taskCreated,
-        ),
-      );
-    } else if (taskCreated) {
-      return Positioned(
-        left: 0,
-        right: 0,
-        bottom: 70,
-        child: NeumorphicCircleButtonCheckIn(
-          // isLogin: isLogin,
-          isTaskCreated: taskCreated,
-        ),
-      );
-    }
+    // if (isLogin) {
+    //   return Positioned(
+    //     left: 0,
+    //     right: 0,
+    //     bottom: 70,
+    //     child: NeumorphicCircleButton(
+    //       isLogin: isLogin,
+    //       onTap: _determinePosition,
+    //       isTaskCreated: taskCreated,
+    //     ),
+    //   );
+    // } else if (taskCreated) {
+    //   return Positioned(
+    //     left: 0,
+    //     right: 0,
+    //     bottom: 70,
+    //     child: NeumorphicCircleButtonCheckIn(
+    //       // isLogin: isLogin,
+    //       isTaskCreated: taskCreated,
+    //     ),
+    //   );
+    // }
 
     return Positioned(
       left: 0,

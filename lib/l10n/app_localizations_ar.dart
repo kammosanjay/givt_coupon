@@ -9,83 +9,83 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get hello => 'Hello there!';
+  String get hello => 'مرحباً!';
 
   @override
-  String get welcome => 'Banda University of Agriculture & Technology';
+  String get welcome => 'جامعة باندى للزراعة والتكنولوجيا';
 
   @override
-  String get logout => 'Logout';
+  String get logout => 'تسجيل الخروج';
 
   @override
-  String get login => 'Login';
+  String get login => 'تسجيل الدخول';
 
   @override
-  String get username => 'Username';
+  String get username => 'اسم المستخدم';
 
   @override
-  String get password => 'Password';
+  String get password => 'كلمة المرور';
 
   @override
-  String get submit => 'Submit';
+  String get submit => 'إرسال';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'إلغاء';
 
   @override
-  String get language => 'Language';
+  String get language => 'اللغة';
 
   @override
-  String get change_language => 'Change Language';
+  String get change_language => 'تغيير اللغة';
 
   @override
-  String get dark_mode => 'Dark Mode';
+  String get dark_mode => 'الوضع الداكن';
 
   @override
-  String get light_mode => 'Light Mode';
+  String get light_mode => 'الوضع الفاتح';
 
   @override
-  String get theme => 'Theme Settings';
+  String get theme => 'إعدادات المظهر';
 
   @override
-  String get profile => 'User Profile';
+  String get profile => 'الملف الشخصي';
 
   @override
-  String get settings => 'App Settings';
+  String get settings => 'إعدادات التطبيق';
 
   @override
-  String get notifications => 'Notifications';
+  String get notifications => 'الإشعارات';
 
   @override
-  String get search => 'Search something...';
+  String get search => 'ابحث هنا...';
 
   @override
-  String get home => 'Home';
+  String get home => 'الرئيسية';
 
   @override
-  String get description => 'This is a sample description text for testing.';
+  String get description => 'هذا نص وصفي تجريبي للاختبار.';
 
   @override
-  String get contact_us => 'Contact Us';
+  String get contact_us => 'اتصل بنا';
 
   @override
-  String get about_us => 'About Us';
+  String get about_us => 'معلومات عنا';
 
   @override
-  String get feedback => 'Send Feedback';
+  String get feedback => 'أرسل ملاحظاتك';
 
   @override
-  String get terms_and_conditions => 'Terms & Conditions';
+  String get terms_and_conditions => 'الشروط والأحكام';
 
   @override
-  String get privacy_policy => 'Privacy Policy';
+  String get privacy_policy => 'سياسة الخصوصية';
 
   @override
-  String get rate_us => 'Rate Us';
+  String get rate_us => 'قيّمنا';
 
   @override
-  String get support => 'Support';
+  String get support => 'الدعم';
 
   @override
-  String get help => 'Help';
+  String get help => 'مساعدة';
 }

@@ -1,13 +1,13 @@
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/Views/loginpage/login_provider.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
 
-import 'package:baanda_mobile_app/l10n/app_localizations.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:baanda_mobile_app/Views/loginpage/login_page.dart';
-import 'package:baanda_mobile_app/constant/appColor.dart';
-import 'package:baanda_mobile_app/constant/constant_widget.dart';
+import 'package:givt_mobile_app/Views/loginpage/login_page.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/constant/constant_widget.dart';
 import 'package:provider/provider.dart';
 
 class SignupPage extends StatefulWidget {
@@ -214,11 +214,11 @@ class _SignupPageState extends State<SignupPage> {
                           phoneEmaiController.text,
                           passController.text,
                         );
-                        // context.read<RouteProvider>().navigateTo(
-                        //   '/otpPage',
-                        //   context,
-                        //   arguments: 'signup',
-                        // );
+                        context.read<RouteProvider>().navigateTo(
+                          '/otpPage',
+                          context,
+                          arguments: 'signup',
+                        );
                       },
                       fontWeight: FontWeight.w600,
                       fontSize: 18,

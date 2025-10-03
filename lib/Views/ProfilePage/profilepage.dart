@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
-import 'package:baanda_mobile_app/Views/home/home_providers.dart';
-import 'package:baanda_mobile_app/Views/screenListView/update_email.dart';
-import 'package:baanda_mobile_app/Views/screenListView/updatephone.dart';
-import 'package:baanda_mobile_app/constant/constant_widget.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/home/home_providers.dart';
+import 'package:givt_mobile_app/Views/screenListView/update_email.dart';
+import 'package:givt_mobile_app/Views/screenListView/updatephone.dart';
+import 'package:givt_mobile_app/constant/constant_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';

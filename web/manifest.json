@@ -1,6 +1,6 @@
 {
-    "name": "baanda_mobile_app",
-    "short_name": "baanda_mobile_app",
+    "name": "givt_mobile_app",
+    "short_name": "givt_mobile_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

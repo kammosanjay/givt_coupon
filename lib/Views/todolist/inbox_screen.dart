@@ -1,4 +1,4 @@
-import 'package:baanda_mobile_app/Views/todolist/inbox_provider.dart';
+import 'package:givt_mobile_app/Views/todolist/inbox_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

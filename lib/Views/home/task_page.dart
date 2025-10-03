@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_toastr/flutter_toastr.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:baanda_mobile_app/constant/appColor.dart';
-import 'package:baanda_mobile_app/constant/constant_widget.dart';
-import 'package:baanda_mobile_app/utils/custom_widgets.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/constant/constant_widget.dart';
+import 'package:givt_mobile_app/utils/custom_widgets.dart';
 
 class TaskPage extends StatefulWidget {
   TaskPage({super.key});

@@ -1,6 +1,6 @@
-import 'package:baanda_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
 
-import 'package:baanda_mobile_app/l10n/app_localizations.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

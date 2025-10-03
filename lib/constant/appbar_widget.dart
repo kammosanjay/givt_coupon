@@ -1,7 +1,7 @@
-import 'package:baanda_mobile_app/Views/language/language.dart';
-import 'package:baanda_mobile_app/Views/theme/theme_provider.dart';
-import 'package:baanda_mobile_app/constant/appColor.dart';
-import 'package:baanda_mobile_app/l10n/app_localizations.dart';
+import 'package:givt_mobile_app/Views/language/language.dart';
+import 'package:givt_mobile_app/Views/theme/theme_provider.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:baanda_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
 
 class CustomWidgets {
   ///TextFeild Widget

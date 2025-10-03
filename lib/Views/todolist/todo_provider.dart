@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get_storage/get_storage.dart';
-import 'package:baanda_mobile_app/Views/Modals/task_modal.dart';
+import 'package:givt_mobile_app/Views/Modals/task_modal.dart';
 
 import 'package:flutter/foundation.dart';
 

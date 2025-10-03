@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:303180080421:android:9acf7a03beae2d0752a6cc",
         "android_client_info": {
-          "package_name": "com.baanda.mobapp"
+          "package_name": "com.saudi_mobile_app"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "303180080421-g8b5sgm7qv5atpmq817aun64ulpul6if.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.baanda.mobapp",
+            "package_name": "com.saudi_mobile_app",
             "certificate_hash": "e0c2b81401de7ba0186644310f278e2a19e4eabb"
           }
         },
