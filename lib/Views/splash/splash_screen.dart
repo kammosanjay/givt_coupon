@@ -25,18 +25,34 @@ class _SplashScreenState extends State<SplashScreen> {
     context.read<SplashProvider>().initializeApp(context);
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      // backgroundColor: Colors.transparent,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
+          alignment: Alignment.center,
           children: [
-            Image.asset('assets/images/couponSplash.png', fit: BoxFit.contain),
-           
+            Column(
+              mainAxisSize: MainAxisSize.min, // keeps items centered vertically
+              children: [
+                Image.asset(
+                  'assets/images/couponlogo.png',
+                  fit: BoxFit.fitHeight,
+                ),
+                // const SizedBox(height: 20), // ⬇️ 20px space below image
+                Text(
+                  "Givt, More Than Just A Gift",
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    color: Color(0xFF810100),
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

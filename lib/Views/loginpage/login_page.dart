@@ -46,40 +46,78 @@ class _LoginPageState extends State<LoginPage> {
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 100),
+            SizedBox(height: 150),
             Center(
               child: Image.asset(
-                'assets/images/Group 12.png',
-                height: 70,
-                width: 154,
+                'assets/images/newicon.png',
+                height: 200,
+                width: 200,
                 fit: BoxFit.contain,
+                // color: Colors.blue.shade300,
               ),
             ),
-            SizedBox(height: 34),
-            Container(padding: EdgeInsets.symmetric(horizontal: 12),
+            // SizedBox(height: 34),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               height: MediaQuery.of(context).size.height * 0.76,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
               ),
-
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'Welcome Back',
-                    style: GoogleFonts.poppins(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w600,
-                      color: AppColor.textColor(context),
+                  // SizedBox(height: 40),
+                  // Text(
+                  //   'Welcome Back',
+                  //   style: GoogleFonts.aBeeZee(
+                  //     fontSize: 32,
+                  //     fontWeight: FontWeight.w600,
+                  //     color: AppColor.textColor(context),
+                  //   ),
+                  // ),
+
+                  // // SizedBox(height: 5),
+                  SizedBox(height: 50),
+                  Align(alignment: Alignment.centerLeft,
+                    child: InkWell(
+                      onTap: () {
+                        // context.read<RouteProvider>().navigateTo(
+                        //   '/signup',
+                        //   context,
+                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignupPage()),
+                        );
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Don't have an Account? ",
+                          style: GoogleFonts.poppins(
+                            color: AppColor.textColor(context),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Register',
+                              style: GoogleFonts.poppins(
+                                color: Colors.blue.shade300,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                              ),
+                            ),
+                            TextSpan(text: ' 👋', style: TextStyle(fontSize: 18)),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-
-                  // SizedBox(height: 5),
-                  SizedBox(height: 50),
+                  SizedBox(height: 30),
                   Column(
                     children: [
                       CustomWidgets.customTextFeild(
@@ -142,96 +180,98 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: TextButton(
-                              onPressed: () {},
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.zero, // Removes all padding
-                                minimumSize: Size(
-                                  10,
-                                  10,
-                                ), // Optional: removes minimum tap area
-                                tapTargetSize: MaterialTapTargetSize
-                                    .shrinkWrap, // Optional: tight layout
-                              ),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 25,
-                                    height: 25,
-                                    child: Selector<LoginProvider, bool>(
-                                      selector: (ctxe, provider) =>
-                                          provider.isRememberMeChecked,
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     Align(
+                      //       alignment: Alignment.centerLeft,
+                      //       child: TextButton(
+                      //         onPressed: () {},
+                      //         style: TextButton.styleFrom(
+                      //           padding: EdgeInsets.zero, // Removes all padding
+                      //           minimumSize: Size(
+                      //             10,
+                      //             10,
+                      //           ), // Optional: removes minimum tap area
+                      //           tapTargetSize: MaterialTapTargetSize
+                      //               .shrinkWrap, // Optional: tight layout
+                      //         ),
+                      //         child: Row(
+                      //           children: [
+                      //             SizedBox(
+                      //               width: 25,
+                      //               height: 25,
+                      //               child: Selector<LoginProvider, bool>(
+                      //                 selector: (ctxe, provider) =>
+                      //                     provider.isRememberMeChecked,
 
-                                      builder: (ctx, isChecked, _) {
-                                        return Checkbox(
-                                          value: isChecked,
-                                          side: BorderSide(
-                                            color: AppColor.textColor(context),
-                                          ),
-                                          activeColor: Colors.amber,
-                                          checkColor: Colors.white,
-                                          materialTapTargetSize:
-                                              MaterialTapTargetSize.shrinkWrap,
-                                          onChanged: (value) {
-                                            ctx
-                                                .read<LoginProvider>()
-                                                .setRememberMe(value);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Text(
-                                    "Remember Me",
-                                    style: GoogleFonts.poppins(
-                                      color: AppColor.textColor(context),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ForgotPage(),
-                                  ),
-                                );
-                              },
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.zero, // Removes all padding
-                                minimumSize: Size(
-                                  10,
-                                  10,
-                                ), // Optional: removes minimum tap area
-                                tapTargetSize: MaterialTapTargetSize
-                                    .shrinkWrap, // Optional: tight layout
-                              ),
-                              child: Text(
-                                "Forgot Password ?",
-                                style: GoogleFonts.poppins(
-                                  color: AppColor.textColor(context),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      //                 builder: (ctx, isChecked, _) {
+                      //                   return Checkbox(
+                      //                     value: isChecked,
+                      //                     side: BorderSide(
+                      //                       color: AppColor.textColor(context),
+                      //                     ),
+                      //                     activeColor: Colors.amber,
+                      //                     checkColor: Colors.white,
+                      //                     materialTapTargetSize:
+                      //                         MaterialTapTargetSize.shrinkWrap,
+                      //                     onChanged: (value) {
+                      //                       ctx
+                      //                           .read<LoginProvider>()
+                      //                           .setRememberMe(value);
+                      //                     },
+                      //                   );
+                      //                 },
+                      //               ),
+                      //             ),
+                      //             const SizedBox(width: 12),
+                      //             Text(
+                      //               "Remember Me",
+                      //               style: GoogleFonts.poppins(
+                      //                 color: AppColor.textColor(context),
+                      //                 fontSize: 14,
+                      //                 fontWeight: FontWeight.w500,
+                      //               ),
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     Align(
+                      //       alignment: Alignment.centerRight,
+                      //       child: TextButton(
+                      //         onPressed: () {
+                      //           Navigator.push(
+                      //             context,
+                      //             MaterialPageRoute(
+                      //               builder: (context) => ForgotPage(),
+                      //             ),
+                      //           );
+                      //         },
+                      //         style: TextButton.styleFrom(
+                      //           padding: EdgeInsets.zero, // Removes all padding
+                      //           minimumSize: Size(
+                      //             10,
+                      //             10,
+                      //           ), // Optional: removes minimum tap area
+                      //           tapTargetSize: MaterialTapTargetSize
+                      //               .shrinkWrap, // Optional: tight layout
+                      //         ),
+                      //         child: Text(
+                      //           "Forgot Password ?",
+                      //           style: GoogleFonts.poppins(
+                      //             color: AppColor.textColor(context),
+                      //             fontSize: 14,
+                      //             fontWeight: FontWeight.w500,
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
 
+                      
+                      
                       SizedBox(height: 30),
                       CustomWidgets.customButton(
                         context: context,
@@ -295,7 +335,7 @@ class _LoginPageState extends State<LoginPage> {
                               FlutterToastr.show(
                                 "Invalid email or password",
                                 context,
-                                duration: FlutterToastr.lengthShort,
+                                duration: FlutterToastr.lengthLong,
                                 position: FlutterToastr.bottom,
                                 backgroundColor: Colors.red,
                                 textStyle: const TextStyle(color: Colors.white),
@@ -312,44 +352,37 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
-                        btnColor: Colors.amber,
+                        fontColor: Colors.white,
+                        btnColor: Color(0xFF810100)
                       ),
                       SizedBox(height: 30),
-                      InkWell(
-                        onTap: () {
-                          // context.read<RouteProvider>().navigateTo(
-                          //   '/signup',
-                          //   context,
-                          // );
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignupPage(),
-                            ),
-                          );
-                        },
-                        child: RichText(
-                          text: TextSpan(
-                            text: "Don't have an Account? ",
+                      Align(
+                        alignment: Alignment.center,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ForgotPage(),
+                              ),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero, // Removes all padding
+                            minimumSize: Size(
+                              10,
+                              10,
+                            ), // Optional: removes minimum tap area
+                            tapTargetSize: MaterialTapTargetSize
+                                .shrinkWrap, // Optional: tight layout
+                          ),
+                          child: Text(
+                            "Forgot Password ?",
                             style: GoogleFonts.poppins(
                               color: AppColor.textColor(context),
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                             ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Register',
-                                style: GoogleFonts.poppins(
-                                  color: AppColor.errorColor(context),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              TextSpan(
-                                text: ' 👋',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ],
                           ),
                         ),
                       ),

@@ -38,6 +38,8 @@ class CustomWidgets {
     var fontSize,
     FontWeight? fontwgt,
     double? hintfontSize,
+    String? fontfamily,
+
     FontWeight? hintfontWeight,
   }) {
     return Column(
@@ -110,11 +112,11 @@ class CustomWidgets {
               fontWeight: hintfontWeight ?? FontWeight.w600,
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
+              borderSide: BorderSide(color:Colors.blue.shade100, width: 0.5),
               borderRadius: BorderRadius.all(Radius.circular(borderRad ?? 10)),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 2),
+              borderSide: BorderSide(color:Colors.blue.shade300, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(borderRad ?? 10)),
             ),
             // errorBorder: OutlineInputBorder(
@@ -225,6 +227,7 @@ class CustomWidgets {
     double? width,
     double? height,
     Color? btnColor,
+    Color? fontColor,
     double? radius,
     double? fontSize,
     FontWeight? fontWeight,
@@ -252,7 +255,7 @@ class CustomWidgets {
           style: GoogleFonts.poppins(
             fontSize: fontSize ?? 12,
             fontWeight: fontWeight ?? FontWeight.w600,
-            color: Color(0xFFF333333), // Text color
+            color: fontColor, // Text color
           ),
         ),
       ),

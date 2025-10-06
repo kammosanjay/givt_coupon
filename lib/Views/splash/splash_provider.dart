@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 class SplashProvider with ChangeNotifier {
   Future<void> initializeApp(BuildContext context) async {
-    await Future.delayed(const Duration(milliseconds: 1600));
+    await Future.delayed(const Duration(seconds: 3));
     // if (context.read<LoginProvider>().isLoggedIn()) {
     //   context.read<RouteProvider>().navigateTo('/home', context);
     // } else {

@@ -112,7 +112,7 @@ class MyApp extends StatelessWidget {
       darkTheme: themeProvider.darkTheme,
       themeMode: themeProvider.themeMode,
       locale: langProvider.selectectLocale,
-      // home:ChangePassscreen() ,
+      // home:SplashScreen() ,
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const MyHome(),

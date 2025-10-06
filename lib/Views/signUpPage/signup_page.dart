@@ -45,22 +45,22 @@ class _SignupPageState extends State<SignupPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.asset(
-                    'assets/images/bandabg.png',
+                    'assets/images/couponlogo.png',
                     height: 150,
                     fit: BoxFit.contain,
                   ),
                 ),
               ),
-              Center(
-                child: Text(
-                  'Welcome To',
-                  style: GoogleFonts.poppins(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w600,
-                    color: AppColor.textColor(context),
-                  ),
-                ),
-              ),
+              // Center(
+              //   child: Text(
+              //     'Welcome To',
+              //     style: GoogleFonts.poppins(
+              //       fontSize: 32,
+              //       fontWeight: FontWeight.w600,
+              //       color: AppColor.textColor(context),
+              //     ),
+              //   ),
+              // ),
 
               Form(
                 key: _formKey,
@@ -80,17 +80,17 @@ class _SignupPageState extends State<SignupPage> {
                     //     ),
                     //   ],
                     // ),
-                    SizedBox(height: 10),
-                    FittedBox(
-                      child: Text(
-                        appLoc.welcome,
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: AppColor.headingColor(context),
-                        ),
-                      ),
-                    ),
+                    // SizedBox(height: 10),
+                    // FittedBox(
+                    //   child: Text(
+                    //     appLoc.welcome,
+                    //     style: GoogleFonts.poppins(
+                    //       fontSize: 14,
+                    //       fontWeight: FontWeight.w600,
+                    //       color: AppColor.headingColor(context),
+                    //     ),
+                    //   ),
+                    // ),
                     SizedBox(height: 40),
 
                     // Text(
