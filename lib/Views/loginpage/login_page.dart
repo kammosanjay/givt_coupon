@@ -21,10 +21,41 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Alignment> _animation;
   bool isShown = true;
+
   TextEditingController passController = TextEditingController();
   TextEditingController phoneEmaiController = TextEditingController();
+  bool moveLeft = false;
+  bool showText = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Step 1: Move logo from center → left
+    Future.delayed(const Duration(milliseconds: 300), () {
+      setState(() {
+        moveLeft = true;
+      });
+    });
+
+    // Step 2: Show text after logo finishes moving
+    Future.delayed(const Duration(milliseconds: 1600), () {
+      setState(() {
+        showText = true;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,26 +77,60 @@ class _LoginPageState extends State<LoginPage> {
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 150),
-            Center(
-              child: Image.asset(
-                'assets/images/newicon.png',
-                height: 200,
-                width: 200,
-                fit: BoxFit.contain,
-                // color: Colors.blue.shade300,
-              ),
+            SizedBox(height: 80),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                // Text (hidden initially, fades in later)
+                AnimatedOpacity(
+                  opacity: showText ? 1 : 0,
+                  duration: const Duration(seconds: 1),
+                  child: Text(
+                    "Givt, more than just a gift",
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: MyColors.primaryColor,
+                    ),
+                  ),
+                ),
+
+                // Moving logo
+                AnimatedAlign(
+                  alignment: moveLeft ? Alignment.centerLeft : Alignment.center,
+                  duration: const Duration(milliseconds: 1600),
+                  curve: Curves.easeInOut,
+                  child: Image.asset(
+                    'assets/images/couponlogo.png',
+                    height: 120,
+                    width: 120,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ],
             ),
-            // SizedBox(height: 34),
+            SizedBox(height: 30),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              height: MediaQuery.of(context).size.height * 0.76,
+              margin: EdgeInsets.symmetric(horizontal: 15),
+              height: MediaQuery.of(context).size.height * 0.6,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.red.shade50,
+                    // spreadRadius: 10,
+                    blurRadius: 5,
+                    offset: Offset(1, 1), // changes position of shadow
+                  ),
+                  BoxShadow(
+                    color: Colors.red.shade50,
+                    // spreadRadius: 10,
+                    blurRadius: 5,
+                    offset: Offset(-1, -1), // changes position of shadow
+                  ),
+                ],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -82,53 +147,41 @@ class _LoginPageState extends State<LoginPage> {
 
                   // // SizedBox(height: 5),
                   SizedBox(height: 50),
-                  Align(alignment: Alignment.centerLeft,
-                    child: InkWell(
-                      onTap: () {
-                        // context.read<RouteProvider>().navigateTo(
-                        //   '/signup',
-                        //   context,
-                        // );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignupPage()),
-                        );
-                      },
-                      child: RichText(
-                        text: TextSpan(
-                          text: "Don't have an Account? ",
-                          style: GoogleFonts.poppins(
-                            color: AppColor.textColor(context),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Register',
-                              style: GoogleFonts.poppins(
-                                color: Colors.blue.shade300,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                              ),
-                            ),
-                            TextSpan(text: ' 👋', style: TextStyle(fontSize: 18)),
-                          ],
-                        ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Login/SignUp',
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: AppColor.textColor(context),
                       ),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Login to continue your journey with Givt',
+                      style: GoogleFonts.poppins(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                        color: AppColor.textColor(context),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 50),
                   Column(
                     children: [
                       CustomWidgets.customTextFeild(
                         context: context,
-                        label: 'Email',
+                        label: 'Enter your mobile number',
                         hintfontSize: 14,
 
                         hintfontWeight: FontWeight.normal,
                         fontwgt: FontWeight.w600,
                         headingcolor: AppColor.textColor(context),
-                        hint: 'Email',
+                        hint: 'Enter your mobile number',
 
                         hintColor: Theme.of(context).colorScheme.secondary,
                         controller: phoneEmaiController,
@@ -141,45 +194,47 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      CustomWidgets.customTextFeild(
-                        context: context,
+                      // CustomWidgets.customTextFeild(
+                      //   context: context,
 
-                        label: 'Password',
-                        suffIcons: InkWell(
-                          onTap: () {
-                            setState(() {
-                              isShown = !isShown;
-                            });
-                          },
-                          child: isShown
-                              ? Icon(
-                                  Icons.remove_red_eye,
-                                  color: AppColor.textColor(context),
-                                )
-                              : Icon(
-                                  Icons.remove_red_eye_outlined,
-                                  color: AppColor.textColor(context),
-                                ),
-                        ),
+                      //   label: 'Password',
+                      //   suffIcons: InkWell(
+                      //     onTap: () {
+                      //       setState(() {
+                      //         isShown = !isShown;
+                      //       });
+                      //     },
+                      //     child: isShown
+                      //         ? Icon(
+                      //             Icons.remove_red_eye,
+                      //             color: AppColor.textColor(context),
+                      //           )
+                      //         : Icon(
+                      //             Icons.remove_red_eye_outlined,
+                      //             color: AppColor.textColor(context),
+                      //           ),
+                      //   ),
 
-                        fontwgt: FontWeight.w600,
+                      //   fontwgt: FontWeight.w600,
 
-                        headingcolor: AppColor.textColor(context),
-                        hint: 'Password',
-                        hintfontSize: 14,
-                        hintfontWeight: FontWeight.normal,
-                        hintColor: Theme.of(context).colorScheme.secondary,
-                        controller: passController,
-                        isObstructed: isShown,
+                      //   headingcolor: AppColor.textColor(context),
+                      //   hint: 'Password',
+                      //   hintfontSize: 14,
+                      //   hintfontWeight: FontWeight.normal,
+                      //   hintColor: Theme.of(context).colorScheme.secondary,
+                      //   controller: passController,
+                      //   isObstructed: isShown,
 
-                        icon: Image(
-                          image: AssetImage('assets/images/pass.png'),
-                          height: 14,
-                          width: 18,
-                          color: AppColor.textColor(context),
-                        ),
-                      ),
-                      SizedBox(height: 8),
+                      //   icon: Image(
+                      //     image: AssetImage('assets/images/pass.png'),
+                      //     height: 14,
+                      //     width: 18,
+                      //     color: AppColor.textColor(context),
+                      //   ),
+                      // ),
+
+                      // SizedBox(height: 8),
+
                       // Row(
                       //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       //   children: [
@@ -269,10 +324,8 @@ class _LoginPageState extends State<LoginPage> {
                       //     ),
                       //   ],
                       // ),
+                      SizedBox(height: 50),
 
-                      
-                      
-                      SizedBox(height: 30),
                       CustomWidgets.customButton(
                         context: context,
                         height: 60,
@@ -281,12 +334,12 @@ class _LoginPageState extends State<LoginPage> {
                           final loginProvider = context.read<LoginProvider>();
 
                           final email = phoneEmaiController.text.trim();
-                          final password = passController.text.trim();
+                          // final password = passController.text.trim();
 
                           // Check empty fields
-                          if (email.isEmpty || password.isEmpty) {
+                          if (email.isEmpty) {
                             FlutterToastr.show(
-                              "Please enter both email and password",
+                              "Please your mobile number",
                               context,
                               duration: FlutterToastr.lengthShort,
                               position: FlutterToastr.bottom,
@@ -298,9 +351,7 @@ class _LoginPageState extends State<LoginPage> {
 
                           // First-time login (no saved credentials)
                           if (!loginProvider.isLoggedIn()) {
-                            loginProvider.login(
-                              Loginmodal(email: email, password: password),
-                            );
+                            loginProvider.login(Loginmodal(email: email));
 
                             FlutterToastr.show(
                               "Login Successful (First time)",
@@ -317,7 +368,7 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           } else {
                             // Returning login → validate
-                            if (loginProvider.validateLogin(email, password)) {
+                            if (loginProvider.validateLogin(email)) {
                               FlutterToastr.show(
                                 "Login Successful",
                                 context,
@@ -333,7 +384,7 @@ class _LoginPageState extends State<LoginPage> {
                               );
                             } else {
                               FlutterToastr.show(
-                                "Invalid email or password",
+                                "Invalid mobile number",
                                 context,
                                 duration: FlutterToastr.lengthLong,
                                 position: FlutterToastr.bottom,
@@ -346,46 +397,89 @@ class _LoginPageState extends State<LoginPage> {
                                   .read<LoginProvider>()
                                   .isRememberMeChecked ==
                               true) {
-                            passController.clear();
                             phoneEmaiController.clear();
                           }
                         },
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
                         fontColor: Colors.white,
-                        btnColor: Color(0xFF810100)
+                        btnColor: MyColors.primaryColor,
                       ),
+
                       SizedBox(height: 30),
                       Align(
                         alignment: Alignment.center,
-                        child: TextButton(
-                          onPressed: () {
+                        child: InkWell(
+                          onTap: () {
+                            // context.read<RouteProvider>().navigateTo(
+                            //   '/signup',
+                            //   context,
+                            // );
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ForgotPage(),
+                                builder: (context) => SignupPage(),
                               ),
                             );
                           },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero, // Removes all padding
-                            minimumSize: Size(
-                              10,
-                              10,
-                            ), // Optional: removes minimum tap area
-                            tapTargetSize: MaterialTapTargetSize
-                                .shrinkWrap, // Optional: tight layout
-                          ),
-                          child: Text(
-                            "Forgot Password ?",
-                            style: GoogleFonts.poppins(
-                              color: AppColor.textColor(context),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Don't have an Account? ",
+                              style: GoogleFonts.poppins(
+                                // color: AppColor.textColor(context),
+                                color: MyColors.textColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Register',
+                                  style: GoogleFonts.poppins(
+                                    color: MyColors.primaryColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: ' 👋',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
+
+                      // Align(
+                      //   alignment: Alignment.center,
+                      //   child: TextButton(
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //         context,
+                      //         MaterialPageRoute(
+                      //           builder: (context) => ForgotPage(),
+                      //         ),
+                      //       );
+                      //     },
+                      //     style: TextButton.styleFrom(
+                      //       padding: EdgeInsets.zero, // Removes all padding
+                      //       minimumSize: Size(
+                      //         10,
+                      //         10,
+                      //       ), // Optional: removes minimum tap area
+                      //       tapTargetSize: MaterialTapTargetSize
+                      //           .shrinkWrap, // Optional: tight layout
+                      //     ),
+                      //     child: Text(
+                      //       "Forgot Password ?",
+                      //       style: GoogleFonts.poppins(
+                      //         color: MyColors.primaryColor,
+                      //         fontSize: 14,
+                      //         fontWeight: FontWeight.w500,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],
@@ -395,10 +489,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

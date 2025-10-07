@@ -27,7 +27,7 @@ class LoginProvider extends ChangeNotifier {
     if (isRememberMeChecked) {
       // Save permanently if Remember Me is checked
       box.write("email", loginmodal.email);
-      box.write("password", loginmodal.password);
+      // box.write("password", loginmodal.password);
       box.write("isRememberMe", true);
     } else {
       // Only keep in memory for this session
@@ -37,7 +37,7 @@ class LoginProvider extends ChangeNotifier {
     }
 
     storedEmail = loginmodal.email;
-    storedPassword = loginmodal.password;
+    // storedPassword = loginmodal.password;
 
     debugPrint("Saved Email: $storedEmail, Password: $storedPassword");
 
@@ -45,11 +45,11 @@ class LoginProvider extends ChangeNotifier {
   }
 
   /// Validate login against stored credentials
-  bool validateLogin(String email, String password) {
+  bool validateLogin(String email) {
     final savedEmail = box.read("email");
-    final savedPassword = box.read("password");
+   
 
-    return (savedEmail == email && savedPassword == password);
+    return (savedEmail == email);
   }
 
   /// Check if user is logged in

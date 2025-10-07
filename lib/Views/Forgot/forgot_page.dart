@@ -145,6 +145,7 @@ class _ForgotPageState extends State<ForgotPage> {
                   context: context,
                   height: 60,
                   buttonName: 'Submit',
+                  fontColor: Colors.white,
                   onPressed: () {
                     context.read<LoginProvider>().sendOtp(
                       "+91${oldPassController.text}",
@@ -158,7 +159,7 @@ class _ForgotPageState extends State<ForgotPage> {
                   },
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
-                  btnColor: Colors.amber,
+                  btnColor: Color(0xFF810100),
                 ),
                 SizedBox(height: 30),
                 // InkWell(

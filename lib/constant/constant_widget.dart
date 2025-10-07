@@ -112,11 +112,11 @@ class CustomWidgets {
               fontWeight: hintfontWeight ?? FontWeight.w600,
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color:Colors.blue.shade100, width: 0.5),
+              borderSide: BorderSide(color:Colors.red.shade100, width: 0.5),
               borderRadius: BorderRadius.all(Radius.circular(borderRad ?? 10)),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color:Colors.blue.shade300, width: 1),
+              borderSide: BorderSide(color:Colors.red.shade300, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(borderRad ?? 10)),
             ),
             // errorBorder: OutlineInputBorder(
