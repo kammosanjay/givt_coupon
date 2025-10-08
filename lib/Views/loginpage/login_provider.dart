@@ -136,13 +136,13 @@ class LoginProvider extends ChangeNotifier {
     }
   }
 
-  void saveSignupData(String fullname, String email, String pass) {
+  void saveSignupData(String fullname, String email) {
     box.write("email", email);
-    box.write("password", pass);
+    // box.write("password", pass);
     box.write("name", fullname);
 
     storedEmail = email;
-    storedPassword = pass;
+    // storedPassword = pass;
     storedName = fullname;
 
     debugPrint(

@@ -70,8 +70,7 @@ dependencies:
   cached_network_image: 
   syncfusion_flutter_pdfviewer:
   firebase_auth: 
-  chewie: ^1.13.0
-  video_player: ^2.6.1
+  
   
   
   

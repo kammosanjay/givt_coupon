@@ -16,6 +16,7 @@ import 'package:givt_mobile_app/Views/ProfilePage/profile_provider.dart';
 import 'package:givt_mobile_app/Views/ProfilePage/profilepage.dart';
 import 'package:givt_mobile_app/Views/ReportsPage/report_page.dart';
 import 'package:givt_mobile_app/Views/home/banda_home_page.dart';
+import 'package:givt_mobile_app/Views/home/coupon_homepage.dart';
 import 'package:givt_mobile_app/Views/home/firebase_messaging.dart';
 import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
 import 'package:givt_mobile_app/Views/newsRoom/allnews.dart';
@@ -150,6 +151,7 @@ class MyApp extends StatelessWidget {
         'profile': (context) => Profilepage(),
         'Library': (context) => Library(),
         '/bandaHomePage': (context) => BandaHomePage(),
+        'couponhomepage': (context) => CouponHomepage(),
         '/instituteListDetailScreen': (context) => InstDetailScreen(),
         '/departmentListDetailScreen': (context) =>
             Departmentlistdetailscreen(),

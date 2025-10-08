@@ -133,10 +133,10 @@ class ThemeProvider extends ChangeNotifier {
       backgroundColor: _primaryColor,
       centerTitle: true,
       iconTheme: const IconThemeData(color: Colors.black), // For back icon
-      titleTextStyle: GoogleFonts.openSans(
+      titleTextStyle: GoogleFonts.lora(
         color: Colors.grey.shade900,
         fontSize: 16,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w900,
       ),
     ),
     scaffoldBackgroundColor: Colors.white,

@@ -49,7 +49,7 @@ class CustomWidgets {
             ? const SizedBox.shrink() // returns nothing
             : Text(
                 label,
-                style: TextStyle(
+                style: GoogleFonts.lora(
                   color: headingcolor ?? Colors.white,
                   fontSize: fontSize ?? 16,
                   fontWeight: fontwgt ?? FontWeight.w600,
@@ -72,7 +72,7 @@ class CustomWidgets {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: keyboardtype,
           validator: validate,
-         
+
           maxLength: maxLength,
           maxLines: maxLines ?? 1,
           controller: controller ?? TextEditingController(),
@@ -106,17 +106,18 @@ class CustomWidgets {
             prefixIconColor: iconColor,
 
             hintText: hint,
-            hintStyle: TextStyle(
+            hintStyle: GoogleFonts.lora(
               color: hintColor ?? Colors.white,
               fontSize: hintfontSize ?? 16,
               fontWeight: hintfontWeight ?? FontWeight.w600,
             ),
+
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color:Colors.red.shade100, width: 0.5),
+              borderSide: BorderSide(color: Colors.grey.shade300, width: 0.5),
               borderRadius: BorderRadius.all(Radius.circular(borderRad ?? 10)),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color:Colors.red.shade300, width: 1),
+              borderSide: BorderSide(color: Colors.grey.shade500, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(borderRad ?? 10)),
             ),
             // errorBorder: OutlineInputBorder(
@@ -153,7 +154,9 @@ class CustomWidgets {
     String label = "",
     double fontSize = 14,
     var fontwgt,
+    double? height
   }) {
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -191,17 +194,17 @@ class CustomWidgets {
               prefixIconColor: iconColor,
               isDense: true,
               constraints: BoxConstraints(
-                maxHeight: 50,
+                maxHeight: height ?? 50,
 
                 maxWidth: width ?? MediaQuery.of(context).size.width,
               ),
 
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: BorderSide(color: Colors.grey.shade300, width: 0.5),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
+                borderSide: BorderSide(color: Colors.grey.shade500, width: 1),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
             ),
@@ -252,7 +255,7 @@ class CustomWidgets {
       child: FittedBox(
         child: Text(
           buttonName ?? 'Button',
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.lora(
             fontSize: fontSize ?? 12,
             fontWeight: fontWeight ?? FontWeight.w600,
             color: fontColor, // Text color

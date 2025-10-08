@@ -87,10 +87,10 @@ class _LoginPageState extends State<LoginPage>
                   duration: const Duration(seconds: 1),
                   child: Text(
                     "Givt, more than just a gift",
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primaryColor,
+                    style: GoogleFonts.lora(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color:MyColors.primaryColor,
                     ),
                   ),
                 ),
@@ -151,10 +151,10 @@ class _LoginPageState extends State<LoginPage>
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Login/SignUp',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.lora(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-                        color: AppColor.textColor(context),
+                        color: MyColors.textColor,
                       ),
                     ),
                   ),
@@ -163,10 +163,10 @@ class _LoginPageState extends State<LoginPage>
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Login to continue your journey with Givt',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.lora(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
-                        color: AppColor.textColor(context),
+                        color: MyColors.textColor,
                       ),
                     ),
                   ),
@@ -187,10 +187,10 @@ class _LoginPageState extends State<LoginPage>
                         controller: phoneEmaiController,
                         keyboardtype: TextInputType.emailAddress,
                         icon: Image(
-                          image: AssetImage('assets/images/email.png'),
+                          image: AssetImage('assets/images/mobile.png'),
                           height: 14,
                           width: 18,
-                          color: AppColor.textColor(context),
+                          color: MyColors.primaryColor,
                         ),
                       ),
                       SizedBox(height: 20),
@@ -400,7 +400,7 @@ class _LoginPageState extends State<LoginPage>
                             phoneEmaiController.clear();
                           }
                         },
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w900,
                         fontSize: 18,
                         fontColor: Colors.white,
                         btnColor: MyColors.primaryColor,
@@ -425,7 +425,7 @@ class _LoginPageState extends State<LoginPage>
                           child: RichText(
                             text: TextSpan(
                               text: "Don't have an Account? ",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.lora(
                                 // color: AppColor.textColor(context),
                                 color: MyColors.textColor,
                                 fontSize: 14,
@@ -434,9 +434,9 @@ class _LoginPageState extends State<LoginPage>
                               children: <TextSpan>[
                                 TextSpan(
                                   text: 'Register',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.lora(
                                     color: MyColors.primaryColor,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w900,
                                     fontSize: 16,
                                   ),
                                 ),

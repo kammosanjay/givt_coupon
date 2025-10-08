@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:getwidget/components/carousel/gf_carousel.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Library extends StatefulWidget {
@@ -32,69 +33,75 @@ class _LibraryState extends State<Library> {
 
   @override
   Widget build(BuildContext context) {
+    final appLoc = AppLocalizations.of(context)!;
     return Scaffold(
       // backgroundColor: Color(0xFFe7f3ff),
-      body: ListView(
-        children: [
-          GFCarousel(
-            items: imageList
-                .map(
-                  (e) => CachedNetworkImage(
-                    imageUrl: e,
-                    width: double.infinity,
+      body: Center(child: Text(appLoc.wallet_page))
+      
+      // ListView(
+      //   children: [
+      //     GFCarousel(
+      //       items: imageList
+      //           .map(
+      //             (e) => CachedNetworkImage(
+      //               imageUrl: e,
+      //               width: double.infinity,
 
-                    imageBuilder: (context, imageProvider) => ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image(
-                          image: imageProvider, // ✅ use network imageProvider
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    placeholder: (context, url) => const Center(
-                      child:
-                          CircularProgressIndicator(), // ✅ loader while fetching
-                    ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error), // ✅ error fallback
-                  ),
-                )
-                .toList(),
-            // autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 3),
-            autoPlayAnimationDuration: const Duration(microseconds: 800),
-            autoPlayCurve: Curves.fastOutSlowIn,
-            viewportFraction: 1.0,
-            aspectRatio: 16 / 7,
-            hasPagination: false,
-            enlargeMainPage: false,
-          ),
-          Center(
-            child: Text(
-              "Central Library",
-              style: GoogleFonts.openSans(
-                color: AppColor.textColor(context),
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          Container(color: Colors.white,
-          padding: EdgeInsets.all(10),
-            margin: EdgeInsets.all(12),
-            child: Text(
-              dummyText,
-              style: GoogleFonts.openSans(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: AppColor.textColor(context),
-              ),
-            ),
-          ),
-        ],
-      ),
+      //               imageBuilder: (context, imageProvider) => ClipRRect(
+      //                 borderRadius: BorderRadius.circular(6),
+      //                 child: Padding(
+      //                   padding: const EdgeInsets.all(8.0),
+      //                   child: Image(
+      //                     image: imageProvider, // ✅ use network imageProvider
+      //                     fit: BoxFit.cover,
+      //                   ),
+      //                 ),
+      //               ),
+      //               placeholder: (context, url) => const Center(
+      //                 child:
+      //                     CircularProgressIndicator(), // ✅ loader while fetching
+      //               ),
+      //               errorWidget: (context, url, error) =>
+      //                   const Icon(Icons.error), // ✅ error fallback
+      //             ),
+      //           )
+      //           .toList(),
+      //       // autoPlay: true,
+      //       autoPlayInterval: const Duration(seconds: 3),
+      //       autoPlayAnimationDuration: const Duration(microseconds: 800),
+      //       autoPlayCurve: Curves.fastOutSlowIn,
+      //       viewportFraction: 1.0,
+      //       aspectRatio: 16 / 7,
+      //       hasPagination: false,
+      //       enlargeMainPage: false,
+      //     ),
+      //     Center(
+      //       child: Text(
+      //         "Central Library",
+      //         style: GoogleFonts.openSans(
+      //           color: AppColor.textColor(context),
+      //           fontSize: 22,
+      //           fontWeight: FontWeight.w600,
+      //         ),
+      //       ),
+      //     ),
+      //     Container(color: Colors.white,
+      //     padding: EdgeInsets.all(10),
+      //       margin: EdgeInsets.all(12),
+      //       child: Text(
+      //         dummyText,
+      //         style: GoogleFonts.openSans(
+      //           fontSize: 16,
+      //           fontWeight: FontWeight.w400,
+      //           color: AppColor.textColor(context),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
+   
+   
+   
     );
   }
 

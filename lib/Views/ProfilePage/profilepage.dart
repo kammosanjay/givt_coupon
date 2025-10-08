@@ -10,6 +10,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class Profilepage extends StatefulWidget {
@@ -93,275 +94,278 @@ class _ProfilepageState extends State<Profilepage> {
   String? imagePath;
   @override
   Widget build(BuildContext context) {
+    final appLoc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
 
-      body: Center(
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          // padding: EdgeInsets.zero,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.18,
-              color: Colors.grey.shade100,
-              child: Stack(
-                children: [
-                  // Background logo box
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade400,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Image.asset('assets/images/softgenLogo.png'),
-                  ),
+      body: Center(child: Text(appLoc.setting_page)),
 
-                  // Profile image + name/email row
-                  Positioned(
-                    left: 15,
-                    top: MediaQuery.of(context).size.height * 0.06,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Consumer<HomeProviders>(
-                          builder: (ctx, value, child) {
-                            imagePath = ctx.watch<HomeProviders>().image?.path;
-                            return imagePath != null
-                                ? CircleAvatar(
-                                    radius: 50,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        100,
-                                      ), // ✅ fixed
-                                      child: Image.file(
-                                        File(imagePath!),
-                                        height: 100,
-                                        width: 100,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  )
-                                : CircleAvatar(
-                                    radius: 50,
-                                    child: Image.asset(
-                                      'assets/svgImages/proImg.png',
-                                      height: 100,
-                                      width: 100,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  );
-                          },
-                        ),
-                        SizedBox(width: 20), // ✅ spacing instead of Row.spacing
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              usersInfo['Name'],
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black87,
-                              ),
-                            ),
-                            Text(
-                              usersInfo['Email'],
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black87,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+      // Center(
+      //   child: Column(
+      //     // crossAxisAlignment: CrossAxisAlignment.center,
+      //     // padding: EdgeInsets.zero,
+      //     children: [
+      //       Container(
+      //         height: MediaQuery.of(context).size.height * 0.18,
+      //         color: Colors.grey.shade100,
+      //         child: Stack(
+      //           children: [
+      //             // Background logo box
+      //             Container(
+      //               width: double.infinity,
+      //               margin: EdgeInsets.all(10),
+      //               padding: EdgeInsets.all(10),
+      //               height: MediaQuery.of(context).size.height * 0.1,
+      //               decoration: BoxDecoration(
+      //                 color: Colors.grey.shade400,
+      //                 borderRadius: BorderRadius.circular(10),
+      //               ),
+      //               child: Image.asset('assets/images/softgenLogo.png'),
+      //             ),
 
-                  // Camera icon overlay
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.14,
-                    left: 90,
-                    child: GestureDetector(
-                      onTap: () {
-                        context.read<HomeProviders>().pickImage();
-                      },
-                      child: Icon(
-                        Icons.camera_alt_outlined,
-                        size: 30,
-                        color: Colors.grey.shade700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+      //             // Profile image + name/email row
+      //             Positioned(
+      //               left: 15,
+      //               top: MediaQuery.of(context).size.height * 0.06,
+      //               child: Row(
+      //                 crossAxisAlignment: CrossAxisAlignment.end,
+      //                 children: [
+      //                   Consumer<HomeProviders>(
+      //                     builder: (ctx, value, child) {
+      //                       imagePath = ctx.watch<HomeProviders>().image?.path;
+      //                       return imagePath != null
+      //                           ? CircleAvatar(
+      //                               radius: 50,
+      //                               child: ClipRRect(
+      //                                 borderRadius: BorderRadius.circular(
+      //                                   100,
+      //                                 ), // ✅ fixed
+      //                                 child: Image.file(
+      //                                   File(imagePath!),
+      //                                   height: 100,
+      //                                   width: 100,
+      //                                   fit: BoxFit.cover,
+      //                                 ),
+      //                               ),
+      //                             )
+      //                           : CircleAvatar(
+      //                               radius: 50,
+      //                               child: Image.asset(
+      //                                 'assets/svgImages/proImg.png',
+      //                                 height: 100,
+      //                                 width: 100,
+      //                                 fit: BoxFit.contain,
+      //                               ),
+      //                             );
+      //                     },
+      //                   ),
+      //                   SizedBox(width: 20), // ✅ spacing instead of Row.spacing
+      //                   Column(
+      //                     mainAxisAlignment: MainAxisAlignment.end,
+      //                     crossAxisAlignment: CrossAxisAlignment.start,
+      //                     children: [
+      //                       Text(
+      //                         usersInfo['Name'],
+      //                         style: TextStyle(
+      //                           fontSize: 20,
+      //                           fontWeight: FontWeight.w600,
+      //                           color: Colors.black87,
+      //                         ),
+      //                       ),
+      //                       Text(
+      //                         usersInfo['Email'],
+      //                         style: TextStyle(
+      //                           fontSize: 12,
+      //                           fontWeight: FontWeight.w600,
+      //                           color: Colors.black87,
+      //                         ),
+      //                       ),
+      //                     ],
+      //                   ),
+      //                 ],
+      //               ),
+      //             ),
 
-            // Container(
-            //   height: MediaQuery.of(context).size.height * 0.18,
-            //   color: Colors.grey.shade100,
-            //   child: Stack(
-            //     children: [
-            //       Container(
-            //         width: double.infinity,
-            //         margin: EdgeInsets.all(10),
-            //         padding: EdgeInsets.all(10),
-            //         height: MediaQuery.of(context).size.height * 0.1,
-            //         decoration: BoxDecoration(
-            //           color: Colors.grey.shade400,
-            //           borderRadius: BorderRadius.circular(10),
-            //         ),
-            //         child: Image.asset('assets/images/softgenLogo.png'),
-            //       ),
+      //             // Camera icon overlay
+      //             Positioned(
+      //               top: MediaQuery.of(context).size.height * 0.14,
+      //               left: 90,
+      //               child: GestureDetector(
+      //                 onTap: () {
+      //                   context.read<HomeProviders>().pickImage();
+      //                 },
+      //                 child: Icon(
+      //                   Icons.camera_alt_outlined,
+      //                   size: 30,
+      //                   color: Colors.grey.shade700,
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
 
-            //       Padding(
-            //         padding: const EdgeInsets.only(left: 15.0),
-            //         child: Row(
-            //           spacing: 30,
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisAlignment: MainAxisAlignment.start,
-            //           children: [
-            //             Positioned(
-            //               left: MediaQuery.of(context).size.width - 635,
+      //       // Container(
+      //       //   height: MediaQuery.of(context).size.height * 0.18,
+      //       //   color: Colors.grey.shade100,
+      //       //   child: Stack(
+      //       //     children: [
+      //       //       Container(
+      //       //         width: double.infinity,
+      //       //         margin: EdgeInsets.all(10),
+      //       //         padding: EdgeInsets.all(10),
+      //       //         height: MediaQuery.of(context).size.height * 0.1,
+      //       //         decoration: BoxDecoration(
+      //       //           color: Colors.grey.shade400,
+      //       //           borderRadius: BorderRadius.circular(10),
+      //       //         ),
+      //       //         child: Image.asset('assets/images/softgenLogo.png'),
+      //       //       ),
 
-            //               right: 0,
-            //               top: MediaQuery.of(context).size.height * 0.06,
-            //               child: Consumer<HomeProviders>(
-            //                 builder: (ctx, value, child) {
-            //                   imagePath = ctx
-            //                       .watch<HomeProviders>()
-            //                       .image
-            //                       ?.path;
-            //                   return imagePath != null
-            //                       ? CircleAvatar(
-            //                           radius: 50,
-            //                           child: ClipRRect(
-            //                             borderRadius:
-            //                                 BorderRadius.circular(100),
-            //                             child: Image.file(
-            //                               File(imagePath!),
-            //                               height: 100,
-            //                               width: 100,
-            //                               fit: BoxFit.cover,
-            //                             ),
-            //                           ),
-            //                         )
-            //                       : Image.asset(
-            //                           'assets/svgImages/proImg.png',
-            //                           height: 100,
-            //                           width: 100,
-            //                           fit: BoxFit.contain,
-            //                         );
-            //                 },
-            //               ),
-            //             ),
+      //       //       Padding(
+      //       //         padding: const EdgeInsets.only(left: 15.0),
+      //       //         child: Row(
+      //       //           spacing: 30,
+      //       //           crossAxisAlignment: CrossAxisAlignment.end,
+      //       //           mainAxisAlignment: MainAxisAlignment.start,
+      //       //           children: [
+      //       //             Positioned(
+      //       //               left: MediaQuery.of(context).size.width - 635,
 
-            //             Column(
-            //               mainAxisAlignment: MainAxisAlignment.end,
-            //               crossAxisAlignment: CrossAxisAlignment.start,
-            //               children: [
-            //                 Text(
-            //                   usersInfo['Name'],
-            //                   style: TextStyle(
-            //                     fontSize: 20,
-            //                     fontWeight: FontWeight.w600,
-            //                     color: Colors.black87,
-            //                   ),
-            //                 ),
-            //                 Text(
-            //                   usersInfo['Email'],
-            //                   style: TextStyle(
-            //                     fontSize: 12,
-            //                     fontWeight: FontWeight.w600,
-            //                     color: Colors.black87,
-            //                   ),
-            //                 ),
-            //               ],
-            //             ),
-            //           ],
-            //         ),
-            //       ),
+      //       //               right: 0,
+      //       //               top: MediaQuery.of(context).size.height * 0.06,
+      //       //               child: Consumer<HomeProviders>(
+      //       //                 builder: (ctx, value, child) {
+      //       //                   imagePath = ctx
+      //       //                       .watch<HomeProviders>()
+      //       //                       .image
+      //       //                       ?.path;
+      //       //                   return imagePath != null
+      //       //                       ? CircleAvatar(
+      //       //                           radius: 50,
+      //       //                           child: ClipRRect(
+      //       //                             borderRadius:
+      //       //                                 BorderRadius.circular(100),
+      //       //                             child: Image.file(
+      //       //                               File(imagePath!),
+      //       //                               height: 100,
+      //       //                               width: 100,
+      //       //                               fit: BoxFit.cover,
+      //       //                             ),
+      //       //                           ),
+      //       //                         )
+      //       //                       : Image.asset(
+      //       //                           'assets/svgImages/proImg.png',
+      //       //                           height: 100,
+      //       //                           width: 100,
+      //       //                           fit: BoxFit.contain,
+      //       //                         );
+      //       //                 },
+      //       //               ),
+      //       //             ),
 
-            //       Positioned(
-            //         top: MediaQuery.of(context).size.height * 0.14,
-            //         left: MediaQuery.of(context).size.width - 470,
-            //         right: 100,
-            //         child: GestureDetector(
-            //           onTap: () {
-            //             context.read<HomeProviders>().pickImage();
-            //           },
-            //           child: Icon(
-            //             Icons.camera_alt_outlined,
-            //             size: 30,
-            //             color: Colors.grey.shade700,
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            SizedBox(height: 20),
-            userProfile(
-              Map<String, dynamic>.from(usersInfo)..removeWhere(
-                (key, value) =>
-                    key == "Name" ||
-                    key == "Email" ||
-                    key == "Phone" ||
-                    key == "Address",
-              ),
-            ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                spacing: 10,
-                children: [
-                  Expanded(
-                    child: CustomWidgets.customButton(
-                      context: context,
-                      buttonName: 'Update Phone Number',
+      //       //             Column(
+      //       //               mainAxisAlignment: MainAxisAlignment.end,
+      //       //               crossAxisAlignment: CrossAxisAlignment.start,
+      //       //               children: [
+      //       //                 Text(
+      //       //                   usersInfo['Name'],
+      //       //                   style: TextStyle(
+      //       //                     fontSize: 20,
+      //       //                     fontWeight: FontWeight.w600,
+      //       //                     color: Colors.black87,
+      //       //                   ),
+      //       //                 ),
+      //       //                 Text(
+      //       //                   usersInfo['Email'],
+      //       //                   style: TextStyle(
+      //       //                     fontSize: 12,
+      //       //                     fontWeight: FontWeight.w600,
+      //       //                     color: Colors.black87,
+      //       //                   ),
+      //       //                 ),
+      //       //               ],
+      //       //             ),
+      //       //           ],
+      //       //         ),
+      //       //       ),
 
-                      fontWeight: FontWeight.w600,
-                      btnColor: Colors.amber,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                Updatephone(title: 'Update Phone Number'),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomWidgets.customButton(
-                      context: context,
-                      buttonName: 'Update Email',
+      //       //       Positioned(
+      //       //         top: MediaQuery.of(context).size.height * 0.14,
+      //       //         left: MediaQuery.of(context).size.width - 470,
+      //       //         right: 100,
+      //       //         child: GestureDetector(
+      //       //           onTap: () {
+      //       //             context.read<HomeProviders>().pickImage();
+      //       //           },
+      //       //           child: Icon(
+      //       //             Icons.camera_alt_outlined,
+      //       //             size: 30,
+      //       //             color: Colors.grey.shade700,
+      //       //           ),
+      //       //         ),
+      //       //       ),
+      //       //     ],
+      //       //   ),
+      //       // ),
+      //       SizedBox(height: 20),
+      //       userProfile(
+      //         Map<String, dynamic>.from(usersInfo)..removeWhere(
+      //           (key, value) =>
+      //               key == "Name" ||
+      //               key == "Email" ||
+      //               key == "Phone" ||
+      //               key == "Address",
+      //         ),
+      //       ),
+      //       Spacer(),
+      //       Padding(
+      //         padding: const EdgeInsets.all(8.0),
+      //         child: Row(
+      //           spacing: 10,
+      //           children: [
+      //             Expanded(
+      //               child: CustomWidgets.customButton(
+      //                 context: context,
+      //                 buttonName: 'Update Phone Number',
 
-                      fontWeight: FontWeight.w600,
-                      btnColor: Colors.amber,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                UpdateEmail(title: 'Update Email'),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      //                 fontWeight: FontWeight.w600,
+      //                 btnColor: Colors.amber,
+      //                 onPressed: () {
+      //                   Navigator.push(
+      //                     context,
+      //                     MaterialPageRoute(
+      //                       builder: (context) =>
+      //                           Updatephone(title: 'Update Phone Number'),
+      //                     ),
+      //                   );
+      //                 },
+      //               ),
+      //             ),
+      //             Expanded(
+      //               child: CustomWidgets.customButton(
+      //                 context: context,
+      //                 buttonName: 'Update Email',
+
+      //                 fontWeight: FontWeight.w600,
+      //                 btnColor: Colors.amber,
+      //                 onPressed: () {
+      //                   Navigator.push(
+      //                     context,
+      //                     MaterialPageRoute(
+      //                       builder: (context) =>
+      //                           UpdateEmail(title: 'Update Email'),
+      //                     ),
+      //                   );
+      //                 },
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

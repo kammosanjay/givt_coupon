@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hello => 'Hello there!';
 
   @override
-  String get welcome => 'Banda University of Agriculture & Technology';
+  String get welcome => 'welcome to Givt';
 
   @override
   String get logout => 'Logout';
@@ -22,6 +22,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get username => 'Username';
+
+  @override
+  String get survey => 'Survey';
+
+  @override
+  String get wallet => 'Wallet';
+
+  @override
+  String get settings => 'App Settings';
+
+  @override
+  String get survey_page => 'Survey Page';
+
+  @override
+  String get coupon_page => 'Coupon Page';
+
+  @override
+  String get wallet_page => 'Wallet Page';
+
+  @override
+  String get setting_page => 'Setting Page';
 
   @override
   String get password => 'Password';
@@ -49,9 +70,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'User Profile';
-
-  @override
-  String get settings => 'App Settings';
 
   @override
   String get notifications => 'Notifications';

@@ -6,8 +6,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
-import 'app_localizations_as.dart';
-import 'app_localizations_bn.dart';
 import 'app_localizations_en.dart';
 
 // ignore_for_file: type=lint
@@ -94,8 +92,6 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('as'),
-    Locale('bn'),
     Locale('en')
   ];
 
@@ -108,7 +104,7 @@ abstract class AppLocalizations {
   /// No description provided for @welcome.
   ///
   /// In en, this message translates to:
-  /// **'Banda University of Agriculture & Technology'**
+  /// **'welcome to Givt'**
   String get welcome;
 
   /// No description provided for @logout.
@@ -128,6 +124,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Username'**
   String get username;
+
+  /// No description provided for @survey.
+  ///
+  /// In en, this message translates to:
+  /// **'Survey'**
+  String get survey;
+
+  /// No description provided for @wallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get wallet;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'App Settings'**
+  String get settings;
+
+  /// No description provided for @survey_page.
+  ///
+  /// In en, this message translates to:
+  /// **'Survey Page'**
+  String get survey_page;
+
+  /// No description provided for @coupon_page.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Page'**
+  String get coupon_page;
+
+  /// No description provided for @wallet_page.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet Page'**
+  String get wallet_page;
+
+  /// No description provided for @setting_page.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting Page'**
+  String get setting_page;
 
   /// No description provided for @password.
   ///
@@ -182,12 +220,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'User Profile'**
   String get profile;
-
-  /// No description provided for @settings.
-  ///
-  /// In en, this message translates to:
-  /// **'App Settings'**
-  String get settings;
 
   /// No description provided for @notifications.
   ///
@@ -271,7 +303,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'as', 'bn', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -283,8 +315,6 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'ar': return AppLocalizationsAr();
-    case 'as': return AppLocalizationsAs();
-    case 'bn': return AppLocalizationsBn();
     case 'en': return AppLocalizationsEn();
   }
 

@@ -41,6 +41,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 Image.asset(
                   'assets/images/couponlogo.png',
                   fit: BoxFit.fitHeight,
+                  height: 150,
+                  width: 150,
                 ),
                 // const SizedBox(height: 20), // ⬇️ 20px space below image
                 Text(

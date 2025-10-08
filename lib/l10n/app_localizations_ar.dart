@@ -12,7 +12,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hello => 'مرحباً!';
 
   @override
-  String get welcome => 'جامعة باندى للزراعة والتكنولوجيا';
+  String get welcome => 'مرحبًا بكم في Givt';
 
   @override
   String get logout => 'تسجيل الخروج';
@@ -22,6 +22,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get username => 'اسم المستخدم';
+
+  @override
+  String get survey => 'الاستبيان';
+
+  @override
+  String get wallet => 'المحفظة';
+
+  @override
+  String get settings => 'إعدادات التطبيق';
+
+  @override
+  String get survey_page => 'صفحة الاستبيان';
+
+  @override
+  String get coupon_page => 'صفحة القسيمة';
+
+  @override
+  String get wallet_page => 'صفحة المحفظة';
+
+  @override
+  String get setting_page => 'صفحة الإعدادات';
 
   @override
   String get password => 'كلمة المرور';
@@ -49,9 +70,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile => 'الملف الشخصي';
-
-  @override
-  String get settings => 'إعدادات التطبيق';
 
   @override
   String get notifications => 'الإشعارات';

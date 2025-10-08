@@ -4,13 +4,13 @@ import 'package:givt_mobile_app/Views/newsRoom/allnews.dart';
 import 'package:givt_mobile_app/Views/theme/theme_provider.dart';
 import 'package:givt_mobile_app/constant/appColor.dart';
 import 'package:givt_mobile_app/l10n/app_localizations.dart';
-import 'package:chewie/chewie.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
+
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -53,32 +53,32 @@ class _NewsPageState extends State<NewsPage> {
     // Academic Leadership
   ];
 
-  late VideoPlayerController videoPlayerController;
-  late ChewieController chewieController;
+  // late VideoPlayerController videoPlayerController;
+  // late ChewieController chewieController;
   late Widget playerWidget;
 
-  @override
-  void initState() {
-    super.initState();
-    videoPlayerController = VideoPlayerController.networkUrl(
-      Uri.parse(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-      ),
-    );
-    chewieController = ChewieController(
-      videoPlayerController: videoPlayerController,
-      autoPlay: true,
-      looping: true,
-    );
-    playerWidget = Chewie(controller: chewieController);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   videoPlayerController = VideoPlayerController.networkUrl(
+  //     Uri.parse(
+  //       'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+  //     ),
+  //   );
+  //   chewieController = ChewieController(
+  //     videoPlayerController: videoPlayerController,
+  //     autoPlay: true,
+  //     looping: true,
+  //   );
+  //   playerWidget = Chewie(controller: chewieController);
+  // }
 
-  @override
-  void dispose() {
-    videoPlayerController.dispose();
-    chewieController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   videoPlayerController.dispose();
+  //   chewieController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -232,14 +232,14 @@ class _NewsPageState extends State<NewsPage> {
 
           SizedBox(height: 50),
 
-          Container(
-            height: 200,
-            margin: EdgeInsets.all(10),
+          // Container(
+          //   height: 200,
+          //   margin: EdgeInsets.all(10),
           
-            color: Colors.green,
-            width: double.infinity,
-            child: Chewie(controller: chewieController),
-          ),
+          //   color: Colors.green,
+          //   width: double.infinity,
+          //   child: Chewie(controller: chewieController),
+          // ),
         ],
       ),
     );
