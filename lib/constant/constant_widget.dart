@@ -154,9 +154,8 @@ class CustomWidgets {
     String label = "",
     double fontSize = 14,
     var fontwgt,
-    double? height
+    double? height,
   }) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -267,4 +266,24 @@ class CustomWidgets {
 
   ///
   ///
+  ///
+
+   static myCustomTextWidget(String text) {
+    return Text(
+      text,
+      style: GoogleFonts.lora(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        foreground: Paint()
+          ..shader = LinearGradient(
+            colors: [
+              MyColors.primaryColor,
+              MyColors.textColor,
+            ], // Use two different colors for the gradient
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
+      ),
+    );
+  }
 }

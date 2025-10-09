@@ -9,6 +9,7 @@ import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
 import 'package:givt_mobile_app/Views/todolist/inbox_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:givt_mobile_app/constant/constant_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:givt_mobile_app/Views/ReportsPage/report_page.dart';
 import 'package:givt_mobile_app/Views/home/home_providers.dart';
@@ -116,8 +117,7 @@ class _MyHomeState extends State<MyHome> {
     'assets/svgImages/academics.svg',
     'assets/svgImages/grievence.svg',
     'assets/svgImages/holiday.svg',
-    
-    
+
     'assets/svgImages/LogOut.svg',
   ];
   Widget drawerLitTile({
@@ -153,8 +153,13 @@ class _MyHomeState extends State<MyHome> {
     final appLoc = AppLocalizations.of(context)!;
 
     print("build");
-    return Directionality(
-      textDirection: TextDirection.ltr,
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           elevation: 0,
@@ -240,7 +245,9 @@ class _MyHomeState extends State<MyHome> {
                   ),
                   borderRadius: BorderRadius.circular(5),
                 ),
-                backgroundColor: AppColor.primaryColor(context),
+                backgroundColor: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.grey.shade800
+                    : Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -284,7 +291,10 @@ class _MyHomeState extends State<MyHome> {
                                           : Icon(
                                               Icons.person,
                                               size: 50,
-                                              color: Colors.grey,
+                                              color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : MyColors.textColor,
                                             );
                                     },
                                   ),
@@ -356,7 +366,10 @@ class _MyHomeState extends State<MyHome> {
                                   style: GoogleFonts.poppins(
                                     fontSize: 15.8,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColor.textColor(context),
+                                    color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : MyColors.textColor,
                                   ),
                                 ),
                               ),
@@ -433,6 +446,40 @@ class _MyHomeState extends State<MyHome> {
                           },
                         ),
                       ),
+
+                      // create dark and night mode toggle
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Night Mode',
+                                style: GoogleFonts.lora(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : MyColors.textColor,
+                                ),
+                              ),
+                              Switch(
+                                value:
+                                    themeProvider.themeMode == ThemeMode.dark,
+                                onChanged: (value) {
+                                  themeProvider.setThemeMode(
+                                    value ? ThemeMode.dark : ThemeMode.light,
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -441,133 +488,158 @@ class _MyHomeState extends State<MyHome> {
           ),
         ),
 
-        appBar: PreferredSize(
-          preferredSize: Size.square(50),
-          child: AppBar(
-            // backgroundColor:Colors.grey.shade100,
-            title: Consumer<ThemeProvider>(
-              builder: (context, themeProvider, child) {
-                return Text(
-                  textDirection: TextDirection.ltr,
-                  appLoc.welcome,
-                  // style: GoogleFonts.poppins(
-                  //   textStyle: Theme.of(context).textTheme.bodyLarge,
+        appBar: AppBar(
+          // backgroundColor:Colors.grey.shade100,
+          title: Consumer<ThemeProvider>(
+            builder: (context, themeProvider, child) {
+              return Container(
+                height: 40,
+                width: double.infinity,
 
-                  // ),
-                );
-              },
-            ),
-            leading: Builder(
-              builder: (context) {
-                return GestureDetector(
-                  onTap: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Container(
-                      // decoration: BoxDecoration(border:BoxBorder.all(color: Colors.grey)),
-                      margin: const EdgeInsets.only(top: 10),
-
-                      child: GFCarousel(
-                        autoPlay: true,
-
-                        autoPlayInterval: Duration(seconds: 2),
-                        // autoPlayAnimationDuration: Duration(milliseconds: 1600),
-                        items: imageList.map((url) {
-                          return ClipRRect(
-                            child: SvgPicture.asset(
-                              url,
-                              fit: BoxFit.contain,
-                              height: 20,
-                              width: 20,
-                              color: AppColor.headingColor(context),
-                            ),
-                          );
-                        }).toList(),
-                        onPageChanged: (index) {
-                          // setState(() {
-                          //   index;
-                          // });
-                        },
-                      ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
                     ),
-                  ),
-                );
-              },
-            ),
-            centerTitle: true,
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          backgroundColor: AppColor.primaryColor(context),
-                          title: const Text("Language"),
-                          content: DropdownButton<String>(
-                            alignment: Alignment(0, 10),
-                            autofocus: true,
-                            dropdownColor: AppColor.primaryColor(context),
-                            icon: Icon(Icons.language_outlined),
-                            menuWidth: 110.0,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            value: context
-                                .watch<Language>()
-                                .selectectLocale
-                                .languageCode,
-                            items: Language.languages
-                                .map(
-                                  (e) => DropdownMenuItem<String>(
-                                    value: e['locale'],
-                                    child: Text(e['name']),
-                                  ),
-                                )
-                                .toList(),
-                            onChanged: (value) {
-                              if (value != null) {
-                                context.read<Language>().changeLanguage(value);
-                                print(value);
-                                Navigator.pop(context);
-                              }
-                            },
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text("Close"),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      // color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.shade100,
-                          blurRadius: 10,
-                          // spreadRadius: 5,
-                          offset: Offset(10, 5),
-                        ),
-                      ],
+                    prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+                    hintText: appLoc.search,
+                    hintStyle: GoogleFonts.openSans(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.grey.shade400,
                     ),
-                    child: SvgPicture.asset(
-                      'assets/svgImages/lang.svg',
-                      height: 20,
-                      width: 20,
-                      color: AppColor.headingColor(context),
+                    fillColor: Colors.white,
+                    filled: true,
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 16,
                     ),
                   ),
                 ),
-              ),
-            ],
+              );
+            },
           ),
+          leading: Builder(
+            builder: (context) {
+              return GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Container(
+                    // decoration: BoxDecoration(border:BoxBorder.all(color: Colors.grey)),
+                    margin: const EdgeInsets.only(top: 10),
+
+                    child: GFCarousel(
+                      autoPlay: true,
+
+                      autoPlayInterval: Duration(seconds: 2),
+                      // autoPlayAnimationDuration: Duration(milliseconds: 1600),
+                      items: imageList.map((url) {
+                        return ClipRRect(
+                          child: SvgPicture.asset(
+                            url,
+                            fit: BoxFit.contain,
+                            height: 20,
+                            width: 20,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                        );
+                      }).toList(),
+                      onPageChanged: (index) {
+                        // setState(() {
+                        //   index;
+                        // });
+                      },
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          centerTitle: true,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? Colors.grey.shade800
+                            : Colors.white,
+                        title: const Text("Language"),
+                        content: DropdownButton<String>(
+                          alignment: Alignment(0, 10),
+                          autofocus: true,
+                          dropdownColor: AppColor.primaryColor(context),
+                          icon: Icon(Icons.language_outlined),
+                          menuWidth: 110.0,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          value: context
+                              .watch<Language>()
+                              .selectectLocale
+                              .languageCode,
+                          items: Language.languages
+                              .map(
+                                (e) => DropdownMenuItem<String>(
+                                  value: e['locale'],
+                                  child: Text(e['name']),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {
+                            if (value != null) {
+                              context.read<Language>().changeLanguage(value);
+                              print(value);
+                              Navigator.pop(context);
+                            }
+                          },
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text("Close"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    // color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade100,
+                        blurRadius: 10,
+                        // spreadRadius: 5,
+                        offset: Offset(10, 5),
+                      ),
+                    ],
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/svgImages/lang.svg',
+                    height: 20,
+                    width: 20,
+                    color: AppColor.headingColor(context),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
 
         body: _pages[_selectedIndex],

@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage>
                     style: GoogleFonts.lora(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color:MyColors.primaryColor,
+                      color: MyColors.primaryColor,
                     ),
                   ),
                 ),

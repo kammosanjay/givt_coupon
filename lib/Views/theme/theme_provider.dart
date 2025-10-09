@@ -10,7 +10,7 @@ class ThemeProvider extends ChangeNotifier {
 
   ThemeProvider() {
     // _primaryColor = const Color(0xFF88D0F1);
-    _primaryColor = Color(0xFFE8E9F4);
+    _primaryColor = Color.fromRGBO(241, 218, 221, 1);
     // _primaryColor =  Colors.cyan;
 
     loadTheme();
@@ -64,7 +64,7 @@ class ThemeProvider extends ChangeNotifier {
   //   appBarTheme: AppBarTheme(backgroundColor: _primaryColor),
   //   scaffoldBackgroundColor: Colors.white,
   //   textTheme: TextTheme(
-  //     bodyMedium: GoogleFonts.poppins(
+  //     bodyMedium: GoogleFonts.lora(
   //       color: Colors.black,
   //       fontSize: 16,
   //       fontWeight: FontWeight.w600,
@@ -89,11 +89,11 @@ class ThemeProvider extends ChangeNotifier {
       brightness: Brightness.dark,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: Color(0xFF3D3D3D),
+      backgroundColor: Colors.black,
 
       centerTitle: true,
       iconTheme: const IconThemeData(color: Colors.white), // For back icon
-      titleTextStyle: GoogleFonts.poppins(
+      titleTextStyle: GoogleFonts.lora(
         color: Colors.white,
         fontSize: 16,
         fontWeight: FontWeight.w600,
@@ -101,21 +101,21 @@ class ThemeProvider extends ChangeNotifier {
     ),
     scaffoldBackgroundColor: Colors.grey.shade100,
     textTheme: TextTheme(
-      bodySmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      bodyMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      bodyLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      labelSmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      labelMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      labelLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      titleSmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      titleMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      titleLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      headlineSmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      headlineMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      headlineLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      displaySmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      displayMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      displayLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
+      bodySmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      bodyMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      bodyLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      labelSmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      labelMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      labelLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      titleSmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      titleMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      titleLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      headlineSmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      headlineMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      headlineLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      displaySmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      displayMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      displayLarge: GoogleFonts.lora(color: Colors.grey.shade900),
     ),
   );
 
@@ -142,21 +142,21 @@ class ThemeProvider extends ChangeNotifier {
     scaffoldBackgroundColor: Colors.white,
     // scaffoldBackgroundColor: Colors.grey.shade100,
     textTheme: TextTheme(
-      bodySmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      bodyMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      bodyLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      labelSmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      labelMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      labelLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      titleSmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      titleMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      titleLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      headlineSmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      headlineMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      headlineLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
-      displaySmall: GoogleFonts.poppins(color: Colors.grey.shade900),
-      displayMedium: GoogleFonts.poppins(color: Colors.grey.shade900),
-      displayLarge: GoogleFonts.poppins(color: Colors.grey.shade900),
+      bodySmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      bodyMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      bodyLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      labelSmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      labelMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      labelLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      titleSmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      titleMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      titleLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      headlineSmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      headlineMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      headlineLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+      displaySmall: GoogleFonts.lora(color: Colors.grey.shade900),
+      displayMedium: GoogleFonts.lora(color: Colors.grey.shade900),
+      displayLarge: GoogleFonts.lora(color: Colors.grey.shade900),
     ),
   );
 

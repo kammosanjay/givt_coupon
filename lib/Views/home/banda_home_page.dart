@@ -85,7 +85,8 @@ class _BandaHomePageState extends State<BandaHomePage> {
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
-          child: GridView.builder(
+          child: 
+          GridView.builder(
             itemCount: drawerMenuItems.length,
 
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -161,6 +162,9 @@ class _BandaHomePageState extends State<BandaHomePage> {
               );
             },
           ),
+      
+      
+      
         ),
       ),
    

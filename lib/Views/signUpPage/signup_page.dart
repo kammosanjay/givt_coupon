@@ -131,7 +131,8 @@ class _SignupPageState extends State<SignupPage>
                   mainAxisAlignment: MainAxisAlignment.center,
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(alignment: Alignment.centerLeft,
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child: Text(
                         "Sign Up",
                         style: GoogleFonts.lora(
@@ -141,7 +142,8 @@ class _SignupPageState extends State<SignupPage>
                         ),
                       ),
                     ),
-                    Align(alignment: Alignment.centerLeft,
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child: Text(
                         "Welcome! Create your account to get started.",
                         style: GoogleFonts.lora(
@@ -194,8 +196,8 @@ class _SignupPageState extends State<SignupPage>
                     SizedBox(height: 10),
                     CustomWidgets.customDropdownField(
                       context: context,
-                      items: ['Male', 'Female', 'Other'],
-                      selectedItem: 'Male',
+                      items: ['👨 Male', '👩 Female'],
+                      selectedItem: '👨 Male',
                       label: 'Gender',
                       height: 60,
                       // readOnly: true,
@@ -204,6 +206,7 @@ class _SignupPageState extends State<SignupPage>
                         // Handle selection change
                       },
                     ),
+                   
                     SizedBox(height: 20),
                     CustomWidgets.customTextFeild(
                       context: context,
@@ -217,7 +220,6 @@ class _SignupPageState extends State<SignupPage>
                       icon: Image(
                         image: AssetImage(
                           'assets/images/calender.png',
-                        
                         ), // Use an appropriate icon
                         height: 14,
                         width: 18,
