@@ -268,7 +268,7 @@ class CustomWidgets {
   ///
   ///
 
-   static myCustomTextWidget(String text) {
+  static myCustomTextWidget(String text) {
     return Text(
       text,
       style: GoogleFonts.lora(
@@ -286,4 +286,14 @@ class CustomWidgets {
       ),
     );
   }
+
+  static final gap_1 = const SizedBox(height: 1);
+  static final gap_10 = const SizedBox(height: 10);
+  static final gap_15 = const SizedBox(height: 15);
+  static final gap_20 = const SizedBox(height: 20);
+  static final gap_25 = const SizedBox(height: 25);
+  static final gap_30 = const SizedBox(height: 30);
+  static final gap_35 = const SizedBox(height: 35);
+  static final gap_40 = const SizedBox(height: 40);
+  static final gap_45 = const SizedBox(height: 45);
 }

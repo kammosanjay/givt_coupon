@@ -245,9 +245,7 @@ class _MyHomeState extends State<MyHome> {
                   ),
                   borderRadius: BorderRadius.circular(5),
                 ),
-                backgroundColor: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey.shade800
-                    : Colors.white,
+                backgroundColor: Colors.grey,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -291,10 +289,13 @@ class _MyHomeState extends State<MyHome> {
                                           : Icon(
                                               Icons.person,
                                               size: 50,
-                                              color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : MyColors.textColor,
+                                              color:
+                                                  Theme.of(
+                                                        context,
+                                                      ).brightness ==
+                                                      Brightness.dark
+                                                  ? Colors.white
+                                                  : MyColors.textColor,
                                             );
                                     },
                                   ),
@@ -317,8 +318,15 @@ class _MyHomeState extends State<MyHome> {
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               ListTile(
-                                                leading: const Icon(
+                                                leading: Icon(
                                                   Icons.camera_alt,
+                                                  color:
+                                                      Theme.of(
+                                                            context,
+                                                          ).brightness ==
+                                                          Brightness.dark
+                                                      ? MyColors.backgroundColor
+                                                      : MyColors.secondaryColor,
                                                 ),
                                                 title: const Text("Gallery"),
                                                 onTap: () {
@@ -350,14 +358,18 @@ class _MyHomeState extends State<MyHome> {
                                     'assets/svgImages/camera.svg',
                                     height: 20,
                                     width: 20,
-                                    color: AppColor.headingColor(context),
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? MyColors.backgroundColor
+                                        : MyColors.textColor,
                                   ),
                                 ),
                               ),
 
                               // Welcome Text
                               Positioned(
-                                left: 0,
+                                left: 60,
                                 top:
                                     MediaQuery.of(context).size.height *
                                     0.16, // 20% of screen height
@@ -366,10 +378,11 @@ class _MyHomeState extends State<MyHome> {
                                   style: GoogleFonts.poppins(
                                     fontSize: 15.8,
                                     fontWeight: FontWeight.w600,
-                                    color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : MyColors.textColor,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : MyColors.textColor,
                                   ),
                                 ),
                               ),
@@ -578,15 +591,16 @@ class _MyHomeState extends State<MyHome> {
                       return AlertDialog(
                         backgroundColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Colors.grey.shade800
-                            : Colors.white,
+                            ? Colors.white
+                            : AppColor.primaryColor(context),
                         title: const Text("Language"),
                         content: DropdownButton<String>(
                           alignment: Alignment(0, 10),
                           autofocus: true,
                           dropdownColor: AppColor.primaryColor(context),
                           icon: Icon(Icons.language_outlined),
-                          menuWidth: 110.0,
+
+                          menuWidth: 120.0,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           value: context
                               .watch<Language>()

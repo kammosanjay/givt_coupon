@@ -9,9 +9,7 @@ class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.system;
 
   ThemeProvider() {
-    // _primaryColor = const Color(0xFF88D0F1);
     _primaryColor = Color.fromRGBO(241, 218, 221, 1);
-    // _primaryColor =  Colors.cyan;
 
     loadTheme();
   }
@@ -19,75 +17,17 @@ class ThemeProvider extends ChangeNotifier {
   Color get primaryColor => _primaryColor;
   ThemeMode get themeMode => _themeMode;
 
-  static const List<Color> colors = [
-    Color(0xFFE3BA72),
-    Color(0xFF028900),
-    Color(0xFFABCA99),
-    Color(0xFFCF202F),
-    Color(0xFF465923),
-    Color(0xFF595123),
-    Color(0xFF91482F),
-    Color(0xFFFFBD23),
-    Color(0xFF03BFFF),
-    Color(0xFF636D86),
-    Color(0xFFAAE5A4),
-    Color(0xFFF08819),
-    Color(0xFFF8F8F8),
-    Color(0xFF5C6B5A),
-    Color(0xFF6C4A4A),
-    Color(0xFFD8A7A7),
-    Color(0xFF9C7F75),
-    Color(0xFFA2A77F),
-    Color(0xFF49505A),
-    Color(0xFFA9C2B5),
-    Color(0xFFA8B1A4),
-    Color(0xFFA2B1BD),
-    Color(0xFF5D4954),
-    Color(0xFF6F6F6F),
-    Color(0xFFA8A9AD),
-    Color(0xFFF1ECE6),
-    Color(0xFF8A7E74),
-    Color(0xFFD4C1A3),
-    Color(0xFF133337),
-    Color(0xFF3D4E57),
-    Color(0xFF674C0E),
-    Color(0xFF6A000E),
-    Color(0xFFFFA500),
-    Color(0xFF6E5132),
-    Color(0xFFD4914C),
-  ];
-
-  // ThemeData get themeData => ThemeData(
-  //   primaryColor: _primaryColor,
-  //   colorScheme: ColorScheme.fromSeed(seedColor: _primaryColor),
-  //   useMaterial3: true,
-  //   appBarTheme: AppBarTheme(backgroundColor: _primaryColor),
-  //   scaffoldBackgroundColor: Colors.white,
-  //   textTheme: TextTheme(
-  //     bodyMedium: GoogleFonts.lora(
-  //       color: Colors.black,
-  //       fontSize: 16,
-  //       fontWeight: FontWeight.w600,
-  //     ),
-  //   ),
-  // );
-
   // DARK THEME
 
   ThemeData get darkTheme => ThemeData(
     brightness: Brightness.dark,
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(Colors.white),
-        fixedSize: WidgetStatePropertyAll(Size(100, 40)),
-      ),
-    ),
 
     primaryColor: Color(0xFF0F0F0F),
     colorScheme: ColorScheme.fromSeed(
       seedColor: _primaryColor,
       brightness: Brightness.dark,
     ),
+    
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.black,
 
@@ -99,7 +39,7 @@ class ThemeProvider extends ChangeNotifier {
         fontWeight: FontWeight.w600,
       ),
     ),
-    scaffoldBackgroundColor: Colors.grey.shade100,
+    scaffoldBackgroundColor:Colors.white,
     textTheme: TextTheme(
       bodySmall: GoogleFonts.lora(color: Colors.grey.shade900),
       bodyMedium: GoogleFonts.lora(color: Colors.grey.shade900),
@@ -124,7 +64,7 @@ class ThemeProvider extends ChangeNotifier {
   ///
   ThemeData get lightTheme => ThemeData(
     brightness: Brightness.light,
-    primaryColor: Colors.grey.shade100,
+    primaryColor: Colors.white,
     colorScheme: ColorScheme.fromSeed(
       seedColor: _primaryColor,
       brightness: Brightness.light,

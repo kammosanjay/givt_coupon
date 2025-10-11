@@ -1,9 +1,15 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/constant/appColor.dart';
+import 'package:givt_mobile_app/constant/constant_widget.dart';
 import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:faker/faker.dart';
 
 class CouponHomepage extends StatefulWidget {
   const CouponHomepage({super.key});
@@ -15,10 +21,10 @@ class CouponHomepage extends StatefulWidget {
 class _CouponHomepageState extends State<CouponHomepage> {
   int selectedIndex = 0;
   List<String> drawerMenuItems = [
-    'Kul-geet',
-    'Id Card',
-    '2024-2025 Students',
-    'Academic',
+    'All',
+    'Thankyou',
+    'Celebration',
+    'Friday',
     // 'Library',
     'Places',
     'News',
@@ -52,89 +58,149 @@ class _CouponHomepageState extends State<CouponHomepage> {
     'assets/svgImages/homescreenSvg/15.svg',
     'assets/svgImages/homescreenSvg/16.svg',
   ];
+
   @override
   Widget build(BuildContext context) {
+    final random = RandomGenerator(seed: 63833423);
+    final faker = Faker.withGenerator(random);
+    print(faker.animal.name());
+
     final appLoc = AppLocalizations.of(context)!;
-    double itemHeight = (MediaQuery.of(context).size.height - kToolbarHeight - 24);
+    double itemHeight =
+        (MediaQuery.of(context).size.height - kToolbarHeight - 24);
     return Scaffold(
-      body: Column(
-        children: [
-          Container(height:itemHeight*0.1 ,
-            child: ListView.builder(
-              itemCount: 10,
-              shrinkWrap: true,
-              
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                var isSelected = selectedIndex == index;
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                    var route = drawerMenuItems[index];
-                    context.read<RouteProvider>().navigateTo(
-                      route,
-                      context,
-                      arguments: route,
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.grey.shade400),
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //     color: Color(0xFFE8E9F4),
-                      //     // color: Colors. grey,
-                      //     offset: Offset(-10, -10),
-                      //     blurRadius: 30,
-            
-                      //     inset: false,
-                      //   ),
-                      //   BoxShadow(
-                      //     color: Colors.grey,
-                      //     offset: Offset(10, 10),
-                      //     blurRadius: 30,
-            
-                      //     inset: true,
-                      //   ),
-                      // ],
-                    ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 40,
+              child: ListView.builder(
+                itemCount: 10,
+                shrinkWrap: true,
+
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  var isSelected = selectedIndex == index;
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                      var route = drawerMenuItems[index];
+                      context.read<RouteProvider>().navigateTo(
+                        route,
+                        context,
+                        arguments: route,
+                      );
+                    },
                     child: Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            imageList[index],
-                            height: 24,
-                            color: isSelected
-                                ? Colors.amber
-                                : Color(0xFF333333).withOpacity(0.4),
-                          ),
-                          Text(
-                            drawerMenuItems[index],
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: isSelected
-                                  ? Colors.amber
-                                  : Color(0xFF333333),
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.red,
+                          boxShadow: [
+                            BoxShadow(
+                              color: MyColors.backgroundColor,
+                              // color: Colors. grey,
+                              offset: Offset(-10, -10),
+                              blurRadius: 30,
+
+                              inset: false,
+                            ),
+                            BoxShadow(
+                              color: MyColors.textColor,
+                              offset: Offset(10, 10),
+                              blurRadius: 30,
+
+                              inset: true,
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: Text(
+                              drawerMenuItems[index],
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              style: GoogleFonts.lora(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w900,
+                                color: isSelected ? Colors.amber : Colors.white,
+                              ),
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+            CustomWidgets.gap_10,
+            Text(
+              "data",
+              style: GoogleFonts.lora(
+                fontSize: 14,
+                fontWeight: FontWeight.w900,
+                color: MyColors.textColor,
+              ),
+            ),
+
+            SizedBox(
+              height: 120,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: MyColors.secondaryColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      width: 200,
+                      child: Text(index.toString()),
+                    ),
+                  );
+                },
+              ),
+            ),
+            CustomWidgets.gap_10,
+            Text(
+              'data',
+              style: GoogleFonts.lora(
+                fontSize: 14,
+                fontWeight: FontWeight.w900,
+                color: MyColors.textColor,
+              ),
+            ),
+            SizedBox(
+              height: 120,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: MyColors.secondaryColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      width: 250,
+                      child: Text(index.toString()),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
