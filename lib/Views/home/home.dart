@@ -13,7 +13,7 @@ import 'package:givt_mobile_app/constant/constant_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:givt_mobile_app/Views/ReportsPage/report_page.dart';
 import 'package:givt_mobile_app/Views/home/home_providers.dart';
-import 'package:givt_mobile_app/Views/home/map_with_bottomsheet.dart';
+
 import 'package:givt_mobile_app/Views/theme/theme_provider.dart';
 import 'package:givt_mobile_app/Views/todolist/todo_list.dart';
 import 'package:givt_mobile_app/constant/appColor.dart';
@@ -597,7 +597,10 @@ class _MyHomeState extends State<MyHome> {
                         content: DropdownButton<String>(
                           alignment: Alignment(0, 10),
                           autofocus: true,
-                          dropdownColor: AppColor.primaryColor(context),
+                          dropdownColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : MyColors.secondaryColor,
                           icon: Icon(Icons.language_outlined),
 
                           menuWidth: 120.0,
@@ -625,7 +628,18 @@ class _MyHomeState extends State<MyHome> {
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context),
-                            child: const Text("Close"),
+                            child: Text(
+                              "Close",
+                              style: GoogleFonts.lora(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? AppColor.textColor(context)
+                                    : MyColors.textColor,
+                              ),
+                            ),
                           ),
                         ],
                       );

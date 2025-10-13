@@ -18,6 +18,7 @@ import 'package:givt_mobile_app/Views/ReportsPage/report_page.dart';
 import 'package:givt_mobile_app/Views/home/banda_home_page.dart';
 import 'package:givt_mobile_app/Views/home/coupon_homepage.dart';
 import 'package:givt_mobile_app/Views/home/firebase_messaging.dart';
+import 'package:givt_mobile_app/Views/home/viewall.dart';
 import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
 import 'package:givt_mobile_app/Views/newsRoom/allnews.dart';
 import 'package:givt_mobile_app/Views/screenListView/aboutHEI.dart';
@@ -50,8 +51,7 @@ import 'package:givt_mobile_app/Views/ReportsPage/report_provider.dart';
 // Ensure that 'myPage_routes.dart' defines a class named 'MyPageRoutes' with a static 'routes' property.
 import 'package:givt_mobile_app/Views/home/home_providers.dart';
 import 'package:givt_mobile_app/Views/home/home.dart';
-import 'package:givt_mobile_app/Views/home/task_page.dart';
-import 'package:givt_mobile_app/Views/home/tasklist_page.dart';
+
 import 'package:givt_mobile_app/Views/loginpage/login_page.dart';
 import 'package:givt_mobile_app/Views/signUpPage/signup_page.dart';
 import 'package:givt_mobile_app/Views/splash/splash_provider.dart';
@@ -118,8 +118,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const MyHome(),
         '/otpPage': (context) => OtpPage(),
-        '/task': (context) => TaskPage(),
-        '/CreateTaskList': (context) => CreateTaskList(),
+
         '/loginpage': (context) => LoginPage(),
         '/profilepage': (context) => Profilepage(),
         '/forgotpage': (context) => ForgotPage(),
@@ -156,6 +155,7 @@ class MyApp extends StatelessWidget {
         '/departmentListDetailScreen': (context) =>
             Departmentlistdetailscreen(),
         '/facultyListDetailScreen': (context) => Facultylistdetailscreen(),
+        '/viewall': (context) => DynamicViewAllPage(),
       },
     );
   }

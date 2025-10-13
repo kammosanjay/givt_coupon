@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyColors {
   static const Color primaryColor = Color(0xFFE00024);
-  static const Color secondaryColor = Color.fromRGBO(241, 218, 221, 1);
+  static const Color secondaryColor = Color.fromRGBO(243, 233, 234, 1);
   static const Color backgroundColor = Color(0xFFFFFFFF);
   static const Color textColor = Color(0xFF1B1717);
   static const Color errorColor = Color(0xFFB00020);

@@ -1,5 +1,6 @@
 // route_provider.dart
 import 'package:flutter/material.dart';
+import 'package:givt_mobile_app/Views/home/home.dart';
 
 class RouteProvider with ChangeNotifier {
   String _currentRoute = '/';
@@ -30,5 +31,11 @@ class RouteProvider with ChangeNotifier {
     Navigator.pop(context);
   }
 
-
+  Future<dynamic> navigate(BuildContext context, Widget classname) {
+    return Navigator.push(
+      context,
+      
+      MaterialPageRoute(builder: (context) => classname,),
+    );
+  }
 }
