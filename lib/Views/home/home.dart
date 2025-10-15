@@ -20,8 +20,10 @@ import 'package:givt_mobile_app/constant/appColor.dart';
 import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:givt_mobile_app/Views/language/language.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
+
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 // ignore: depend_on_referenced_packages
 
@@ -41,7 +43,7 @@ class _MyHomeState extends State<MyHome> {
     CouponHomepage(),
     InboxScreen(),
     Library(),
-    Profilepage(),
+    AppSettingsPage(),
   ];
 
   @override
@@ -101,7 +103,7 @@ class _MyHomeState extends State<MyHome> {
     "assets/svgImages/mode.svg",
     "assets/svgImages/policy.svg",
   ];
-  List<String> menuTitles = ["Home", "Survey", "wallet", "Settings", "Logout"];
+  List<String> menuTitles = ["Home", "Survey", "Wallet", "Settings", "Logout"];
   final Map<String, String> menuRoutes = {
     'Home': 'Id Card',
     'Survey': 'Academic',
@@ -120,37 +122,36 @@ class _MyHomeState extends State<MyHome> {
 
     'assets/svgImages/LogOut.svg',
   ];
+
   Widget drawerLitTile({
     required String title,
     required String icon,
     VoidCallback? ontap,
   }) {
-    return ListTile(
-      title: Row(
-        spacing: 40,
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SvgPicture.asset(icon, color: AppColor.headingColor(context)),
-          Text(
-            title,
-            style: GoogleFonts.openSans(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: AppColor.textColor(context),
-            ),
+    final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
+    return Container(
+      color: isDarkEnabled ? Colors.white : MyColors.secondaryColor,
+      child: ListTile(
+        title: Text(
+          title,
+          style: GoogleFonts.lora(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: MyColors.bodyTextColor,
           ),
-        ],
+        ),
+        trailing: SvgPicture.asset(icon, color: MyColors.textColor),
+        tileColor: AppColor.backgroundColor(context),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        onTap: ontap, // ✅ use the callback correctly
       ),
-      tileColor: AppColor.backgroundColor(context),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      onTap: ontap, // ✅ use the callback correctly
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final appLoc = AppLocalizations.of(context)!;
+    final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
 
     print("build");
     return GestureDetector(
@@ -239,13 +240,11 @@ class _MyHomeState extends State<MyHome> {
               return Drawer(
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.transparent,
+                    color: isDarkEnabled ? Colors.white : Colors.transparent,
                   ),
                   borderRadius: BorderRadius.circular(5),
                 ),
-                backgroundColor: Colors.grey,
+                backgroundColor: isDarkEnabled ? Colors.black : Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -257,7 +256,7 @@ class _MyHomeState extends State<MyHome> {
                           width: double.infinity,
                           height: 180, // adjust height as you want
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.surface,
+                            color: AppColor.primaryColor(context),
                           ),
                           child: Stack(
                             children: [
@@ -411,40 +410,146 @@ class _MyHomeState extends State<MyHome> {
                                   if (title == "Logout") {
                                     // 🔥 check title instead of route
                                     Navigator.pop(context);
+
                                     showDialog(
                                       context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title: Text("Confirm Logout"),
-                                          content: Text(
-                                            "Are you sure you want to logout?",
-                                          ),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                              child: Text("Cancel"),
+                                      builder: (context) => Dialog(
+                                        backgroundColor: Colors
+                                            .transparent, // So the gradient is visible
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              10,
                                             ),
-                                            TextButton(
-                                              onPressed: () {
-                                                // perform logout logic here
-                                                Navigator.pop(context);
-                                                context
-                                                    .read<LoginProvider>()
-                                                    .logout();
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                    Brightness.dark
+                                                ? Colors.red
+                                                : MyColors.secondaryColor,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: MyColors.backgroundColor,
+                                                // color: Colors. grey,
+                                                offset: Offset(-10, -10),
+                                                blurRadius: 30,
 
-                                                context
-                                                    .read<RouteProvider>()
-                                                    .navigateReplace(
-                                                      '/loginpage',
-                                                      context,
-                                                    );
-                                              },
-                                              child: Text("Logout"),
+                                                inset: false,
+                                              ),
+                                              BoxShadow(
+                                                color: MyColors.textColor,
+                                                offset: Offset(10, 10),
+                                                blurRadius: 30,
+
+                                                inset: true,
+                                              ),
+                                            ],
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(16.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  "Confirm Logout",
+                                                  style: GoogleFonts.lora(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w900,
+                                                    color:
+                                                        Theme.of(
+                                                              context,
+                                                            ).brightness ==
+                                                            Brightness.dark
+                                                        ? Colors.white
+                                                        : MyColors.textColor,
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 16),
+                                                Text(
+                                                  "Are you sure you want to logout?",
+                                                  style: GoogleFonts.lora(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w900,
+                                                    color:
+                                                        Theme.of(
+                                                              context,
+                                                            ).brightness ==
+                                                            Brightness.dark
+                                                        ? Colors.white
+                                                        : MyColors.textColor,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                                const SizedBox(height: 24),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                            context,
+                                                          ),
+                                                      child: Text(
+                                                        "Cancel",
+                                                        style: GoogleFonts.lora(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w900,
+                                                          color:
+                                                              Theme.of(
+                                                                    context,
+                                                                  ).brightness ==
+                                                                  Brightness
+                                                                      .dark
+                                                              ? Colors.white
+                                                              : MyColors
+                                                                    .textColor,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        context
+                                                            .read<
+                                                              LoginProvider
+                                                            >()
+                                                            .logout();
+                                                        context
+                                                            .read<
+                                                              RouteProvider
+                                                            >()
+                                                            .navigateReplace(
+                                                              '/loginpage',
+                                                              context,
+                                                            );
+                                                      },
+                                                      child: Text(
+                                                        "Logout",
+                                                        style: GoogleFonts.lora(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w900,
+                                                          color:
+                                                              Theme.of(
+                                                                    context,
+                                                                  ).brightness ==
+                                                                  Brightness
+                                                                      .dark
+                                                              ? Colors.white
+                                                              : MyColors
+                                                                    .textColor,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        );
-                                      },
+                                          ),
+                                        ),
+                                      ),
                                     );
                                   } else if (route != null) {
                                     context.read<RouteProvider>().navigateTo(
@@ -521,7 +626,7 @@ class _MyHomeState extends State<MyHome> {
                     ),
                     prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
                     hintText: appLoc.search,
-                    hintStyle: GoogleFonts.openSans(
+                    hintStyle: GoogleFonts.lora(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: Colors.grey.shade400,
@@ -561,10 +666,7 @@ class _MyHomeState extends State<MyHome> {
                             fit: BoxFit.contain,
                             height: 20,
                             width: 20,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
+                            color: isDarkEnabled ? Colors.white : Colors.black,
                           ),
                         );
                       }).toList(),
@@ -589,19 +691,27 @@ class _MyHomeState extends State<MyHome> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        backgroundColor:
-                            Theme.of(context).brightness == Brightness.dark
+                        backgroundColor: isDarkEnabled
                             ? Colors.white
-                            : AppColor.primaryColor(context),
-                        title: const Text("Language"),
+                            : MyColors.secondaryColor,
+                        title: Text(
+                          "Language",
+                          style: GoogleFonts.lora(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: MyColors.bodyTextColor,
+                          ),
+                        ),
                         content: DropdownButton<String>(
                           alignment: Alignment(0, 10),
                           autofocus: true,
-                          dropdownColor:
-                              Theme.of(context).brightness == Brightness.dark
+                          dropdownColor: isDarkEnabled
                               ? Colors.white
                               : MyColors.secondaryColor,
-                          icon: Icon(Icons.language_outlined),
+                          icon: Icon(
+                            Icons.language_outlined,
+                            color: MyColors.primaryColor,
+                          ),
 
                           menuWidth: 120.0,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -613,7 +723,14 @@ class _MyHomeState extends State<MyHome> {
                               .map(
                                 (e) => DropdownMenuItem<String>(
                                   value: e['locale'],
-                                  child: Text(e['name']),
+                                  child: Text(
+                                    e['name'],
+                                    style: GoogleFonts.lora(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: MyColors.bodyTextColor,
+                                    ),
+                                  ),
                                 ),
                               )
                               .toList(),
@@ -634,10 +751,7 @@ class _MyHomeState extends State<MyHome> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                                 color:
-                                    Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? AppColor.textColor(context)
-                                    : MyColors.textColor,
+                                    MyColors.primaryColor,
                               ),
                             ),
                           ),
@@ -662,7 +776,9 @@ class _MyHomeState extends State<MyHome> {
                     'assets/svgImages/lang.svg',
                     height: 20,
                     width: 20,
-                    color: AppColor.headingColor(context),
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : MyColors.textColor,
                   ),
                 ),
               ),

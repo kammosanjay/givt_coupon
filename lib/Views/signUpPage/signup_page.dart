@@ -59,6 +59,7 @@ class _SignupPageState extends State<SignupPage>
   @override
   Widget build(BuildContext context) {
     final appLoc = AppLocalizations.of(context)!;
+    final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -83,7 +84,9 @@ class _SignupPageState extends State<SignupPage>
                     style: GoogleFonts.lora(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: MyColors.primaryColor,
+                      color: isDarkEnabled
+                          ? Colors.white
+                          : MyColors.primaryColor,
                     ),
                   ),
                 ),
@@ -137,8 +140,8 @@ class _SignupPageState extends State<SignupPage>
                         "Sign Up",
                         style: GoogleFonts.lora(
                           fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                          color: AppColor.textColor(context),
+                          fontWeight: FontWeight.w900,
+                          color: MyColors.bodyTextColor,
                         ),
                       ),
                     ),
@@ -149,7 +152,7 @@ class _SignupPageState extends State<SignupPage>
                         style: GoogleFonts.lora(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: AppColor.textColor(context),
+                          color: MyColors.bodyTextColor,
                         ),
                       ),
                     ),
@@ -159,7 +162,7 @@ class _SignupPageState extends State<SignupPage>
                       hintfontSize: 14,
                       label: 'Email',
                       fontwgt: FontWeight.w600,
-                      headingcolor: AppColor.textColor(context),
+                      headingcolor: MyColors.bodyTextColor,
                       hint: 'Enter your email',
                       validate: (value) {
                         if (value == null || value.isEmpty) {
@@ -171,7 +174,7 @@ class _SignupPageState extends State<SignupPage>
                         }
                         return null;
                       },
-                      hintColor: Theme.of(context).colorScheme.secondary,
+                      hintColor: MyColors.bodyTextColor,
                       controller: phoneEmaiController,
                       keyboardtype: TextInputType.emailAddress,
                       icon: Image(
@@ -187,7 +190,7 @@ class _SignupPageState extends State<SignupPage>
                       child: Text(
                         "Gender",
                         style: GoogleFonts.lora(
-                          color: MyColors.textColor,
+                          color: MyColors.bodyTextColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -206,7 +209,7 @@ class _SignupPageState extends State<SignupPage>
                         // Handle selection change
                       },
                     ),
-                   
+
                     SizedBox(height: 20),
                     CustomWidgets.customTextFeild(
                       context: context,
@@ -214,8 +217,8 @@ class _SignupPageState extends State<SignupPage>
                       label: 'Date of Birth',
                       hint: 'Select your date of birth',
                       hintfontSize: 14,
-                      hintColor: Theme.of(context).colorScheme.secondary,
-                      headingcolor: AppColor.textColor(context),
+                      hintColor: MyColors.bodyTextColor,
+                      headingcolor: MyColors.bodyTextColor,
                       // Remove password-specific params like 'isObstructed' and 'suffIcons'
                       icon: Image(
                         image: AssetImage(
@@ -293,7 +296,7 @@ class _SignupPageState extends State<SignupPage>
                         text: TextSpan(
                           text: "Already have an Account !",
                           style: GoogleFonts.lora(
-                            color: MyColors.textColor,
+                            color: MyColors.bodyTextColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                           ),

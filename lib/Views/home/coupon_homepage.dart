@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
 import 'package:givt_mobile_app/Views/home/viewall.dart';
@@ -10,7 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Image;
 
 class CouponHomepage extends StatefulWidget {
   const CouponHomepage({super.key});
@@ -26,31 +27,35 @@ class _CouponHomepageState extends State<CouponHomepage> {
     'Thankyou',
     'Celebration',
     'Friday',
+    'Birthday',
+    'Festivals',
 
     // 'Library',
   ];
   final List<String> imageList = [
-    'assets/svgImages/homescreenSvg/0.svg',
-    'assets/svgImages/homescreenSvg/1.svg',
-    'assets/svgImages/homescreenSvg/1.svg',
-    'assets/svgImages/homescreenSvg/3.svg',
-    // 'assets/svgImages/homescreenSvg/4.svg',
-    'assets/svgImages/homescreenSvg/5.svg',
-    'assets/svgImages/homescreenSvg/6.svg',
-    'assets/svgImages/homescreenSvg/7.svg',
-    'assets/svgImages/homescreenSvg/8.svg',
-    'assets/svgImages/homescreenSvg/9.svg',
-    'assets/svgImages/homescreenSvg/10.svg',
-    'assets/svgImages/homescreenSvg/10.svg',
-    'assets/svgImages/homescreenSvg/12.svg',
-    'assets/svgImages/homescreenSvg/13.svg',
-    'assets/svgImages/homescreenSvg/13.svg',
-    'assets/svgImages/homescreenSvg/15.svg',
-    'assets/svgImages/homescreenSvg/16.svg',
+    'assets/images/Group 149.png',
+    'assets/images/Group 150.png',
+    'assets/images/Group 152.png',
+    'assets/images/Group 153.png',
+    'assets/images/Group 155.png',
+    'assets/images/Group 156.png',
+    'assets/images/Group 12.png',
+    'assets/images/Rectangle 32.png',
+    'assets/images/Rectangle 33.png',
+  ];
+  final List<String> imageList2 = [
+    'assets/images/c1.png',
+    'assets/images/c2.png',
+    'assets/images/c3.png',
+    'assets/images/c4.png',
+    'assets/images/c5.png',
+    'assets/images/c6.png',
+    'assets/images/c7.png',
   ];
 
-  Widget listOfContainers(int? number) {
-    if (number! > 4) {
+  Widget listOfContainers(List<String>? myImages) {
+    final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
+    if (myImages!.length > 4) {
       return Column(
         children: [
           Row(
@@ -61,8 +66,8 @@ class _CouponHomepageState extends State<CouponHomepage> {
                 "Celebration",
                 style: GoogleFonts.lora(
                   fontSize: 14,
-                  fontWeight: FontWeight.w900,
-                  color: MyColors.textColor,
+                  fontWeight: FontWeight.w600,
+                  color: isDarkEnabled ? Colors.white : MyColors.bodyTextColor,
                 ),
               ),
               TextButton(
@@ -73,25 +78,38 @@ class _CouponHomepageState extends State<CouponHomepage> {
                     arguments: 'Celebration',
                   );
                 },
-                child: Text("ViewAll ${number.toString()}"),
+                child: Text(
+                  "ViewAll ${myImages.length.toString()}",
+                  style: GoogleFonts.lora(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: isDarkEnabled
+                        ? Colors.white
+                        : MyColors.bodyTextColor,
+                  ),
+                ),
               ),
             ],
           ),
           SizedBox(
             height: 120,
+
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 4,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: MyColors.secondaryColor,
+                      color: MyColors.primaryColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    width: 200,
-                    child: Text(index.toString()),
+                    // width: 250,
+                    child: ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(10),
+                      child: Image.asset(myImages[index], fit: BoxFit.fill),
+                    ),
                   ),
                 );
               },
@@ -110,8 +128,8 @@ class _CouponHomepageState extends State<CouponHomepage> {
                 "Celebration",
                 style: GoogleFonts.lora(
                   fontSize: 14,
-                  fontWeight: FontWeight.w900,
-                  color: MyColors.textColor,
+                  fontWeight: FontWeight.w600,
+                  color: isDarkEnabled ? Colors.white : MyColors.bodyTextColor,
                 ),
               ),
               TextButton(
@@ -122,7 +140,16 @@ class _CouponHomepageState extends State<CouponHomepage> {
                     arguments: 'Celebration',
                   );
                 },
-                child: Text("ViewAll"),
+                child: Text(
+                  "ViewAll",
+                  style: GoogleFonts.lora(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: isDarkEnabled
+                        ? Colors.white
+                        : MyColors.bodyTextColor,
+                  ),
+                ),
               ),
             ],
           ),
@@ -130,17 +157,19 @@ class _CouponHomepageState extends State<CouponHomepage> {
             height: 120,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: number,
+              itemCount: myImages.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: MyColors.secondaryColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    width: 200,
-                    child: Text(index.toString()),
+                    // width: 200,
+                    child: ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(10),
+                      child: Image.asset(myImages[index], fit: BoxFit.fill)),
                   ),
                 );
               },
@@ -153,268 +182,309 @@ class _CouponHomepageState extends State<CouponHomepage> {
 
   @override
   Widget build(BuildContext context) {
-    final random = RandomGenerator(seed: 63833423);
-    final faker = Faker.withGenerator(random);
-    print(faker.animal.name());
+  
+   
 
     final appLoc = AppLocalizations.of(context)!;
     double itemHeight =
         (MediaQuery.of(context).size.height - kToolbarHeight - 24);
+    final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 40,
-                child: ListView.builder(
-                  itemCount: drawerMenuItems.length,
-                  shrinkWrap: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 40,
+                  child: ListView.builder(
+                    itemCount: drawerMenuItems.length,
+                    shrinkWrap: true,
 
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    var isSelected = selectedIndex == index;
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                        var route = drawerMenuItems[index];
-                        context.read<RouteProvider>().navigateTo(
-                          route,
-                          context,
-                          arguments: route,
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.red,
-                            boxShadow: [
-                              BoxShadow(
-                                color: MyColors.backgroundColor,
-                                // color: Colors. grey,
-                                offset: Offset(-10, -10),
-                                blurRadius: 30,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      var isSelected = selectedIndex == index;
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                          var route = drawerMenuItems[index];
+                          context.read<RouteProvider>().navigateTo(
+                            route,
+                            context,
+                            arguments: route,
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.red,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: MyColors.backgroundColor,
+                                  // color: Colors. grey,
+                                  offset: Offset(-10, -10),
+                                  blurRadius: 30,
 
-                                inset: false,
-                              ),
-                              BoxShadow(
-                                color: MyColors.textColor,
-                                offset: Offset(10, 10),
-                                blurRadius: 30,
+                                  inset: false,
+                                ),
+                                BoxShadow(
+                                  color: MyColors.textColor,
+                                  offset: Offset(10, 10),
+                                  blurRadius: 30,
 
-                                inset: true,
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: Text(
-                                drawerMenuItems[index],
-                                textAlign: TextAlign.center,
-                                maxLines: 2,
-                                style: GoogleFonts.lora(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w900,
-                                  color: isSelected
-                                      ? Colors.amber
-                                      : Colors.white,
+                                  inset: true,
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  drawerMenuItems[index],
+                                  textAlign: TextAlign.center,
+                                  maxLines: 2,
+                                  style: GoogleFonts.lora(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w900,
+                                    color: isSelected
+                                        ? Colors.amber
+                                        : Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              ),
-              CustomWidgets.gap_10,
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   mainAxisSize: MainAxisSize.max,
-              //   children: [
-              //     Text(
-              //       "Celebration",
-              //       style: GoogleFonts.lora(
-              //         fontSize: 14,
-              //         fontWeight: FontWeight.w900,
-              //         color: MyColors.textColor,
-              //       ),
-              //     ),
-              //     TextButton(
-              //       onPressed: () {
-              //         context.read<RouteProvider>().navigateTo(
-              //           '/viewall',
-              //           context,
-              //           arguments: 'Celebration',
-              //         );
-              //       },
-              //       child: Text("ViewAll"),
-              //     ),
-              //   ],
-              // ),
+                CustomWidgets.gap_10,
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   mainAxisSize: MainAxisSize.max,
+                //   children: [
+                //     Text(
+                //       "Celebration",
+                //       style: GoogleFonts.lora(
+                //         fontSize: 14,
+                //         fontWeight: FontWeight.w900,
+                //         color: MyColors.textColor,
+                //       ),
+                //     ),
+                //     TextButton(
+                //       onPressed: () {
+                //         context.read<RouteProvider>().navigateTo(
+                //           '/viewall',
+                //           context,
+                //           arguments: 'Celebration',
+                //         );
+                //       },
+                //       child: Text("ViewAll"),
+                //     ),
+                //   ],
+                // ),
 
-              // SizedBox(
-              //   height: 120,
-              //   child: ListView.builder(
-              //     scrollDirection: Axis.horizontal,
-              //     itemCount: 10,
-              //     itemBuilder: (context, index) {
-              //       return Padding(
-              //         padding: const EdgeInsets.all(8.0),
-              //         child: Container(
-              //           decoration: BoxDecoration(
-              //             color: MyColors.secondaryColor,
-              //             borderRadius: BorderRadius.circular(20),
-              //           ),
-              //           width: 200,
-              //           child: Text(index.toString()),
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
-              listOfContainers(5),
-              CustomWidgets.gap_10,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Thankyou',
-                    style: GoogleFonts.lora(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w900,
-                      color: MyColors.textColor,
+                // SizedBox(
+                //   height: 120,
+                //   child: ListView.builder(
+                //     scrollDirection: Axis.horizontal,
+                //     itemCount: 10,
+                //     itemBuilder: (context, index) {
+                //       return Padding(
+                //         padding: const EdgeInsets.all(8.0),
+                //         child: Container(
+                //           decoration: BoxDecoration(
+                //             color: MyColors.secondaryColor,
+                //             borderRadius: BorderRadius.circular(20),
+                //           ),
+                //           width: 200,
+                //           child: Text(index.toString()),
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
+                listOfContainers(imageList2),
+                CustomWidgets.gap_10,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Thankyou',
+                      style: GoogleFonts.lora(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: isDarkEnabled
+                            ? Colors.white
+                            : MyColors.bodyTextColor,
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      context.read<RouteProvider>().navigateTo(
-                        '/viewall',
-                        context,
-                        arguments: 'Thankyou',
+                    TextButton(
+                      onPressed: () {
+                        context.read<RouteProvider>().navigateTo(
+                          '/viewall',
+                          context,
+                          arguments: 'Thankyou',
+                        );
+                      },
+                      child: Text(
+                        "ViewAll",
+                        style: GoogleFonts.lora(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isDarkEnabled
+                              ? Colors.white
+                              : MyColors.bodyTextColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 120,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: imageList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Image.asset(
+                          imageList[index],
+                          fit: BoxFit.cover, // Adjust fit as needed
+                          // Adjust height as needed
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(Icons.error);
+                          },
+                        ),
                       );
                     },
-                    child: Text("ViewAll"),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 120,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: MyColors.secondaryColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        width: 250,
-                        child: Text(index.toString()),
-                      ),
-                    );
-                  },
                 ),
-              ),
-              CustomWidgets.gap_10,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Appreciation',
-                    style: GoogleFonts.lora(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w900,
-                      color: MyColors.textColor,
+                CustomWidgets.gap_10,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Appreciation',
+                      style: GoogleFonts.lora(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: isDarkEnabled
+                            ? Colors.white
+                            : MyColors.bodyTextColor,
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      context.read<RouteProvider>().navigateTo(
-                        '/viewall',
-                        context,
-                        arguments: 'Appreciation',
+                    TextButton(
+                      onPressed: () {
+                        context.read<RouteProvider>().navigateTo(
+                          '/viewall',
+                          context,
+                          arguments: 'Appreciation',
+                        );
+                      },
+                      child: Text(
+                        "ViewAll",
+                        style: GoogleFonts.lora(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isDarkEnabled
+                              ? Colors.white
+                              : MyColors.bodyTextColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 120,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: imageList2.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: MyColors.secondaryColor,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          // width: 250,
+                          child: ClipRRect(borderRadius: BorderRadiusGeometry.circular(10),
+                            child: Image.asset(
+                              imageList2[index],
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
                       );
                     },
-                    child: Text("ViewAll"),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 120,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: MyColors.secondaryColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        width: 250,
-                        child: Text(index.toString()),
-                      ),
-                    );
-                  },
                 ),
-              ),
-              CustomWidgets.gap_10,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Birthday',
-                    style: GoogleFonts.lora(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w900,
-                      color: MyColors.textColor,
+                CustomWidgets.gap_10,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Birthday',
+                      style: GoogleFonts.lora(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: isDarkEnabled
+                            ? Colors.white
+                            : MyColors.bodyTextColor,
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      context.read<RouteProvider>().navigateTo(
-                        '/viewall',
-                        context,
-                        arguments: 'Birthday',
+                    TextButton(
+                      onPressed: () {
+                        context.read<RouteProvider>().navigateTo(
+                          '/viewall',
+                          context,
+                          arguments: 'Birthday',
+                        );
+                      },
+                      child: Text(
+                        "ViewAll",
+                        style: GoogleFonts.lora(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isDarkEnabled
+                              ? Colors.white
+                              : MyColors.bodyTextColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 120,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: imageList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Image.asset(
+                          imageList[index],
+                          fit: BoxFit.cover, // Adjust fit as needed
+                          // Adjust height as needed
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(Icons.error);
+                          },
+                        ),
                       );
                     },
-                    child: Text("ViewAll"),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 120,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: MyColors.secondaryColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        width: 250,
-                        child: Text(index.toString()),
-                      ),
-                    );
-                  },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

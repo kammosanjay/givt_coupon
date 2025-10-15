@@ -60,17 +60,11 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final appLoc = AppLocalizations.of(context)!;
-    // passController.text = context.watch()<LoginProvider>().isRememberMeChecked
-    //     ? context.watch<LoginProvider>().storedPassword ?? ''
-    //     : passController.text;
-    // phoneEmaiController.text =
-    //     context.watch<LoginProvider>().isRememberMeChecked
-    //     ? context.watch<LoginProvider>().storedEmail ?? ''
-    //     : phoneEmaiController.text;
+    final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
 
     return Scaffold(
       // backgroundColor: Colors.grey.shade100,
-      // backgroundColor: Colors.white,
+      // backgroundColor: Colors.pinkAccent,
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Column(
@@ -87,10 +81,13 @@ class _LoginPageState extends State<LoginPage>
                   duration: const Duration(seconds: 1),
                   child: Text(
                     "Givt, more than just a gift",
+
                     style: GoogleFonts.lora(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: MyColors.primaryColor,
+                      color: isDarkEnabled
+                          ? Colors.white
+                          : MyColors.primaryColor,
                     ),
                   ),
                 ),
@@ -153,8 +150,8 @@ class _LoginPageState extends State<LoginPage>
                       'Login/SignUp',
                       style: GoogleFonts.lora(
                         fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: MyColors.textColor,
+                        fontWeight: FontWeight.w900,
+                        color: MyColors.bodyTextColor,
                       ),
                     ),
                   ),
@@ -166,7 +163,7 @@ class _LoginPageState extends State<LoginPage>
                       style: GoogleFonts.lora(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
-                        color: MyColors.textColor,
+                        color: MyColors.bodyTextColor,
                       ),
                     ),
                   ),
@@ -180,10 +177,10 @@ class _LoginPageState extends State<LoginPage>
 
                         hintfontWeight: FontWeight.normal,
                         fontwgt: FontWeight.w600,
-                        headingcolor: AppColor.textColor(context),
+                        headingcolor: MyColors.bodyTextColor,
                         hint: 'Enter your mobile number',
 
-                        hintColor: Theme.of(context).colorScheme.secondary,
+                        hintColor: MyColors.bodyTextColor,
                         controller: phoneEmaiController,
                         keyboardtype: TextInputType.emailAddress,
                         icon: Image(

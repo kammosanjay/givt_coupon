@@ -120,7 +120,7 @@ class MyApp extends StatelessWidget {
         '/otpPage': (context) => OtpPage(),
 
         '/loginpage': (context) => LoginPage(),
-        '/profilepage': (context) => Profilepage(),
+        '/profilepage': (context) => AppSettingsPage(),
         '/forgotpage': (context) => ForgotPage(),
         '/forgotpagetwo': (context) => ForgotPassReset(),
         '/signUpPage': (context) => SignupPage(),
@@ -147,7 +147,7 @@ class MyApp extends StatelessWidget {
         'Grievence': (context) => Grievence(),
         'Update Phone Number': (context) => Updatephone(),
         'Update Email': (context) => UpdateEmail(),
-        'profile': (context) => Profilepage(),
+        'profile': (context) => AppSettingsPage(),
         'Library': (context) => Library(),
         '/bandaHomePage': (context) => BandaHomePage(),
         'couponhomepage': (context) => CouponHomepage(),

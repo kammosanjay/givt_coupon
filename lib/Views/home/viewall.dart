@@ -41,7 +41,7 @@ class _DynamicViewAllPageState extends State<DynamicViewAllPage> {
     final myArgs = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: Text(myArgs.toString())),
-      body: StreamBuilder<int>(
+      body: StreamBuilder<int>(  
         stream: controller.stream,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

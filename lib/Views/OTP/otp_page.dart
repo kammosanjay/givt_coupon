@@ -51,6 +51,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
     final appLoc = AppLocalizations.of(context)!;
     final from = ModalRoute.of(context)!.settings.arguments as String;
     print("testing==>${from}");
+    final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
 
     return Scaffold(
       // backgroundColor: Colors.grey.shade100,
@@ -74,7 +75,9 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                     style: GoogleFonts.lora(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: MyColors.primaryColor,
+                      color: isDarkEnabled
+                          ? Colors.white
+                          : MyColors.primaryColor,
                     ),
                   ),
                 ),
@@ -123,8 +126,8 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                     'Creating a 6-digit PIN',
                     style: GoogleFonts.lora(
                       fontSize: 25,
-                      fontWeight: FontWeight.w600,
-                      color: AppColor.textColor(context),
+                      fontWeight: FontWeight.w900,
+                      color:MyColors.bodyTextColor,
                     ),
                   ),
                   Text(
@@ -132,7 +135,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                     style: GoogleFonts.lora(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: AppColor.textColor(context),
+                      color: MyColors.bodyTextColor,
                     ),
                   ),
 
@@ -176,7 +179,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                     style: GoogleFonts.lora(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
-                      color: AppColor.textColor(context),
+                      color:MyColors.bodyTextColor,
                     ),
                   ),
                   SizedBox(height: 20),
@@ -218,7 +221,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                       text: TextSpan(
                         text: "Don't Received OTP ? ",
                         style: GoogleFonts.lora(
-                          color: AppColor.textColor(context),
+                          color: MyColors.bodyTextColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
@@ -226,7 +229,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                           TextSpan(
                             text: 'Resend',
                             style: GoogleFonts.lora(
-                              color: AppColor.errorColor(context),
+                              color:MyColors.primaryColor,
                               fontWeight: FontWeight.w900,
                               fontSize: 16,
                             ),
