@@ -37,6 +37,7 @@ import 'package:givt_mobile_app/Views/screenListView/information.dart';
 import 'package:givt_mobile_app/Views/screenListView/research.dart';
 import 'package:givt_mobile_app/Views/screenListView/studentCareer.dart';
 import 'package:givt_mobile_app/Views/screenListView/updatephone.dart';
+import 'package:givt_mobile_app/Views/signUpPage/signup_provider.dart';
 
 import 'package:givt_mobile_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -76,6 +77,8 @@ void main() async {
       providers: [
         ChangeNotifierProvider<Language>(create: (_) => Language()),
         ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider<SignupProvider>(create: (_) => SignupProvider()),
+        
         ChangeNotifierProvider<SplashProvider>(create: (_) => SplashProvider()),
         ChangeNotifierProvider<HomeProviders>(create: (_) => HomeProviders()),
         ChangeNotifierProvider<RouteProvider>(create: (_) => RouteProvider()),

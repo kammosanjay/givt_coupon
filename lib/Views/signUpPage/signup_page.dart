@@ -1,5 +1,6 @@
 import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
 import 'package:givt_mobile_app/Views/loginpage/login_provider.dart';
+import 'package:givt_mobile_app/Views/signUpPage/signup_provider.dart';
 
 import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,9 @@ class _SignupPageState extends State<SignupPage>
     with SingleTickerProviderStateMixin {
   bool isShown = true;
 
-  TextEditingController phoneEmaiController = TextEditingController();
-  TextEditingController fullNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   DateTime? selectedDate;
   final TextEditingController dobController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -68,7 +70,7 @@ class _SignupPageState extends State<SignupPage>
       child: Scaffold(
         // backgroundColor: Colors.grey.shade100,
         resizeToAvoidBottomInset: true,
-        body: ListView(
+        body: Column(
           // mainAxisAlignment: MainAxisAlignment.center,s
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -111,7 +113,7 @@ class _SignupPageState extends State<SignupPage>
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 margin: EdgeInsets.symmetric(horizontal: 15),
-                height: MediaQuery.of(context).size.height * 0.72,
+                height: MediaQuery.of(context).size.height * 0.8,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -130,8 +132,8 @@ class _SignupPageState extends State<SignupPage>
                     ),
                   ],
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: ListView(
+                  // mainAxisAlignment: MainAxisAlignment.center,
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
@@ -160,6 +162,30 @@ class _SignupPageState extends State<SignupPage>
                     CustomWidgets.customTextFeild(
                       context: context,
                       hintfontSize: 14,
+                      label: 'Name',
+                      fontwgt: FontWeight.w600,
+                      headingcolor: MyColors.bodyTextColor,
+                      hint: 'Enter your Name',
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your Name';
+                        }
+                        // Simple email validation
+                      },
+                      hintColor: MyColors.bodyTextColor,
+                      controller: nameController,
+                      keyboardtype: TextInputType.text,
+                      icon: Image(
+                        image: AssetImage('assets/images/person.png'),
+                        height: 14,
+                        width: 18,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+
+                    CustomWidgets.customTextFeild(
+                      context: context,
+                      hintfontSize: 14,
                       label: 'Email',
                       fontwgt: FontWeight.w600,
                       headingcolor: MyColors.bodyTextColor,
@@ -175,10 +201,34 @@ class _SignupPageState extends State<SignupPage>
                         return null;
                       },
                       hintColor: MyColors.bodyTextColor,
-                      controller: phoneEmaiController,
+                      controller: emailController,
                       keyboardtype: TextInputType.emailAddress,
                       icon: Image(
                         image: AssetImage('assets/images/email.png'),
+                        height: 14,
+                        width: 18,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+
+                    CustomWidgets.customTextFeild(
+                      context: context,
+                      hintfontSize: 14,
+                      label: 'Mobile',
+                      fontwgt: FontWeight.w600,
+                      headingcolor: MyColors.bodyTextColor,
+                      hint: 'Enter your mobile',
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your mobile';
+                        }
+                        // Simple email validation
+                      },
+                      hintColor: MyColors.bodyTextColor,
+                      controller: phoneController,
+                      keyboardtype: TextInputType.emailAddress,
+                      icon: Image(
+                        image: AssetImage('assets/images/mobile.png'),
                         height: 14,
                         width: 18,
                       ),
@@ -254,24 +304,23 @@ class _SignupPageState extends State<SignupPage>
                         }
                       },
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 30),
                     CustomWidgets.customButton(
                       context: context,
                       height: 60,
                       buttonName: 'Continue',
                       onPressed: () {
-                        final name = fullNameController.text.trim();
-                        final email = phoneEmaiController.text.trim();
+                        final name = nameController.text.trim();
+                        final email = emailController.text.trim();
+                        final phone = phoneController.text.trim();
                         // final password = passController.text.trim();
                         // if (!_formKey.currentState!.validate()) {
                         //   return "required";
                         // }
 
-                        context.read<LoginProvider>().saveSignupData(
-                          fullNameController.text,
-
-                          phoneEmaiController.text,
-                          // passController.text,
+                        context.read<SignupProvider>().userSignUP(
+                          email: email,
+                          pass: name,
                         );
                         context.read<RouteProvider>().navigateTo(
                           '/otpPage',
@@ -284,7 +333,7 @@ class _SignupPageState extends State<SignupPage>
                       fontColor: Colors.white,
                       btnColor: MyColors.primaryColor,
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 10),
                     InkWell(
                       onTap: () {
                         Navigator.push(

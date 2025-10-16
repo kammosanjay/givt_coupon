@@ -511,11 +511,11 @@ class _MyHomeState extends State<MyHome> {
                                                     TextButton(
                                                       onPressed: () {
                                                         Navigator.pop(context);
-                                                        context
-                                                            .read<
-                                                              LoginProvider
-                                                            >()
-                                                            .logout();
+                                                        // context
+                                                        //     .read<
+                                                        //       LoginProvider
+                                                        //     >()
+                                                        //     .logout();
                                                         context
                                                             .read<
                                                               RouteProvider

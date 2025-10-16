@@ -1,7 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
+import 'package:givt_mobile_app/Views/OTP/otp_page.dart';
+import 'package:givt_mobile_app/Views/home/home.dart';
 import 'package:givt_mobile_app/Views/loginpage/loginmodal.dart';
+import 'package:http/http.dart' show read;
+
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 
 class LoginProvider extends ChangeNotifier {
   final box = GetStorage();
@@ -15,11 +22,6 @@ class LoginProvider extends ChangeNotifier {
 
   LoginProvider() {
     // Load from storage when provider starts
-    storedEmail = box.read("email");
-    storedPassword = box.read("password");
-    print("Loaded Email: $storedEmail, Password: $storedPassword");
-    isRememberMeChecked = box.read("isRememberMe") ?? false;
-    print("-->${isLoggedIn()}");
   }
 
   /// First-time login: save credentials
@@ -47,7 +49,6 @@ class LoginProvider extends ChangeNotifier {
   /// Validate login against stored credentials
   bool validateLogin(String email) {
     final savedEmail = box.read("email");
-   
 
     return (savedEmail == email);
   }
@@ -95,7 +96,7 @@ class LoginProvider extends ChangeNotifier {
 
   void sendOtp(String phone, BuildContext context) async {
     await _auth.verifyPhoneNumber(
-      phoneNumber: phone,
+      phoneNumber: "+91$phone",
       timeout: const Duration(seconds: 60),
 
       verificationCompleted: (PhoneAuthCredential credential) async {
@@ -112,6 +113,7 @@ class LoginProvider extends ChangeNotifier {
         verificationId = verId; // save for later
         debugPrint("📩 OTP sent to $phone");
         debugPrint("Saved verificationId: $verificationId");
+        context.read<RouteProvider>().navigateTo('/otpPage', context);
       },
 
       codeAutoRetrievalTimeout: (String verId) {
@@ -120,8 +122,9 @@ class LoginProvider extends ChangeNotifier {
     );
   }
 
-  void verifyOtp(String smsCode) async {
+  void verifyOtp(String smsCode, context) async {
     if (verificationId != null) {
+      print(smsCode);
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId!,
         smsCode: smsCode,
@@ -129,6 +132,10 @@ class LoginProvider extends ChangeNotifier {
 
       try {
         await _auth.signInWithCredential(credential);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MyHome()),
+        );
         print("🎉 OTP Verified Successfully, User Logged In");
       } catch (e) {
         print("❌ Invalid OTP: $e");
@@ -136,7 +143,7 @@ class LoginProvider extends ChangeNotifier {
     }
   }
 
-  void saveSignupData(String fullname, String email) {
+  void saveSignupData(String fullname, String email, String phone) {
     box.write("email", email);
     // box.write("password", pass);
     box.write("name", fullname);

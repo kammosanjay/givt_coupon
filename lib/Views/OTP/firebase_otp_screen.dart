@@ -8,16 +8,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 
-class OtpPage extends StatefulWidget {
+class OtpScreenByfirease extends StatefulWidget {
   final String? arguments;
   String? veriId;
-  OtpPage({super.key, this.arguments, this.veriId});
+  OtpScreenByfirease({super.key, this.arguments, this.veriId});
 
   @override
-  State<OtpPage> createState() => _OtpPageState();
+  State<OtpScreenByfirease> createState() => _OtpScreenByfireaseState();
 }
 
-class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
+class _OtpScreenByfireaseState extends State<OtpScreenByfirease>
+    with SingleTickerProviderStateMixin {
   bool isShown = true;
   late AnimationController _controller;
   bool moveLeft = false;
@@ -125,7 +126,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                 children: [
                   SizedBox(height: 30),
                   Text(
-                    'Creating a 6-digit PIN',
+                    'Enter OTP sent on 1234567890 number',
                     style: GoogleFonts.lora(
                       fontSize: 25,
                       fontWeight: FontWeight.w900,

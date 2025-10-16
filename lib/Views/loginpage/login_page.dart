@@ -27,8 +27,7 @@ class _LoginPageState extends State<LoginPage>
   late Animation<Alignment> _animation;
   bool isShown = true;
 
-  TextEditingController passController = TextEditingController();
-  TextEditingController phoneEmaiController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
   bool moveLeft = false;
   bool showText = false;
 
@@ -181,7 +180,7 @@ class _LoginPageState extends State<LoginPage>
                         hint: 'Enter your mobile number',
 
                         hintColor: MyColors.bodyTextColor,
-                        controller: phoneEmaiController,
+                        controller: mobileController,
                         keyboardtype: TextInputType.emailAddress,
                         icon: Image(
                           image: AssetImage('assets/images/mobile.png'),
@@ -330,11 +329,11 @@ class _LoginPageState extends State<LoginPage>
                         onPressed: () {
                           final loginProvider = context.read<LoginProvider>();
 
-                          final email = phoneEmaiController.text.trim();
+                          final mobile = mobileController.text.trim();
                           // final password = passController.text.trim();
 
                           // Check empty fields
-                          if (email.isEmpty) {
+                          if (mobile.isEmpty) {
                             FlutterToastr.show(
                               "Please your mobile number",
                               context,
@@ -344,58 +343,55 @@ class _LoginPageState extends State<LoginPage>
                               textStyle: const TextStyle(color: Colors.white),
                             );
                             return;
+                          } else {
+                            loginProvider.sendOtp(mobile, context);
+                            
                           }
 
                           // First-time login (no saved credentials)
-                          if (!loginProvider.isLoggedIn()) {
-                            loginProvider.login(Loginmodal(email: email));
+                          // if (!loginProvider.isLoggedIn()) {
+                          //   loginProvider.login(Loginmodal(email: mobile));
 
-                            FlutterToastr.show(
-                              "Login Successful (First time)",
-                              context,
-                              duration: FlutterToastr.lengthShort,
-                              position: FlutterToastr.bottom,
-                              backgroundColor: Colors.green,
-                              textStyle: const TextStyle(color: Colors.white),
-                            );
+                          //   FlutterToastr.show(
+                          //     "Login Successful (First time)",
+                          //     context,
+                          //     duration: FlutterToastr.lengthShort,
+                          //     position: FlutterToastr.bottom,
+                          //     backgroundColor: Colors.green,
+                          //     textStyle: const TextStyle(color: Colors.white),
+                          //   );
 
-                            context.read<RouteProvider>().navigateTo(
-                              '/home',
-                              context,
-                            );
-                          } else {
-                            // Returning login → validate
-                            if (loginProvider.validateLogin(email)) {
-                              FlutterToastr.show(
-                                "Login Successful",
-                                context,
-                                duration: FlutterToastr.lengthShort,
-                                position: FlutterToastr.bottom,
-                                backgroundColor: Colors.green,
-                                textStyle: const TextStyle(color: Colors.white),
-                              );
+                          //   context.read<RouteProvider>().navigateTo(
+                          //     '/home',
+                          //     context,
+                          //   );
+                          // } else {
+                          //   // Returning login → validate
+                          //   if (loginProvider.validateLogin(mobile)) {
+                          //     FlutterToastr.show(
+                          //       "Login Successful",
+                          //       context,
+                          //       duration: FlutterToastr.lengthShort,
+                          //       position: FlutterToastr.bottom,
+                          //       backgroundColor: Colors.green,
+                          //       textStyle: const TextStyle(color: Colors.white),
+                          //     );
 
-                              context.read<RouteProvider>().navigateTo(
-                                '/home',
-                                context,
-                              );
-                            } else {
-                              FlutterToastr.show(
-                                "Invalid mobile number",
-                                context,
-                                duration: FlutterToastr.lengthLong,
-                                position: FlutterToastr.bottom,
-                                backgroundColor: Colors.red,
-                                textStyle: const TextStyle(color: Colors.white),
-                              );
-                            }
-                          }
-                          if (context
-                                  .read<LoginProvider>()
-                                  .isRememberMeChecked ==
-                              true) {
-                            phoneEmaiController.clear();
-                          }
+                          //     context.read<RouteProvider>().navigateTo(
+                          //       '/home',
+                          //       context,
+                          //     );
+                          //   } else {
+                          //     FlutterToastr.show(
+                          //       "Invalid mobile number",
+                          //       context,
+                          //       duration: FlutterToastr.lengthLong,
+                          //       position: FlutterToastr.bottom,
+                          //       backgroundColor: Colors.red,
+                          //       textStyle: const TextStyle(color: Colors.white),
+                          //     );
+                          //   }
+                          // }
                         },
                         fontWeight: FontWeight.w900,
                         fontSize: 18,
