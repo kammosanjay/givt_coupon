@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage>
                   child: Text(
                     "Givt, more than just a gift",
 
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: isDarkEnabled
@@ -147,7 +147,7 @@ class _LoginPageState extends State<LoginPage>
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Login/SignUp',
-                      style: GoogleFonts.lora(
+                      style: GoogleFonts.inter(
                         fontSize: 20,
                         fontWeight: FontWeight.w900,
                         color: MyColors.bodyTextColor,
@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage>
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Login to continue your journey with Givt',
-                      style: GoogleFonts.lora(
+                      style: GoogleFonts.inter(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
                         color: MyColors.bodyTextColor,
@@ -418,7 +418,7 @@ class _LoginPageState extends State<LoginPage>
                           child: RichText(
                             text: TextSpan(
                               text: "Don't have an Account? ",
-                              style: GoogleFonts.lora(
+                              style: GoogleFonts.inter(
                                 // color: AppColor.textColor(context),
                                 color: MyColors.textColor,
                                 fontSize: 14,
@@ -427,7 +427,7 @@ class _LoginPageState extends State<LoginPage>
                               children: <TextSpan>[
                                 TextSpan(
                                   text: 'Register',
-                                  style: GoogleFonts.lora(
+                                  style: GoogleFonts.inter(
                                     color: MyColors.primaryColor,
                                     fontWeight: FontWeight.w900,
                                     fontSize: 16,

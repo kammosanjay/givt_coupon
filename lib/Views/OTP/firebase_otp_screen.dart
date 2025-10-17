@@ -75,7 +75,7 @@ class _OtpScreenByfireaseState extends State<OtpScreenByfirease>
                   duration: const Duration(seconds: 1),
                   child: Text(
                     "Givt, more than just a gift",
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: isDarkEnabled
@@ -127,7 +127,7 @@ class _OtpScreenByfireaseState extends State<OtpScreenByfirease>
                   SizedBox(height: 30),
                   Text(
                     'Enter OTP sent on 1234567890 number',
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 25,
                       fontWeight: FontWeight.w900,
                       color: MyColors.bodyTextColor,
@@ -135,7 +135,7 @@ class _OtpScreenByfireaseState extends State<OtpScreenByfirease>
                   ),
                   Text(
                     'Access the App faster with a PIN',
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: MyColors.bodyTextColor,
@@ -180,7 +180,7 @@ class _OtpScreenByfireaseState extends State<OtpScreenByfirease>
                   Spacer(),
                   Text(
                     'Your privacy matters—enter the code for secure access',
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
                       color: MyColors.bodyTextColor,
@@ -227,7 +227,7 @@ class _OtpScreenByfireaseState extends State<OtpScreenByfirease>
                     child: RichText(
                       text: TextSpan(
                         text: "Don't Received OTP ? ",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           color: MyColors.bodyTextColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -235,7 +235,7 @@ class _OtpScreenByfireaseState extends State<OtpScreenByfirease>
                         children: <TextSpan>[
                           TextSpan(
                             text: 'Resend',
-                            style: GoogleFonts.lora(
+                            style: GoogleFonts.inter(
                               color: MyColors.primaryColor,
                               fontWeight: FontWeight.w900,
                               fontSize: 16,

@@ -134,7 +134,7 @@ class _MyHomeState extends State<MyHome> {
       child: ListTile(
         title: Text(
           title,
-          style: GoogleFonts.lora(
+          style: GoogleFonts.inter(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: MyColors.bodyTextColor,
@@ -172,11 +172,11 @@ class _MyHomeState extends State<MyHome> {
           unselectedItemColor: Color(0xFF333333),
           selectedFontSize: 12,
           unselectedFontSize: 10,
-          selectedLabelStyle: GoogleFonts.lora(
+          selectedLabelStyle: GoogleFonts.inter(
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
-          unselectedLabelStyle: GoogleFonts.lora(
+          unselectedLabelStyle: GoogleFonts.inter(
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -234,378 +234,377 @@ class _MyHomeState extends State<MyHome> {
           ],
         ),
 
-        drawer: SafeArea(
-          child: Consumer<ThemeProvider>(
-            builder: (context, themeProvider, child) {
-              return Drawer(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: isDarkEnabled ? Colors.white : Colors.transparent,
-                  ),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                backgroundColor: isDarkEnabled ? Colors.black : Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          padding: const EdgeInsets.all(16),
-                          width: double.infinity,
-                          height: 180, // adjust height as you want
-                          decoration: BoxDecoration(
-                            color: AppColor.primaryColor(context),
-                          ),
-                          child: Stack(
-                            children: [
-                              // Profile Image
-                              Positioned(
-                                left: 20,
-                                right: 20,
-                                top: 0,
-                                bottom: 50,
-                                child: CircleAvatar(
-                                  radius: 40,
-                                  // backgroundColor: Theme.of(
-                                  //   context,
-                                  // ).colorScheme.primary,
-                                  child: Consumer<HomeProviders>(
-                                    builder: (ctx, value, child) {
-                                      final imagePath = value.image?.path;
-                                      return imagePath != null
-                                          ? ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                              child: Image.file(
-                                                File(imagePath),
-                                                fit: BoxFit.cover,
-                                                height: 110,
-                                                width: 110,
-                                              ),
-                                            )
-                                          : Icon(
-                                              Icons.person,
-                                              size: 50,
-                                              color:
-                                                  Theme.of(
-                                                        context,
-                                                      ).brightness ==
-                                                      Brightness.dark
-                                                  ? Colors.white
-                                                  : MyColors.textColor,
-                                            );
-                                    },
-                                  ),
-                                ),
-                              ),
+        // drawer: SafeArea(
+        //   child: Consumer<ThemeProvider>(
+        //     builder: (context, themeProvider, child) {
+        //       return Drawer(
+        //         shape: RoundedRectangleBorder(
+        //           side: BorderSide(
+        //             color: isDarkEnabled ? Colors.white : Colors.transparent,
+        //           ),
+        //           borderRadius: BorderRadius.circular(5),
+        //         ),
+        //         backgroundColor: isDarkEnabled ? Colors.black : Colors.white,
+        //         child: Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: Column(
+        //             children: [
+        //               Expanded(
+        //                 flex: 3,
+        //                 child: Container(
+        //                   padding: const EdgeInsets.all(16),
+        //                   width: double.infinity,
+        //                   height: 180, // adjust height as you want
+        //                   decoration: BoxDecoration(
+        //                     color: AppColor.primaryColor(context),
+        //                   ),
+        //                   child: Stack(
+        //                     children: [
+        //                       // Profile Image
+        //                       Positioned(
+        //                         left: 20,
+        //                         right: 20,
+        //                         top: 0,
+        //                         bottom: 50,
+        //                         child: CircleAvatar(
+        //                           radius: 40,
+        //                           // backgroundColor: Theme.of(
+        //                           //   context,
+        //                           // ).colorScheme.primary,
+        //                           child: Consumer<HomeProviders>(
+        //                             builder: (ctx, value, child) {
+        //                               final imagePath = value.image?.path;
+        //                               return imagePath != null
+        //                                   ? ClipRRect(
+        //                                       borderRadius:
+        //                                           BorderRadius.circular(50),
+        //                                       child: Image.file(
+        //                                         File(imagePath),
+        //                                         fit: BoxFit.cover,
+        //                                         height: 110,
+        //                                         width: 110,
+        //                                       ),
+        //                                     )
+        //                                   : Icon(
+        //                                       Icons.person,
+        //                                       size: 50,
+        //                                       color:
+        //                                           Theme.of(
+        //                                                 context,
+        //                                               ).brightness ==
+        //                                               Brightness.dark
+        //                                           ? Colors.white
+        //                                           : MyColors.textColor,
+        //                                     );
+        //                             },
+        //                           ),
+        //                         ),
+        //                       ),
 
-                              // Camera button
-                              Positioned(
-                                left: 70,
-                                right: -20,
-                                bottom: 60,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title: const Text("Select Image"),
-                                          content: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              ListTile(
-                                                leading: Icon(
-                                                  Icons.camera_alt,
-                                                  color:
-                                                      Theme.of(
-                                                            context,
-                                                          ).brightness ==
-                                                          Brightness.dark
-                                                      ? MyColors.backgroundColor
-                                                      : MyColors.secondaryColor,
-                                                ),
-                                                title: const Text("Gallery"),
-                                                onTap: () {
-                                                  context
-                                                      .read<HomeProviders>()
-                                                      .pickImage();
-                                                  Navigator.pop(context);
-                                                },
-                                              ),
-                                              ListTile(
-                                                leading: const Icon(
-                                                  Icons.photo_library,
-                                                ),
-                                                title: const Text("Camera"),
-                                                onTap: () {
-                                                  context
-                                                      .read<HomeProviders>()
-                                                      .pickImageFromCamera();
-                                                  Navigator.pop(context);
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: SvgPicture.asset(
-                                    'assets/svgImages/camera.svg',
-                                    height: 20,
-                                    width: 20,
-                                    color:
-                                        Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? MyColors.backgroundColor
-                                        : MyColors.textColor,
-                                  ),
-                                ),
-                              ),
+        //                       // Camera button
+        //                       Positioned(
+        //                         left: 70,
+        //                         right: -20,
+        //                         bottom: 60,
+        //                         child: GestureDetector(
+        //                           onTap: () {
+        //                             showDialog(
+        //                               context: context,
+        //                               builder: (context) {
+        //                                 return AlertDialog(
+        //                                   title: const Text("Select Image"),
+        //                                   content: Column(
+        //                                     mainAxisSize: MainAxisSize.min,
+        //                                     children: [
+        //                                       ListTile(
+        //                                         leading: Icon(
+        //                                           Icons.camera_alt,
+        //                                           color:
+        //                                               Theme.of(
+        //                                                     context,
+        //                                                   ).brightness ==
+        //                                                   Brightness.dark
+        //                                               ? MyColors.backgroundColor
+        //                                               : MyColors.secondaryColor,
+        //                                         ),
+        //                                         title: const Text("Gallery"),
+        //                                         onTap: () {
+        //                                           context
+        //                                               .read<HomeProviders>()
+        //                                               .pickImage();
+        //                                           Navigator.pop(context);
+        //                                         },
+        //                                       ),
+        //                                       ListTile(
+        //                                         leading: const Icon(
+        //                                           Icons.photo_library,
+        //                                         ),
+        //                                         title: const Text("Camera"),
+        //                                         onTap: () {
+        //                                           context
+        //                                               .read<HomeProviders>()
+        //                                               .pickImageFromCamera();
+        //                                           Navigator.pop(context);
+        //                                         },
+        //                                       ),
+        //                                     ],
+        //                                   ),
+        //                                 );
+        //                               },
+        //                             );
+        //                           },
+        //                           child: SvgPicture.asset(
+        //                             'assets/svgImages/camera.svg',
+        //                             height: 20,
+        //                             width: 20,
+        //                             color:
+        //                                 Theme.of(context).brightness ==
+        //                                     Brightness.dark
+        //                                 ? MyColors.backgroundColor
+        //                                 : MyColors.textColor,
+        //                           ),
+        //                         ),
+        //                       ),
 
-                              // Welcome Text
-                              Positioned(
-                                left: 60,
-                                top:
-                                    MediaQuery.of(context).size.height *
-                                    0.16, // 20% of screen height
-                                child: Text(
-                                  appLoc.welcome,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 15.8,
-                                    fontWeight: FontWeight.w600,
-                                    color:
-                                        Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? Colors.white
-                                        : MyColors.textColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 8,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.all(8),
-                          itemCount: menuTitles.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 2.0,
-                              ),
-                              child: drawerLitTile(
-                                title: menuTitles[index],
-                                icon: drawerIcons[index],
-                                ontap: () {
-                                  final title = menuTitles[index];
-                                  final route = menuRoutes[title];
+        //                       // Welcome Text
+        //                       Positioned(
+        //                         left: 60,
+        //                         top:
+        //                             MediaQuery.of(context).size.height *
+        //                             0.16, // 20% of screen height
+        //                         child: Text(
+        //                           appLoc.welcome,
+        //                           style: GoogleFonts.poppins(
+        //                             fontSize: 15.8,
+        //                             fontWeight: FontWeight.w600,
+        //                             color:
+        //                                 Theme.of(context).brightness ==
+        //                                     Brightness.dark
+        //                                 ? Colors.white
+        //                                 : MyColors.textColor,
+        //                           ),
+        //                         ),
+        //                       ),
+        //                     ],
+        //                   ),
+        //                 ),
+        //               ),
+        //               Expanded(
+        //                 flex: 8,
+        //                 child: ListView.builder(
+        //                   shrinkWrap: true,
+        //                   padding: const EdgeInsets.all(8),
+        //                   itemCount: menuTitles.length,
+        //                   itemBuilder: (context, index) {
+        //                     return Padding(
+        //                       padding: const EdgeInsets.symmetric(
+        //                         vertical: 2.0,
+        //                       ),
+        //                       child: drawerLitTile(
+        //                         title: menuTitles[index],
+        //                         icon: drawerIcons[index],
+        //                         ontap: () {
+        //                           final title = menuTitles[index];
+        //                           final route = menuRoutes[title];
 
-                                  if (title == "Logout") {
-                                    // 🔥 check title instead of route
-                                    Navigator.pop(context);
+        //                           if (title == "Logout") {
+        //                             // 🔥 check title instead of route
+        //                             Navigator.pop(context);
 
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => Dialog(
-                                        backgroundColor: Colors
-                                            .transparent, // So the gradient is visible
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              10,
-                                            ),
-                                            color:
-                                                Theme.of(context).brightness ==
-                                                    Brightness.dark
-                                                ? Colors.red
-                                                : MyColors.secondaryColor,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: MyColors.backgroundColor,
-                                                // color: Colors. grey,
-                                                offset: Offset(-10, -10),
-                                                blurRadius: 30,
+        //                             showDialog(
+        //                               context: context,
+        //                               builder: (context) => Dialog(
+        //                                 backgroundColor: Colors
+        //                                     .transparent, // So the gradient is visible
+        //                                 child: Container(
+        //                                   decoration: BoxDecoration(
+        //                                     borderRadius: BorderRadius.circular(
+        //                                       10,
+        //                                     ),
+        //                                     color:
+        //                                         Theme.of(context).brightness ==
+        //                                             Brightness.dark
+        //                                         ? Colors.red
+        //                                         : MyColors.secondaryColor,
+        //                                     boxShadow: [
+        //                                       BoxShadow(
+        //                                         color: MyColors.backgroundColor,
+        //                                         // color: Colors. grey,
+        //                                         offset: Offset(-10, -10),
+        //                                         blurRadius: 30,
 
-                                                inset: false,
-                                              ),
-                                              BoxShadow(
-                                                color: MyColors.textColor,
-                                                offset: Offset(10, 10),
-                                                blurRadius: 30,
+        //                                         inset: false,
+        //                                       ),
+        //                                       BoxShadow(
+        //                                         color: MyColors.textColor,
+        //                                         offset: Offset(10, 10),
+        //                                         blurRadius: 30,
 
-                                                inset: true,
-                                              ),
-                                            ],
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(16.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  "Confirm Logout",
-                                                  style: GoogleFonts.lora(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w900,
-                                                    color:
-                                                        Theme.of(
-                                                              context,
-                                                            ).brightness ==
-                                                            Brightness.dark
-                                                        ? Colors.white
-                                                        : MyColors.textColor,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 16),
-                                                Text(
-                                                  "Are you sure you want to logout?",
-                                                  style: GoogleFonts.lora(
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w900,
-                                                    color:
-                                                        Theme.of(
-                                                              context,
-                                                            ).brightness ==
-                                                            Brightness.dark
-                                                        ? Colors.white
-                                                        : MyColors.textColor,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                                const SizedBox(height: 24),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                            context,
-                                                          ),
-                                                      child: Text(
-                                                        "Cancel",
-                                                        style: GoogleFonts.lora(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.w900,
-                                                          color:
-                                                              Theme.of(
-                                                                    context,
-                                                                  ).brightness ==
-                                                                  Brightness
-                                                                      .dark
-                                                              ? Colors.white
-                                                              : MyColors
-                                                                    .textColor,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                        // context
-                                                        //     .read<
-                                                        //       LoginProvider
-                                                        //     >()
-                                                        //     .logout();
-                                                        context
-                                                            .read<
-                                                              RouteProvider
-                                                            >()
-                                                            .navigateReplace(
-                                                              '/loginpage',
-                                                              context,
-                                                            );
-                                                      },
-                                                      child: Text(
-                                                        "Logout",
-                                                        style: GoogleFonts.lora(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.w900,
-                                                          color:
-                                                              Theme.of(
-                                                                    context,
-                                                                  ).brightness ==
-                                                                  Brightness
-                                                                      .dark
-                                                              ? Colors.white
-                                                              : MyColors
-                                                                    .textColor,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  } else if (route != null) {
-                                    context.read<RouteProvider>().navigateTo(
-                                      route,
-                                      context,
-                                      arguments: route,
-                                    );
-                                  }
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      ),
+        //                                         inset: true,
+        //                                       ),
+        //                                     ],
+        //                                   ),
+        //                                   child: Padding(
+        //                                     padding: const EdgeInsets.all(16.0),
+        //                                     child: Column(
+        //                                       mainAxisSize: MainAxisSize.min,
+        //                                       children: [
+        //                                         Text(
+        //                                           "Confirm Logout",
+        //                                           style: GoogleFonts.inter(
+        //                                             fontSize: 20,
+        //                                             fontWeight: FontWeight.w900,
+        //                                             color:
+        //                                                 Theme.of(
+        //                                                       context,
+        //                                                     ).brightness ==
+        //                                                     Brightness.dark
+        //                                                 ? Colors.white
+        //                                                 : MyColors.textColor,
+        //                                           ),
+        //                                         ),
+        //                                         const SizedBox(height: 16),
+        //                                         Text(
+        //                                           "Are you sure you want to logout?",
+        //                                           style: GoogleFonts.inter(
+        //                                             fontSize: 15,
+        //                                             fontWeight: FontWeight.w900,
+        //                                             color:
+        //                                                 Theme.of(
+        //                                                       context,
+        //                                                     ).brightness ==
+        //                                                     Brightness.dark
+        //                                                 ? Colors.white
+        //                                                 : MyColors.textColor,
+        //                                           ),
+        //                                           textAlign: TextAlign.center,
+        //                                         ),
+        //                                         const SizedBox(height: 24),
+        //                                         Row(
+        //                                           mainAxisAlignment:
+        //                                               MainAxisAlignment
+        //                                                   .spaceEvenly,
+        //                                           children: [
+        //                                             TextButton(
+        //                                               onPressed: () =>
+        //                                                   Navigator.pop(
+        //                                                     context,
+        //                                                   ),
+        //                                               child: Text(
+        //                                                 "Cancel",
+        //                                                 style: GoogleFonts.inter(
+        //                                                   fontSize: 14,
+        //                                                   fontWeight:
+        //                                                       FontWeight.w900,
+        //                                                   color:
+        //                                                       Theme.of(
+        //                                                             context,
+        //                                                           ).brightness ==
+        //                                                           Brightness
+        //                                                               .dark
+        //                                                       ? Colors.white
+        //                                                       : MyColors
+        //                                                             .textColor,
+        //                                                 ),
+        //                                               ),
+        //                                             ),
+        //                                             TextButton(
+        //                                               onPressed: () {
+        //                                                 Navigator.pop(context);
+        //                                                 // context
+        //                                                 //     .read<
+        //                                                 //       LoginProvider
+        //                                                 //     >()
+        //                                                 //     .logout();
+        //                                                 context
+        //                                                     .read<
+        //                                                       RouteProvider
+        //                                                     >()
+        //                                                     .navigateReplace(
+        //                                                       '/loginpage',
+        //                                                       context,
+        //                                                     );
+        //                                               },
+        //                                               child: Text(
+        //                                                 "Logout",
+        //                                                 style: GoogleFonts.inter(
+        //                                                   fontSize: 14,
+        //                                                   fontWeight:
+        //                                                       FontWeight.w900,
+        //                                                   color:
+        //                                                       Theme.of(
+        //                                                             context,
+        //                                                           ).brightness ==
+        //                                                           Brightness
+        //                                                               .dark
+        //                                                       ? Colors.white
+        //                                                       : MyColors
+        //                                                             .textColor,
+        //                                                 ),
+        //                                               ),
+        //                                             ),
+        //                                           ],
+        //                                         ),
+        //                                       ],
+        //                                     ),
+        //                                   ),
+        //                                 ),
+        //                               ),
+        //                             );
+        //                           } else if (route != null) {
+        //                             context.read<RouteProvider>().navigateTo(
+        //                               route,
+        //                               context,
+        //                               arguments: route,
+        //                             );
+        //                           }
+        //                         },
+        //                       ),
+        //                     );
+        //                   },
+        //                 ),
+        //               ),
 
-                      // create dark and night mode toggle
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Night Mode',
-                                style: GoogleFonts.lora(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color:
-                                      Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : MyColors.textColor,
-                                ),
-                              ),
-                              Switch(
-                                value:
-                                    themeProvider.themeMode == ThemeMode.dark,
-                                onChanged: (value) {
-                                  themeProvider.setThemeMode(
-                                    value ? ThemeMode.dark : ThemeMode.light,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-
+        //               // create dark and night mode toggle
+        //               Expanded(
+        //                 flex: 1,
+        //                 child: Padding(
+        //                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        //                   child: Row(
+        //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //                     children: [
+        //                       Text(
+        //                         'Night Mode',
+        //                         style: GoogleFonts.inter(
+        //                           fontSize: 14,
+        //                           fontWeight: FontWeight.w500,
+        //                           color:
+        //                               Theme.of(context).brightness ==
+        //                                   Brightness.dark
+        //                               ? Colors.white
+        //                               : MyColors.textColor,
+        //                         ),
+        //                       ),
+        //                       Switch(
+        //                         value:
+        //                             themeProvider.themeMode == ThemeMode.dark,
+        //                         onChanged: (value) {
+        //                           themeProvider.setThemeMode(
+        //                             value ? ThemeMode.dark : ThemeMode.light,
+        //                           );
+        //                         },
+        //                       ),
+        //                     ],
+        //                   ),
+        //                 ),
+        //               ),
+        //             ],
+        //           ),
+        //         ),
+        //       );
+        //     },
+        //   ),
+        // ),
         appBar: AppBar(
           // backgroundColor:Colors.grey.shade100,
           title: Consumer<ThemeProvider>(
@@ -626,7 +625,7 @@ class _MyHomeState extends State<MyHome> {
                     ),
                     prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
                     hintText: appLoc.search,
-                    hintStyle: GoogleFonts.lora(
+                    hintStyle: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: Colors.grey.shade400,
@@ -642,148 +641,114 @@ class _MyHomeState extends State<MyHome> {
               );
             },
           ),
-          leading: Builder(
-            builder: (context) {
-              return GestureDetector(
-                onTap: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: Container(
-                    // decoration: BoxDecoration(border:BoxBorder.all(color: Colors.grey)),
-                    margin: const EdgeInsets.only(top: 10),
+          leading: Image.asset("assets/images/couponlogo.png"),
 
-                    child: GFCarousel(
-                      autoPlay: true,
-
-                      autoPlayInterval: Duration(seconds: 2),
-                      // autoPlayAnimationDuration: Duration(milliseconds: 1600),
-                      items: imageList.map((url) {
-                        return ClipRRect(
-                          child: SvgPicture.asset(
-                            url,
-                            fit: BoxFit.contain,
-                            height: 20,
-                            width: 20,
-                            color: isDarkEnabled ? Colors.white : Colors.black,
-                          ),
-                        );
-                      }).toList(),
-                      onPageChanged: (index) {
-                        // setState(() {
-                        //   index;
-                        // });
-                      },
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
           centerTitle: true,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        backgroundColor: isDarkEnabled
-                            ? Colors.white
-                            : MyColors.secondaryColor,
-                        title: Text(
-                          "Language",
-                          style: GoogleFonts.lora(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w900,
-                            color: MyColors.bodyTextColor,
-                          ),
-                        ),
-                        content: DropdownButton<String>(
-                          alignment: Alignment(0, 10),
-                          autofocus: true,
-                          dropdownColor: isDarkEnabled
-                              ? Colors.white
-                              : MyColors.secondaryColor,
-                          icon: Icon(
-                            Icons.language_outlined,
-                            color: MyColors.primaryColor,
-                          ),
+          // actions: [
+          //   Padding(
+          //     padding: const EdgeInsets.only(right: 10.0),
+          //     child: GestureDetector(
+          //       onTap: () {
+          //         showDialog(
+          //           context: context,
+          //           builder: (context) {
+          //             return AlertDialog(
+          //               backgroundColor: isDarkEnabled
+          //                   ? Colors.white
+          //                   : MyColors.secondaryColor,
+          //               title: Text(
+          //                 "Language",
+          //                 style: GoogleFonts.inter(
+          //                   fontSize: 20,
+          //                   fontWeight: FontWeight.w900,
+          //                   color: MyColors.bodyTextColor,
+          //                 ),
+          //               ),
+          //               content: DropdownButton<String>(
+          //                 alignment: Alignment(0, 10),
+          //                 autofocus: true,
+          //                 dropdownColor: isDarkEnabled
+          //                     ? Colors.white
+          //                     : MyColors.secondaryColor,
+          //                 icon: Icon(
+          //                   Icons.language_outlined,
+          //                   color: MyColors.primaryColor,
+          //                 ),
 
-                          menuWidth: 120.0,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          value: context
-                              .watch<Language>()
-                              .selectectLocale
-                              .languageCode,
-                          items: Language.languages
-                              .map(
-                                (e) => DropdownMenuItem<String>(
-                                  value: e['locale'],
-                                  child: Text(
-                                    e['name'],
-                                    style: GoogleFonts.lora(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: MyColors.bodyTextColor,
-                                    ),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            if (value != null) {
-                              context.read<Language>().changeLanguage(value);
-                              print(value);
-                              Navigator.pop(context);
-                            }
-                          },
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text(
-                              "Close",
-                              style: GoogleFonts.lora(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color:
-                                    MyColors.primaryColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    // color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade100,
-                        blurRadius: 10,
-                        // spreadRadius: 5,
-                        offset: Offset(10, 5),
-                      ),
-                    ],
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/svgImages/lang.svg',
-                    height: 20,
-                    width: 20,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : MyColors.textColor,
-                  ),
-                ),
-              ),
-            ),
-          ],
+          //                 menuWidth: 120.0,
+          //                 borderRadius: BorderRadius.all(Radius.circular(10)),
+          //                 value: context
+          //                     .watch<Language>()
+          //                     .selectectLocale
+          //                     .languageCode,
+          //                 items: Language.languages
+          //                     .map(
+          //                       (e) => DropdownMenuItem<String>(
+          //                         value: e['locale'],
+          //                         child: Text(
+          //                           e['name'],
+          //                           style: GoogleFonts.inter(
+          //                             fontSize: 14,
+          //                             fontWeight: FontWeight.w600,
+          //                             color: MyColors.bodyTextColor,
+          //                           ),
+          //                         ),
+          //                       ),
+          //                     )
+          //                     .toList(),
+          //                 onChanged: (value) {
+          //                   if (value != null) {
+          //                     context.read<Language>().changeLanguage(value);
+          //                     print(value);
+          //                     Navigator.pop(context);
+          //                   }
+          //                 },
+          //               ),
+          //               actions: [
+          //                 TextButton(
+          //                   onPressed: () => Navigator.pop(context),
+          //                   child: Text(
+          //                     "Close",
+          //                     style: GoogleFonts.inter(
+          //                       fontSize: 14,
+          //                       fontWeight: FontWeight.w600,
+          //                       color: MyColors.primaryColor,
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ],
+          //             );
+          //           },
+          //         );
+          //       },
+          //       child: Container(
+          //         decoration: BoxDecoration(
+          //           // color: Colors.white,
+          //           boxShadow: [
+          //             BoxShadow(
+          //               color: Colors.grey.shade100,
+          //               blurRadius: 10,
+          //               // spreadRadius: 5,
+          //               offset: Offset(10, 5),
+          //             ),
+          //           ],
+          //         ),
+          //         child: SvgPicture.asset(
+          //           'assets/svgImages/lang.svg',
+          //           height: 20,
+          //           width: 20,
+          //           color: Theme.of(context).brightness == Brightness.dark
+          //               ? Colors.white
+          //               : MyColors.textColor,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ],
+     
+     
+     
+     
         ),
 
         body: _pages[_selectedIndex],

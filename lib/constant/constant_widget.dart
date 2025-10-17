@@ -49,7 +49,7 @@ class CustomWidgets {
             ? const SizedBox.shrink() // returns nothing
             : Text(
                 label,
-                style: GoogleFonts.lora(
+                style: GoogleFonts.inter(
                   color: headingcolor ?? Colors.white,
                   fontSize: fontSize ?? 16,
                   fontWeight: fontwgt ?? FontWeight.w600,
@@ -106,7 +106,7 @@ class CustomWidgets {
             prefixIconColor: iconColor,
 
             hintText: hint,
-            hintStyle: GoogleFonts.lora(
+            hintStyle: GoogleFonts.inter(
               color: hintColor ?? Colors.white,
               fontSize: hintfontSize ?? 16,
               fontWeight: hintfontWeight ?? FontWeight.w600,
@@ -254,7 +254,7 @@ class CustomWidgets {
       child: FittedBox(
         child: Text(
           buttonName ?? 'Button',
-          style: GoogleFonts.lora(
+          style: GoogleFonts.inter(
             fontSize: fontSize ?? 12,
             fontWeight: fontWeight ?? FontWeight.w600,
             color: fontColor, // Text color
@@ -271,7 +271,7 @@ class CustomWidgets {
   static myCustomTextWidget(String text) {
     return Text(
       text,
-      style: GoogleFonts.lora(
+      style: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w600,
         foreground: Paint()

@@ -74,7 +74,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                   duration: const Duration(seconds: 1),
                   child: Text(
                     "Givt, more than just a gift",
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: isDarkEnabled
@@ -126,7 +126,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                   SizedBox(height: 30),
                   Text(
                     'Creating a 6-digit PIN',
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 25,
                       fontWeight: FontWeight.w900,
                       color: MyColors.bodyTextColor,
@@ -134,7 +134,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                   ),
                   Text(
                     'Access the App faster with a PIN',
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: MyColors.bodyTextColor,
@@ -179,7 +179,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                   Spacer(),
                   Text(
                     'Your privacy matters—enter the code for secure access',
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
                       color: MyColors.bodyTextColor,
@@ -226,7 +226,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                     child: RichText(
                       text: TextSpan(
                         text: "Don't Received OTP ? ",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           color: MyColors.bodyTextColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -234,7 +234,7 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                         children: <TextSpan>[
                           TextSpan(
                             text: 'Resend',
-                            style: GoogleFonts.lora(
+                            style: GoogleFonts.inter(
                               color: MyColors.primaryColor,
                               fontWeight: FontWeight.w900,
                               fontSize: 16,

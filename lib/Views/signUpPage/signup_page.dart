@@ -83,7 +83,7 @@ class _SignupPageState extends State<SignupPage>
                   duration: const Duration(seconds: 1),
                   child: Text(
                     "Givt, more than just a gift",
-                    style: GoogleFonts.lora(
+                    style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: isDarkEnabled
@@ -140,7 +140,7 @@ class _SignupPageState extends State<SignupPage>
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Sign Up",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           fontSize: 22,
                           fontWeight: FontWeight.w900,
                           color: MyColors.bodyTextColor,
@@ -151,7 +151,7 @@ class _SignupPageState extends State<SignupPage>
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Welcome! Create your account to get started.",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
                           color: MyColors.bodyTextColor,
@@ -239,7 +239,7 @@ class _SignupPageState extends State<SignupPage>
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Gender",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           color: MyColors.bodyTextColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -344,7 +344,7 @@ class _SignupPageState extends State<SignupPage>
                       child: RichText(
                         text: TextSpan(
                           text: "Already have an Account !",
-                          style: GoogleFonts.lora(
+                          style: GoogleFonts.inter(
                             color: MyColors.bodyTextColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -352,7 +352,7 @@ class _SignupPageState extends State<SignupPage>
                           children: <TextSpan>[
                             TextSpan(
                               text: ' Login',
-                              style: GoogleFonts.lora(
+                              style: GoogleFonts.inter(
                                 color: MyColors.primaryColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w900,

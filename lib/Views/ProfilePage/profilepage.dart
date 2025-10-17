@@ -15,114 +15,116 @@ class _AppSettingsPageState extends State<AppSettingsPage> {
     final appLoc = AppLocalizations.of(context)!;
 
     return Scaffold(
-      body: Center(child: Text(appLoc.setting_page)),
+      body: Center(
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            // --- Account
+            const SectionHeader(title: "Account"),
+            SettingsTile(
+              icon: Icons.person,
+              title: "Edit Profile",
+              onTap: () {}, // Navigate to Edit Profile
+            ),
+            SettingsTile(
+              icon: Icons.lock,
+              title: "Change Password",
+              onTap: () {}, // Change password
+            ),
 
-      // ListView(
-      //   padding: const EdgeInsets.all(16),
-      //   children: [
-      //     // --- Account
-      //     const SectionHeader(title: "Account"),
-      //     SettingsTile(
-      //       icon: Icons.person,
-      //       title: "Edit Profile",
-      //       onTap: () {}, // Navigate to Edit Profile
-      //     ),
-      //     SettingsTile(
-      //       icon: Icons.lock,
-      //       title: "Change Password",
-      //       onTap: () {}, // Change password
-      //     ),
+            const SizedBox(height: 24),
 
-      //     const SizedBox(height: 24),
+            // --- Appearance
+            const SectionHeader(title: "Appearance"),
+            SettingsTile(
+              icon: isDarkMode ? Icons.dark_mode : Icons.light_mode,
+              title: "Theme",
+              onTap: () {},
+              trailing: Switch(
+                value: isDarkMode,
+                onChanged: (value) {
+                  // Call your theme provider or setState to switch theme
+                },
+              ),
+            ),
+            SettingsTile(
+              icon: Icons.text_fields,
+              onTap: () {},
+              title: "Font Size",
+              trailing: DropdownButton<double>(
+                value: 1.0,
+                items: [
+                  DropdownMenuItem(child: Text("Small"), value: 0.85),
+                  DropdownMenuItem(child: Text("Medium"), value: 1.0),
+                  DropdownMenuItem(child: Text("Large"), value: 1.15),
+                ],
+                onChanged: (v) {},
+              ),
+            ),
 
-      //     // --- Appearance
-      //     const SectionHeader(title: "Appearance"),
-      //     SettingsTile(
-      //       icon: isDarkMode ? Icons.dark_mode : Icons.light_mode,
-      //       title: "Theme",
-      //       onTap: () {
+            const SizedBox(height: 24),
 
-      //       },
-      //       trailing: Switch(
-      //         value: isDarkMode,
-      //         onChanged: (value) {
-      //           // Call your theme provider or setState to switch theme
-      //         },
-      //       ),
-      //     ),
-      //     SettingsTile(
-      //       icon: Icons.text_fields,
-      //       onTap: () {},
-      //       title: "Font Size",
-      //       trailing: DropdownButton<double>(
-      //         value: 1.0,
-      //         items: [
-      //           DropdownMenuItem(child: Text("Small"), value: 0.85),
-      //           DropdownMenuItem(child: Text("Medium"), value: 1.0),
-      //           DropdownMenuItem(child: Text("Large"), value: 1.15),
-      //         ],
-      //         onChanged: (v) {},
-      //       ),
-      //     ),
+            // --- Notifications
+            const SectionHeader(title: "Notifications"),
+            SettingsTile(
+              icon: Icons.notifications,
+              onTap: () {},
+              title: "Enable Notifications",
+              trailing: Switch(value: true, onChanged: (value) {}),
+            ),
 
-      //     const SizedBox(height: 24),
+            const SizedBox(height: 24),
 
-      //     // --- Notifications
-      //     const SectionHeader(title: "Notifications"),
-      //     SettingsTile(
-      //       icon: Icons.notifications,
-      //       onTap: () {},
-      //       title: "Enable Notifications",
-      //       trailing: Switch(value: true, onChanged: (value) {}),
-      //     ),
+            // --- Language
+            const SectionHeader(title: "Language"),
+            SettingsTile(
+              icon: Icons.language,
+              onTap: () {},
+              title: "App Language",
+              trailing: DropdownButton<String>(
+                value: "en",
+                items: [
+                  DropdownMenuItem(child: Text("English"), value: "en"),
+                  DropdownMenuItem(child: Text("Arabic"), value: "ar"),
+                  DropdownMenuItem(child: Text("Hindi"), value: "hi"),
+                ],
+                onChanged: (val) {},
+              ),
+            ),
 
-      //     const SizedBox(height: 24),
+            const SizedBox(height: 24),
 
-      //     // --- Language
-      //     const SectionHeader(title: "Language"),
-      //     SettingsTile(
-      //       icon: Icons.language,
-      //       onTap: () {},
-      //       title: "App Language",
-      //       trailing: DropdownButton<String>(
-      //         value: "en",
-      //         items: [
-      //           DropdownMenuItem(child: Text("English"), value: "en"),
-      //           DropdownMenuItem(child: Text("Arabic"), value: "ar"),
-      //           DropdownMenuItem(child: Text("Hindi"), value: "hi"),
-      //         ],
-      //         onChanged: (val) {},
-      //       ),
-      //     ),
+            // --- Privacy & Security
+            const SectionHeader(title: "Privacy & Security"),
+            SettingsTile(
+              icon: Icons.privacy_tip,
+              title: "Privacy Policy",
+              onTap: () {},
+            ),
 
-      //     const SizedBox(height: 24),
+            const SizedBox(height: 24),
 
-      //     // --- Privacy & Security
-      //     const SectionHeader(title: "Privacy & Security"),
-      //     SettingsTile(
-      //       icon: Icons.privacy_tip,
-      //       title: "Privacy Policy",
-      //       onTap: () {},
-      //     ),
+            // --- Data & Storage
+            const SectionHeader(title: "Data & Storage"),
+            SettingsTile(
+              icon: Icons.delete,
+              title: "Clear Cache",
+              onTap: () {},
+            ),
 
-      //     const SizedBox(height: 24),
+            const SizedBox(height: 32),
 
-      //     // --- Data & Storage
-      //     const SectionHeader(title: "Data & Storage"),
-      //     SettingsTile(icon: Icons.delete, title: "Clear Cache", onTap: () {}),
-
-      //     const SizedBox(height: 32),
-
-      //     // --- About & Logout
-      //     SettingsTile(icon: Icons.info, title: "About App", onTap: () {}),
-      //     SettingsTile(
-      //       icon: Icons.logout,
-      //       title: "Logout",
-      //       textColor: Colors.red,
-      //       onTap: () {},
-      //     ),
-      //   ],
-      // ),
+            // --- About & Logout
+            SettingsTile(icon: Icons.info, title: "About App", onTap: () {}),
+            SettingsTile(
+              icon: Icons.logout,
+              title: "Logout",
+              textColor: Colors.red,
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

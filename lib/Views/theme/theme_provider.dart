@@ -33,7 +33,7 @@
 
 //       centerTitle: true,
 //       iconTheme: const IconThemeData(color: Colors.white), // For back icon
-//       titleTextStyle: GoogleFonts.lora(
+//       titleTextStyle: GoogleFonts.inter(
 //         color: Colors.white,
 //         fontSize: 16,
 //         fontWeight: FontWeight.w600,
@@ -41,21 +41,21 @@
 //     ),
 //     scaffoldBackgroundColor:Colors.white,
 //     textTheme: TextTheme(
-//       bodySmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       bodyMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       bodyLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       labelSmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       labelMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       labelLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       titleSmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       titleMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       titleLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       headlineSmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       headlineMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       headlineLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       displaySmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       displayMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       displayLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+//       bodySmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       bodyMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       bodyLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       labelSmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       labelMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       labelLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       titleSmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       titleMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       titleLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       headlineSmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       headlineMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       headlineLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       displaySmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       displayMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       displayLarge: GoogleFonts.inter(color: Colors.grey.shade900),
 //     ),
 //   );
 
@@ -73,7 +73,7 @@
 //       backgroundColor: _primaryColor,
 //       centerTitle: true,
 //       iconTheme: const IconThemeData(color: Colors.black), // For back icon
-//       titleTextStyle: GoogleFonts.lora(
+//       titleTextStyle: GoogleFonts.inter(
 //         color: Colors.grey.shade900,
 //         fontSize: 16,
 //         fontWeight: FontWeight.w900,
@@ -82,21 +82,21 @@
 //     scaffoldBackgroundColor: Colors.white,
 //     // scaffoldBackgroundColor: Colors.grey.shade100,
 //     textTheme: TextTheme(
-//       bodySmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       bodyMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       bodyLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       labelSmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       labelMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       labelLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       titleSmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       titleMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       titleLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       headlineSmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       headlineMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       headlineLarge: GoogleFonts.lora(color: Colors.grey.shade900),
-//       displaySmall: GoogleFonts.lora(color: Colors.grey.shade900),
-//       displayMedium: GoogleFonts.lora(color: Colors.grey.shade900),
-//       displayLarge: GoogleFonts.lora(color: Colors.grey.shade900),
+//       bodySmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       bodyMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       bodyLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       labelSmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       labelMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       labelLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       titleSmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       titleMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       titleLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       headlineSmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       headlineMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       headlineLarge: GoogleFonts.inter(color: Colors.grey.shade900),
+//       displaySmall: GoogleFonts.inter(color: Colors.grey.shade900),
+//       displayMedium: GoogleFonts.inter(color: Colors.grey.shade900),
+//       displayLarge: GoogleFonts.inter(color: Colors.grey.shade900),
 //     ),
 //   );
 
@@ -178,7 +178,7 @@ class ThemeProvider extends ChangeNotifier {
       backgroundColor: Colors.black,
       centerTitle: true,
       iconTheme: const IconThemeData(color: Colors.white),
-      titleTextStyle: GoogleFonts.lora(
+      titleTextStyle: GoogleFonts.inter(
         color: Colors.white,
         fontSize: 16,
         fontWeight: FontWeight.w600,
@@ -199,21 +199,21 @@ class ThemeProvider extends ChangeNotifier {
       backgroundColor: _primaryColor,
       centerTitle: true,
       iconTheme: const IconThemeData(color: Colors.black),
-      titleTextStyle: GoogleFonts.lora(
+      titleTextStyle: GoogleFonts.inter(
         color: Colors.grey.shade900,
         fontSize: 16,
         fontWeight: FontWeight.w900,
       ),
     ),
     scaffoldBackgroundColor: Colors.white,
-    textTheme: GoogleFonts.loraTextTheme(
+    textTheme: GoogleFonts.interTextTheme(
       ThemeData(brightness: Brightness.light).textTheme,
     ).apply(bodyColor: Colors.black, displayColor: Colors.grey.shade500),
   );
 
   void setThemeMode(ThemeMode mode) {
     _themeMode = mode;
-    saveThemeMode(mode);
+    saveThemeModedata(mode);
     notifyListeners();
   }
 
@@ -230,7 +230,7 @@ class ThemeProvider extends ChangeNotifier {
     } catch (_) {}
   }
 
-  Future<void> saveThemeMode(ThemeMode mode) async {
+  Future<void> saveThemeModedata(ThemeMode mode) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString(_modeKey, mode.toString().split('.').last);

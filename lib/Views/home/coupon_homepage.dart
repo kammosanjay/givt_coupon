@@ -6,15 +6,17 @@ import 'package:givt_mobile_app/MyPageRoute/route_provider.dart';
 import 'package:givt_mobile_app/Views/home/viewall.dart';
 import 'package:givt_mobile_app/constant/appColor.dart';
 import 'package:givt_mobile_app/constant/constant_widget.dart';
+
 import 'package:givt_mobile_app/l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:faker/faker.dart' hide Image;
+import 'package:unicons/unicons.dart';
 
 class CouponHomepage extends StatefulWidget {
-  const CouponHomepage({super.key});
+  CouponHomepage({super.key});
 
   @override
   State<CouponHomepage> createState() => _CouponHomepageState();
@@ -22,15 +24,28 @@ class CouponHomepage extends StatefulWidget {
 
 class _CouponHomepageState extends State<CouponHomepage> {
   int selectedIndex = 0;
-  List<String> drawerMenuItems = [
-    'All',
-    'Thankyou',
-    'Celebration',
-    'Friday',
-    'Birthday',
-    'Festivals',
-
-    // 'Library',
+  final List<String> categories = [
+    "All",
+    "Clothing",
+    "Shoes",
+    "Beauty & Cosmetics",
+    "Electronics",
+    "Groceries & Supermarket items",
+    "Food & Beverages",
+    "Home Appliances",
+    "Accessories",
+    "Furniture",
+    "Health Supplements & Vitamins",
+    "Fitness & Sports Equipment",
+    "Gaming products",
+    "Mobile Accessories",
+    "Perfumes & Fragrances",
+    "Baby Supplies",
+    "Pet Supplies & Grooming",
+    "Travel & Hotels",
+    "Books & Stationery",
+    "Home Décor",
+    "Subscription Boxes & Gift Cards",
   ];
   final List<String> imageList = [
     'assets/images/Group 149.png',
@@ -53,6 +68,120 @@ class _CouponHomepageState extends State<CouponHomepage> {
     'assets/images/c7.png',
   ];
 
+  Widget voucherContainer(BuildContext context) {
+    double itemHeight =
+        (MediaQuery.of(context).size.height - kToolbarHeight - 24);
+    double itemWidth = MediaQuery.of(context).size.width;
+    return Container(
+      width: itemWidth * 0.5,
+      height: itemHeight * 0.1,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey, width: 1),
+      ),
+      child: Stack(
+        children: [
+          // Top-left (Logo & Text)
+          Positioned(
+            left: 10,
+            top: 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Replace with your logo asset. Example: Image.asset('assets/othaim_logo.png', width: 36, height: 36)
+                Icon(Icons.eco, color: Colors.green, size: 36), // placeholder
+                SizedBox(height: 1),
+                Text(
+                  "Othaim",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Top-right (%) icon
+          Positioned(
+            right: 12,
+            top: 10,
+            child: Container(
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Center(
+                child: Text(
+                  "%",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Bottom-left T&C icon
+          Positioned(
+            left: 10,
+            bottom: 2,
+            child: Icon(
+              Icons.article,
+              size: 28,
+              color: Colors.black,
+            ), // placeholder for T&C
+          ),
+
+          // Bottom-right: 50% OFF
+          Positioned(
+            right: 5,
+            bottom: 5,
+            child: CustomPaint(
+              size: Size(80, 50), // width, height for the triangle area
+              painter: RightTrianglePainter(),
+            ),
+          ),
+          Positioned(
+            right: 10,
+            bottom: 15,
+            child: CustomPaint(
+              size: Size(80, 50), // width, height for the triangle area
+              child: Text(
+                "50%",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 10,
+            bottom: 10,
+            child: CustomPaint(
+              size: Size(80, 50), // width, height for the triangle area
+              child: Text(
+                "OFF",
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget listOfContainers(List<String>? myImages) {
     final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
     if (myImages!.length > 4) {
@@ -64,7 +193,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
             children: [
               Text(
                 "Celebration",
-                style: GoogleFonts.lora(
+                style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: isDarkEnabled ? Colors.white : MyColors.bodyTextColor,
@@ -80,7 +209,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                 },
                 child: Text(
                   "ViewAll ${myImages.length.toString()}",
-                  style: GoogleFonts.lora(
+                  style: GoogleFonts.inter(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: isDarkEnabled
@@ -100,17 +229,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: MyColors.primaryColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    // width: 250,
-                    child: ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(10),
-                      child: Image.asset(myImages[index], fit: BoxFit.fill),
-                    ),
-                  ),
+                  child: voucherContainer(context),
                 );
               },
             ),
@@ -126,7 +245,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
             children: [
               Text(
                 "Celebration",
-                style: GoogleFonts.lora(
+                style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: isDarkEnabled ? Colors.white : MyColors.bodyTextColor,
@@ -142,7 +261,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                 },
                 child: Text(
                   "ViewAll",
-                  style: GoogleFonts.lora(
+                  style: GoogleFonts.inter(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: isDarkEnabled
@@ -161,16 +280,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: MyColors.secondaryColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    // width: 200,
-                    child: ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(10),
-                      child: Image.asset(myImages[index], fit: BoxFit.fill)),
-                  ),
+                  child: voucherContainer(context),
                 );
               },
             ),
@@ -182,12 +292,10 @@ class _CouponHomepageState extends State<CouponHomepage> {
 
   @override
   Widget build(BuildContext context) {
-  
-   
-
     final appLoc = AppLocalizations.of(context)!;
     double itemHeight =
         (MediaQuery.of(context).size.height - kToolbarHeight - 24);
+
     final isDarkEnabled = Theme.brightnessOf(context) == Brightness.dark;
     return Scaffold(
       body: Padding(
@@ -201,7 +309,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                 SizedBox(
                   height: 40,
                   child: ListView.builder(
-                    itemCount: drawerMenuItems.length,
+                    itemCount: categories.length,
                     shrinkWrap: true,
 
                     scrollDirection: Axis.horizontal,
@@ -212,50 +320,44 @@ class _CouponHomepageState extends State<CouponHomepage> {
                           setState(() {
                             selectedIndex = index;
                           });
-                          var route = drawerMenuItems[index];
+                          var route = categories[index];
                           context.read<RouteProvider>().navigateTo(
                             route,
                             context,
                             arguments: route,
                           );
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Container(
+                          padding: EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: isSelected ? Colors.grey : Colors.white,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(60),
+                          ),
                           child: Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: Colors.red,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: MyColors.backgroundColor,
-                                  // color: Colors. grey,
-                                  offset: Offset(-10, -10),
-                                  blurRadius: 30,
-
-                                  inset: false,
-                                ),
-                                BoxShadow(
-                                  color: MyColors.textColor,
-                                  offset: Offset(10, 10),
-                                  blurRadius: 30,
-
-                                  inset: true,
-                                ),
-                              ],
+                              borderRadius: BorderRadius.circular(60),
+                              color: isSelected
+                                  ? Colors.black
+                                  : Colors.grey.shade200,
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                              ),
                               child: Center(
                                 child: Text(
-                                  drawerMenuItems[index],
+                                  categories[index],
                                   textAlign: TextAlign.center,
                                   maxLines: 2,
-                                  style: GoogleFonts.lora(
+                                  style: GoogleFonts.inter(
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w900,
                                     color: isSelected
-                                        ? Colors.amber
-                                        : Colors.white,
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ),
@@ -267,51 +369,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                   ),
                 ),
                 CustomWidgets.gap_10,
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   mainAxisSize: MainAxisSize.max,
-                //   children: [
-                //     Text(
-                //       "Celebration",
-                //       style: GoogleFonts.lora(
-                //         fontSize: 14,
-                //         fontWeight: FontWeight.w900,
-                //         color: MyColors.textColor,
-                //       ),
-                //     ),
-                //     TextButton(
-                //       onPressed: () {
-                //         context.read<RouteProvider>().navigateTo(
-                //           '/viewall',
-                //           context,
-                //           arguments: 'Celebration',
-                //         );
-                //       },
-                //       child: Text("ViewAll"),
-                //     ),
-                //   ],
-                // ),
 
-                // SizedBox(
-                //   height: 120,
-                //   child: ListView.builder(
-                //     scrollDirection: Axis.horizontal,
-                //     itemCount: 10,
-                //     itemBuilder: (context, index) {
-                //       return Padding(
-                //         padding: const EdgeInsets.all(8.0),
-                //         child: Container(
-                //           decoration: BoxDecoration(
-                //             color: MyColors.secondaryColor,
-                //             borderRadius: BorderRadius.circular(20),
-                //           ),
-                //           width: 200,
-                //           child: Text(index.toString()),
-                //         ),
-                //       );
-                //     },
-                //   ),
-                // ),
                 listOfContainers(imageList2),
                 CustomWidgets.gap_10,
                 Row(
@@ -319,7 +377,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                   children: [
                     Text(
                       'Thankyou',
-                      style: GoogleFonts.lora(
+                      style: GoogleFonts.inter(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: isDarkEnabled
@@ -337,7 +395,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                       },
                       child: Text(
                         "ViewAll",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: isDarkEnabled
@@ -352,18 +410,11 @@ class _CouponHomepageState extends State<CouponHomepage> {
                   height: 120,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: imageList.length,
+                    itemCount: 10,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(right: 10.0),
-                        child: Image.asset(
-                          imageList[index],
-                          fit: BoxFit.cover, // Adjust fit as needed
-                          // Adjust height as needed
-                          errorBuilder: (context, error, stackTrace) {
-                            return Icon(Icons.error);
-                          },
-                        ),
+                        child: voucherContainer(context)
                       );
                     },
                   ),
@@ -374,7 +425,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                   children: [
                     Text(
                       'Appreciation',
-                      style: GoogleFonts.lora(
+                      style: GoogleFonts.inter(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: isDarkEnabled
@@ -392,7 +443,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                       },
                       child: Text(
                         "ViewAll",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: isDarkEnabled
@@ -411,19 +462,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(right: 10.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: MyColors.secondaryColor,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          // width: 250,
-                          child: ClipRRect(borderRadius: BorderRadiusGeometry.circular(10),
-                            child: Image.asset(
-                              imageList2[index],
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
+                        child: voucherContainer(context)
                       );
                     },
                   ),
@@ -434,7 +473,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                   children: [
                     Text(
                       'Birthday',
-                      style: GoogleFonts.lora(
+                      style: GoogleFonts.inter(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: isDarkEnabled
@@ -452,7 +491,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                       },
                       child: Text(
                         "ViewAll",
-                        style: GoogleFonts.lora(
+                        style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: isDarkEnabled
@@ -471,14 +510,7 @@ class _CouponHomepageState extends State<CouponHomepage> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(right: 10.0),
-                        child: Image.asset(
-                          imageList[index],
-                          fit: BoxFit.cover, // Adjust fit as needed
-                          // Adjust height as needed
-                          errorBuilder: (context, error, stackTrace) {
-                            return Icon(Icons.error);
-                          },
-                        ),
+                        child: voucherContainer(context)
                       );
                     },
                   ),
@@ -490,4 +522,24 @@ class _CouponHomepageState extends State<CouponHomepage> {
       ),
     );
   }
+}
+
+class RightTrianglePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.red
+      ..style = PaintingStyle.fill;
+
+    final path = Path()
+      ..moveTo(0, size.height) // bottom-left
+      ..lineTo(size.width, size.height) // bottom-right
+      ..lineTo(size.width, 0) // top-right
+      ..close(); // connect back to start
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
